@@ -1,0 +1,130 @@
+{
+  "campaign": {
+    "name": "PD_Edgemont_Lead_EN",
+    "project": "The Edgemont Collection",
+    "developer": "Domus Homes",
+    "objective": "Lead Generation",
+    "budget": "$75/day",
+    "languages": ["EN"],
+    "housing_category": true,
+    "landing_page": "theedgemontcollection.com"
+  },
+  "adSets": [
+    { "id": "as1", "name": "Lead_EN_Broad_Feed", "tier": "Broad", "placement": "Feed", "targeting": "Location only — Advantage+ ON", "ads": ["ad1", "ad2", "ad3"] },
+    { "id": "as2", "name": "Lead_EN_Broad_StoryReel", "tier": "Broad", "placement": "StoryReel", "targeting": "Location only — Advantage+ ON", "ads": ["ad4", "ad5", "ad6"] },
+    { "id": "as3", "name": "Lead_EN_Interest_Feed", "tier": "Interest", "placement": "Feed", "targeting": "Combined audience — all interests", "ads": ["ad1", "ad2", "ad3"] },
+    { "id": "as4", "name": "Lead_EN_Interest_StoryReel", "tier": "Interest", "placement": "StoryReel", "targeting": "Combined audience — all interests", "ads": ["ad4", "ad5", "ad6"] },
+    { "id": "as5", "name": "Lead_EN_Retargeting_Feed", "tier": "Retargeting", "placement": "Feed", "targeting": "Website visitors, video viewers, lead openers", "ads": ["ad1", "ad2", "ad3"] },
+    { "id": "as6", "name": "Lead_EN_Retargeting_StoryReel", "tier": "Retargeting", "placement": "StoryReel", "targeting": "Website visitors, video viewers, lead openers", "ads": ["ad4", "ad5", "ad6"] }
+  ],
+  "ads": [
+    {
+      "id": "ad1",
+      "name": "Lead_EN_SingleImage_202602_BrookridgeLane",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "Brookridge Lane",
+      "files": ["Edgemont_Brookridge_Lane_Meta_Single_Feb2026.jpg"],
+      "imageUrl": "https://placehold.co/500x500/6B2D8B/white?text=Brookridge+Lane",
+      "copy": {
+        "primary": "Now Selling — 12 Townhomes at Brookridge Lane, one of two communities within The Edgemont Collection. Designed for North Shore Living.",
+        "headline": "Refined Mountainside Living",
+        "description": "Book a Tour Today",
+        "cta": "Sign Up"
+      }
+    },
+    {
+      "id": "ad2",
+      "name": "Lead_EN_SingleImage_202602_RidgewoodRow",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "Ridgewood Row",
+      "files": ["Edgemont_RidgewoodRow_Meta_Single_Feb2026.jpg"],
+      "imageUrl": "https://placehold.co/500x500/6B2D8B/white?text=Ridgewood+Row",
+      "copy": {
+        "primary": "Now Selling — 32 townhomes and garden flats at Ridgewood Row, one of two communities within The Edgemont Collection. Starting from $1,399,900.",
+        "headline": "Refined Mountainside Living",
+        "description": "Book a Tour Today",
+        "cta": "Sign Up"
+      }
+    },
+    {
+      "id": "ad3",
+      "name": "Lead_EN_Carousel_202602_Collection",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "Collection",
+      "files": ["Edgemont_Meta_Carousel_1_Feb2026.jpg", "Edgemont_Meta_Carousel_2_Feb2026.jpg", "Edgemont_Meta_Carousel_3_Feb2026.jpg", "Edgemont_Meta_Carousel_4_Feb2026.jpg"],
+      "imageUrl": "https://placehold.co/500x500/6B2D8B/white?text=Carousel",
+      "carouselCards": [
+        { "imageUrl": "https://placehold.co/260x260/6B2D8B/white?text=Card+1", "headline": "The Edgemont Collection — NOW SELLING", "description": "Register Today" },
+        { "imageUrl": "https://placehold.co/260x260/8B3DAB/white?text=Card+2", "headline": "Two Boutique Communities on the North Shore", "description": "Refined Mountainside Living" },
+        { "imageUrl": "https://placehold.co/260x260/4B1D6B/white?text=Card+3", "headline": "2 & 3 Bedroom Modern Townhomes", "description": "Now Selling" },
+        { "imageUrl": "https://placehold.co/260x260/9B4DBB/white?text=Card+4", "headline": "Starting from $1,399,900", "description": "NOW SELLING" }
+      ],
+      "copy": {
+        "primary": "Now Selling — Two boutique townhome communities on the North Shore. 2 & 3 bedroom modern townhomes starting from $1,399,900.",
+        "cta": "Sign Up"
+      }
+    },
+    {
+      "id": "ad4",
+      "name": "Lead_EN_Video_202602_StoryReel_BrookridgeLane",
+      "type": "Video",
+      "placement": "StoryReel",
+      "subPlacements": ["Story", "Reel"],
+      "concept": "Brookridge Lane",
+      "files": ["Edgemont_BrookridgeLane_Meta_Story_Feb2026.mp4"],
+      "isVideo": true,
+      "imageUrl": "https://placehold.co/270x480/6B2D8B/white?text=Brookridge+Lane+Video",
+      "videoUrl": null,
+      "copy": {
+        "primary": "The Edgemont Collection — Refined Mountainside Living on the North Shore",
+        "headline": "3 Bedroom Townhomes",
+        "cta": "NOW SELLING"
+      }
+    },
+    {
+      "id": "ad5",
+      "name": "Lead_EN_Video_202602_StoryReel_RidgewoodRow",
+      "type": "Video",
+      "placement": "StoryReel",
+      "subPlacements": ["Story", "Reel"],
+      "concept": "Ridgewood Row",
+      "files": ["Edgemont_RidgewoodRow_Meta_Story_Feb20262.mp4"],
+      "isVideo": true,
+      "imageUrl": "https://placehold.co/270x480/6B2D8B/white?text=Ridgewood+Row+Video",
+      "videoUrl": null,
+      "copy": {
+        "primary": "The Edgemont Collection — Refined Mountainside Living on the North Shore",
+        "headline": "2 & 3 Bedroom Townhomes & Garden Flats",
+        "cta": "NOW SELLING"
+      }
+    },
+    {
+      "id": "ad6",
+      "name": "Lead_EN_SingleImage_202602_StoryReel_Collection",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "subPlacements": ["Story", "Reel"],
+      "concept": "Collection",
+      "files": ["Edgemont_Meta_StoryReel_Single_Feb2026.jpg"],
+      "imageUrl": "https://placehold.co/270x480/6B2D8B/white?text=Collection",
+      "copy": {
+        "primary": "NOW SELLING — The Edgemont Collection. 2 & 3 Bedroom Townhomes on the North Shore. Starting from $1,399,900.",
+        "headline": "The Edgemont Collection",
+        "cta": "Sign Up"
+      }
+    }
+  ],
+  "sources": {
+    "driveFolder": null,
+    "copySheet": null,
+    "clickupTask": null
+  },
+  "meta": {
+    "generatedAt": "2026-02-14T18:00:00Z",
+    "generatedBy": "manual-migration",
+    "boardVersion": "1.0"
+  }
+}

@@ -86,7 +86,7 @@
       "id": "ad1",
       "name": "Lead_EN_Image_Feb2026_General",
       "type": "Image",
-      "placement": "Feed",
+      "placement": "LeadForm",
       "concept": "General",
       "files": [
         "Senakw_Meta_Lead-Form_EN_Feb2026.jpg"

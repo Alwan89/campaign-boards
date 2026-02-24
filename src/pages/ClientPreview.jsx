@@ -197,7 +197,9 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
         <main className="client-slides">
           {/* Title slide */}
           <div className="client-slide client-slide--title">
-            <h1 className="client-slide__hero-title">{campaign.project}</h1>
+            <div className="client-slide__hero-overlay" />
+            <h1 className="client-slide__hero-title">{campaign.project} Village</h1>
+            <p className="client-slide__hero-subtitle">Ad Preview</p>
             <p className="client-slide__hero-date">{dateStr}</p>
           </div>
 

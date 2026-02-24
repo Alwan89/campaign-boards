@@ -543,14 +543,17 @@ export function SearchAdCard({ copy, callouts, sitelinks, imageUrl, amenities })
    Matches actual Google Ads preview tool: tabs + mobile/desktop toggle
    ══════════════════════════════════════════════════════════════════ */
 
-/* YouTube logo SVG */
+/* YouTube logo — play icon + text */
 function YouTubeLogo({ width = 90 }) {
+  const scale = width / 90;
   return (
-    <svg viewBox="0 0 90 20" width={width} height={Math.round(width * 20/90)} style={{display:'block'}}>
-      <path d="M27.97 17.77c-.38.82-.93 1.42-1.65 1.8-.72.39-1.58.58-2.57.58-1.18 0-2.12-.27-2.82-.82-.7-.55-1.14-1.32-1.32-2.32l1.96-.31c.1.56.33 1 .7 1.3.37.3.84.46 1.4.46.64 0 1.14-.2 1.5-.6.36-.4.54-1.02.54-1.86v-.94h-.04c-.54.88-1.38 1.32-2.52 1.32-.98 0-1.78-.4-2.4-1.2-.62-.8-.93-1.84-.93-3.12s.33-2.36.99-3.18c.66-.82 1.5-1.23 2.52-1.23 1.08 0 1.88.46 2.4 1.38h.04V7.85h1.86v8.16c0 1.24-.35 2.2-1.06 2.88zM24.5 14c.42.56.98.84 1.68.84.7 0 1.26-.28 1.68-.84.42-.56.63-1.28.63-2.16 0-.88-.21-1.6-.63-2.16-.42-.56-.98-.84-1.68-.84-.7 0-1.26.28-1.68.84-.42.56-.63 1.28-.63 2.16 0 .88.21 1.6.63 2.16z" fill="#282828"/>
-      <rect x="0" y="3" width="20" height="14" rx="3" fill="#FF0000"/>
-      <polygon points="8,6.5 14,10 8,13.5" fill="#fff"/>
-    </svg>
+    <div style={{display:'flex',alignItems:'center',gap:Math.round(4*scale),width}}>
+      <svg viewBox="0 0 20 14" width={Math.round(20*scale)} height={Math.round(14*scale)} style={{display:'block',flexShrink:0}}>
+        <rect width="20" height="14" rx="3" fill="#FF0000"/>
+        <polygon points="8,3.5 14,7 8,10.5" fill="#fff"/>
+      </svg>
+      <span style={{fontSize:Math.round(16*scale),fontFamily:'Roboto, Arial, sans-serif',fontWeight:500,color:'#282828',letterSpacing:'-0.5px',lineHeight:1,whiteSpace:'nowrap'}}>YouTube</span>
+    </div>
   );
 }
 

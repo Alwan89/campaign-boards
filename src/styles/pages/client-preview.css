@@ -113,16 +113,29 @@
 
 /* Title slide */
 .client-slide--title{
-  min-height:320px;align-items:center;justify-content:center;
-  background:linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height:360px;align-items:center;justify-content:center;
+  background:url('/campaign-boards/campaigns/senakw-feb2026/assets/senakw-hero-bg.jpg') center/cover no-repeat;
   text-align:center;
+  position:relative;overflow:hidden;
+}
+.client-slide__hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(15,15,30,.7) 0%, rgba(15,15,30,.45) 50%, rgba(15,15,30,.7) 100%);
+  z-index:0;
 }
 .client-slide__hero-title{
   font-size:44px;font-weight:800;color:#fff;
-  margin:0 0 10px;letter-spacing:-.02em;line-height:1.1;
+  margin:0 0 8px;letter-spacing:-.02em;line-height:1.1;
+  position:relative;z-index:1;
+}
+.client-slide__hero-subtitle{
+  font-size:18px;font-weight:500;color:rgba(255,255,255,.85);
+  margin:0 0 4px;letter-spacing:.05em;text-transform:uppercase;
+  position:relative;z-index:1;
 }
 .client-slide__hero-date{
   font-size:16px;font-weight:400;color:rgba(255,255,255,.5);margin:0;
+  position:relative;z-index:1;
 }
 
 /* Slide header */

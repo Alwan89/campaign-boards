@@ -20,9 +20,31 @@ export default function CampaignIndex() {
     document.title = 'Campaign Boards — Periphery Digital';
     const basePath = import.meta.env.BASE_URL;
     fetch(`${basePath}campaigns/index.json`)
-      .then(res => res.json())
-      .then(data => { setCampaigns(data); setLoading(false); })
-      .catch(() => setLoading(false));
+      .then(res => res.ok ? res.json() : [])
+      .then(staticCampaigns => {
+        // Merge with locally-built campaigns from localStorage
+        let localIndex = [];
+        try {
+          const raw = localStorage.getItem('campaigns:index');
+          if (raw) localIndex = JSON.parse(raw);
+        } catch (e) { /* ignore */ }
+
+        // Local campaigns appear first; skip dupes already in static
+        const staticSlugs = new Set(staticCampaigns.map(c => c.slug));
+        const localOnly = localIndex.filter(c => !staticSlugs.has(c.slug));
+        const merged = [...localOnly, ...staticCampaigns];
+
+        setCampaigns(merged);
+        setLoading(false);
+      })
+      .catch(() => {
+        // Even if static fetch fails, show local campaigns
+        try {
+          const raw = localStorage.getItem('campaigns:index');
+          if (raw) setCampaigns(JSON.parse(raw));
+        } catch (e) { /* ignore */ }
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -95,7 +117,7 @@ export default function CampaignIndex() {
             <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/>
           </svg>
           <p style={{margin:0}}>No campaigns found.</p>
-          <p style={{margin:'4px 0 0',fontSize:12,opacity:.7}}>Run the build pipeline to generate campaign data.</p>
+          <p style={{margin:'4px 0 0',fontSize:12,opacity:.7}}>Click "New Campaign" to build one from a Google Sheet &amp; Drive folder.</p>
         </div>
       ) : (
         <div className="campaign-grid">

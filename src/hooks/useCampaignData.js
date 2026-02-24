@@ -14,6 +14,22 @@ export function useCampaignData(slug) {
     setLoading(true);
     setError(null);
 
+    // 1. Check localStorage first (browser-built campaigns)
+    const storageKey = `campaign:${slug}`;
+    const localData = localStorage.getItem(storageKey);
+    if (localData) {
+      try {
+        const parsed = JSON.parse(localData);
+        setData(parsed);
+        setLoading(false);
+        return;
+      } catch (e) {
+        // Corrupted localStorage — fall through to network fetch
+        console.warn('Corrupted localStorage campaign data, falling back to network:', e);
+      }
+    }
+
+    // 2. Fall back to static file (Python-built campaigns)
     const basePath = import.meta.env.BASE_URL;
     fetch(`${basePath}campaigns/${slug}/data.json`)
       .then(res => {

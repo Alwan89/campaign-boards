@@ -1,0 +1,243 @@
+/* ═══════════════════════════════════════════════════════════
+   Client Deck — Slides + Sticky TOC
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Layout: sidebar + main ── */
+.client-deck{
+  display:flex;min-height:100vh;
+  background:var(--bg-page);
+}
+
+/* ── TOC Sidebar ── */
+.client-toc{
+  width:220px;flex-shrink:0;
+  background:#fafafa;
+  border-right:1px solid var(--border-light);
+  position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;
+  overflow-y:auto;
+  z-index:10;
+}
+
+.client-toc__header{
+  display:flex;align-items:center;gap:10px;
+  padding:20px 18px 16px;
+}
+.client-toc__badge{
+  width:32px;height:32px;border-radius:8px;
+  background:var(--periphery-gradient);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 1px 4px rgba(107,45,139,.2);
+  flex-shrink:0;
+}
+.client-toc__badge span{
+  color:#fff;font-weight:700;font-size:11px;
+}
+.client-toc__project{
+  font-size:14px;font-weight:700;color:var(--text-primary);
+  line-height:1.2;letter-spacing:-.01em;
+}
+.client-toc__date{
+  font-size:11px;color:var(--text-tertiary);margin-top:1px;
+}
+.client-toc__divider{
+  height:1px;background:var(--border-light);margin:0 16px 8px;
+}
+
+.client-toc__nav{
+  flex:1;padding:0 8px;
+}
+.client-toc__section{
+  margin-bottom:16px;
+}
+.client-toc__section-label{
+  font-size:9px;font-weight:700;color:var(--text-tertiary);
+  text-transform:uppercase;letter-spacing:1px;
+  padding:0 12px;margin-bottom:4px;
+}
+.client-toc__item{
+  display:flex;align-items:center;gap:8px;
+  width:100%;padding:7px 12px;margin:1px 0;
+  border:none;border-radius:6px;background:transparent;
+  font-size:13px;font-weight:500;color:var(--text-secondary);
+  cursor:pointer;transition:all var(--transition-fast);
+  text-align:left;position:relative;
+}
+.client-toc__item:hover{
+  background:rgba(0,0,0,.04);color:var(--text-primary);
+}
+.client-toc__item.active{
+  background:rgba(107,45,139,.08);color:var(--periphery);font-weight:600;
+}
+.client-toc__item.active::before{
+  content:'';position:absolute;left:-8px;top:50%;transform:translateY(-50%);
+  width:3px;height:16px;background:var(--periphery);border-radius:0 3px 3px 0;
+}
+.client-toc__item-num{
+  font-size:10px;font-weight:600;color:var(--text-tertiary);
+  font-family:'SF Mono',SFMono-Regular,ui-monospace,Consolas,monospace;
+  min-width:18px;
+}
+.client-toc__item.active .client-toc__item-num{
+  color:var(--periphery);opacity:.7;
+}
+.client-toc__item-label{
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+.client-toc__footer{
+  padding:14px 18px;
+  border-top:1px solid var(--border-light);
+  font-size:10px;color:var(--text-tertiary);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.client-toc__footer-brand{
+  color:#E8601C;font-weight:600;opacity:.6;
+}
+
+/* ── Slides ── */
+.client-slides{
+  flex:1;min-width:0;
+  padding:32px 48px;
+  max-width:1100px;
+}
+
+.client-slide{
+  background:#fff;border-radius:12px;
+  box-shadow:0 1px 6px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.03);
+  padding:40px 48px 32px;position:relative;
+  margin-bottom:28px;
+  min-height:480px;display:flex;flex-direction:column;
+  scroll-margin-top:24px;
+}
+
+/* Title slide */
+.client-slide--title{
+  min-height:320px;align-items:center;justify-content:center;
+  background:linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  text-align:center;
+}
+.client-slide__hero-title{
+  font-size:44px;font-weight:800;color:#fff;
+  margin:0 0 10px;letter-spacing:-.02em;line-height:1.1;
+}
+.client-slide__hero-date{
+  font-size:16px;font-weight:400;color:rgba(255,255,255,.5);margin:0;
+}
+
+/* Slide header */
+.client-slide__header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:4px;
+}
+.client-slide__section{
+  font-size:13px;font-weight:700;color:#E8601C;
+  letter-spacing:.02em;
+}
+.client-slide__num{
+  font-size:12px;font-weight:600;color:#E8601C;opacity:.6;
+  font-family:'SF Mono',SFMono-Regular,ui-monospace,Consolas,monospace;
+}
+.client-slide__rule{
+  height:2px;background:#E8601C;margin-bottom:12px;
+}
+.client-slide__title{
+  font-size:22px;font-weight:700;color:#1a1a2e;
+  margin:0 0 28px;line-height:1.25;letter-spacing:-.01em;
+}
+
+/* Preview area — centered */
+.client-slide__preview{
+  flex:1;display:flex;align-items:center;justify-content:center;
+  min-height:0;
+}
+.client-slide__preview--dual{
+  gap:32px;flex-wrap:nowrap;align-items:center;justify-content:center;
+}
+.client-slide__preview--wrap{
+  gap:20px;flex-wrap:wrap;align-items:flex-start;justify-content:center;
+}
+
+/* Story/reel sizing in client slide */
+.client-slide .story-card,
+.client-slide .reel-card{width:320px;height:568px;border-radius:16px}
+
+/* ── Placement Row — Meta-style multi-placement preview ── */
+.placement-row{
+  display:flex;gap:16px;
+  align-items:flex-start;justify-content:center;
+  overflow-x:auto;padding-bottom:4px;
+  width:100%;
+}
+.placement-col{flex-shrink:0}
+.placement-col__header{
+  display:flex;align-items:center;gap:6px;
+  padding:0 2px 8px;font-size:12px;font-weight:500;color:#65676b;
+}
+.placement-col__icon{width:20px;height:20px;flex-shrink:0}
+.placement-col__name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.placement-col__dots{
+  flex-shrink:0;font-size:16px;color:#8e8e8e;
+  cursor:pointer;letter-spacing:1px;line-height:1;padding:0 2px;
+}
+
+/* Scale feed cards down inside placement columns using zoom (layout-aware) */
+.placement-col--feed .fb-card,
+.placement-col--feed .ig-card{
+  zoom:0.54;
+}
+/* Story/reel in placement row: render at native 360x640 then zoom to ~202x358.
+   This preserves exact safe zones, text proportions, and icon sizing. */
+.placement-col--story .story-card,
+.placement-col--story .reel-card{
+  width:360px;height:640px;border-radius:12px;
+  zoom:0.56;
+}
+
+/* Info banner at top of placement slides */
+.placement-info{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:10px 14px;background:#f0f2f5;border-radius:8px;
+  margin-bottom:20px;font-size:12px;line-height:1.5;color:#65676b;
+}
+.placement-info__title{font-weight:700;color:#1c1e21;font-size:13px;margin-bottom:2px}
+
+/* Slide footer */
+.client-slide__footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 0 12px;
+  font-size:11px;color:var(--text-tertiary);opacity:.5;
+}
+.client-slide__footer-brand{
+  color:#E8601C;font-weight:600;
+}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .client-toc{width:180px}
+  .client-slides{padding:20px 20px}
+  .client-slide{padding:28px 24px 24px}
+  .client-slide .story-card,
+  .client-slide .reel-card{width:260px;height:462px}
+  .placement-col--feed .fb-card,
+  .placement-col--feed .ig-card{zoom:0.44}
+  .placement-col--story .story-card,
+  .placement-col--story .reel-card{width:360px;height:640px;zoom:0.44}
+}
+@media(max-width:640px){
+  .client-deck{flex-direction:column}
+  .client-toc{
+    width:100%;height:auto;position:sticky;top:0;
+    flex-direction:row;overflow-x:auto;
+    border-right:none;border-bottom:1px solid var(--border-light);
+  }
+  .client-toc__header{padding:12px 16px}
+  .client-toc__nav{display:flex;gap:4px;padding:0 12px 8px}
+  .client-toc__section{display:flex;gap:2px;margin-bottom:0}
+  .client-toc__section-label{display:none}
+  .client-toc__footer{display:none}
+  .client-toc__divider{display:none}
+  .client-slides{padding:16px}
+  .client-slide__preview--dual{flex-direction:column;align-items:center}
+  .placement-row{flex-wrap:wrap;justify-content:center}
+}

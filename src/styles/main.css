@@ -1,0 +1,23 @@
+/* ═══════════════════════════════════════════════════════════
+   Campaign Board — CSS Module Orchestrator
+   ═══════════════════════════════════════════════════════════ */
+
+/* Design system tokens, resets, animations, dark mode */
+@import './tokens.css';
+
+/* Component styles */
+@import './components/ad-cards.css';
+@import './components/google-cards.css';
+@import './components/device-frame.css';
+@import './components/edit-panel.css';
+@import './components/sidebar.css';
+@import './components/toolbar.css';
+
+/* Page styles */
+@import './pages/campaign-index.css';
+@import './pages/campaign-builder.css';
+@import './pages/deck-slides.css';
+@import './pages/client-preview.css';
+
+/* Shared styles */
+@import './shared/skeleton.css';

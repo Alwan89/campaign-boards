@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Campaign Board Preview</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  body { font-family: 'Inter', sans-serif; margin: 0; background: #f8f7fc; }
+  .periphery-purple { color: #6B2D8B; }
+  .bg-periphery { background: #6B2D8B; }
+  .bg-periphery-light { background: #f3edf7; }
+  .border-periphery { border-color: #6B2D8B; }
+  .tier-broad { background: #EFF6FF; border-left: 4px solid #3B82F6; }
+  .tier-interest { background: #ECFDF5; border-left: 4px solid #10B981; }
+  .tier-retargeting { background: #FFF7ED; border-left: 4px solid #F97316; }
+  .tier-badge-broad { background: #DBEAFE; color: #1D4ED8; }
+  .tier-badge-interest { background: #D1FAE5; color: #047857; }
+  .tier-badge-retargeting { background: #FFEDD5; color: #C2410C; }
+  .feed-card { width: 320px; }
+  .story-card { width: 180px; height: 320px; }
+  .meta-cta-btn { background: #E4E6EB; color: #050505; font-weight: 600; font-size: 13px; padding: 6px 16px; border-radius: 6px; }
+  .creative-placeholder {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #8e8e8e; background: #f0f0f0; border: 1px dashed #ccc;
+  }
+  .creative-placeholder-story {
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 40px; font-size: 11px; color: rgba(255,255,255,0.7);
+    background: linear-gradient(135deg, #2d2d3d, #1a1a2e); border: none;
+  }
+  .toggle-btn { transition: all 0.2s; }
+  .toggle-btn.active { background: #6B2D8B; color: white; }
+  .toggle-btn:not(.active) { background: white; color: #6B2D8B; border: 1px solid #6B2D8B; }
+  .structure-tree-line { border-left: 2px solid #d4d4d8; margin-left: 12px; padding-left: 16px; }
+  .ad-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+  .dot-broad { background: #3B82F6; }
+  .dot-interest { background: #10B981; }
+  .dot-retargeting { background: #F97316; }
+  .tooltip { position: relative; }
+  .tooltip:hover .tooltip-text { display: block; }
+  .tooltip-text { display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); background: #1f2937; color: white; padding: 4px 8px; border-radius: 4px; font-size: 11px; white-space: nowrap; z-index: 10; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+
+/* ─────────────────────────────────────────────
+   CAMPAIGN DATA — This block gets replaced by
+   build_campaign_board.py for real campaigns
+   ───────────────────────────────────────────── */
+const CAMPAIGN = {
+  name: "PD_Kwasen_Lead_EN",
+  project: "Kwasen",
+  objective: "Lead Generation",
+  budget: "$100/day",
+  languages: ["EN"],
+  housing_category: true,
+  landing_page: "kwasen.com/register",
+};
+
+const AD_SETS = [
+  { id: "as1", name: "Lead_EN_Broad_Feed", tier: "Broad", placement: "Feed", ads: ["ad1","ad2","ad3"] },
+  { id: "as2", name: "Lead_EN_Broad_StoryReel", tier: "Broad", placement: "StoryReel", ads: ["ad4","ad5","ad6"] },
+  { id: "as3", name: "Lead_EN_Interest_Feed", tier: "Interest", placement: "Feed", ads: ["ad1","ad2","ad3"] },
+  { id: "as4", name: "Lead_EN_Interest_StoryReel", tier: "Interest", placement: "StoryReel", ads: ["ad4","ad5","ad6"] },
+  { id: "as5", name: "Lead_EN_Retargeting_Feed", tier: "Retargeting", placement: "Feed", ads: ["ad1","ad2","ad3"] },
+  { id: "as6", name: "Lead_EN_Retargeting_StoryReel", tier: "Retargeting", placement: "StoryReel", ads: ["ad4","ad5","ad6"] },
+];
+
+const ADS = [
+  {
+    id: "ad1",
+    name: "Lead_EN_SingleImage_202602_Exterior",
+    type: "Single Image",
+    placement: "Feed",
+    sub_placements: ["Feed"],
+    concept: "Exterior",
+    files: ["Kwasen_Exterior_Feed_1080x1080.jpg"],
+    copy: {
+      primary: "Discover contemporary West Coast living at Kwasen. 1, 2 & 3 bedroom homes nestled in a vibrant Squamish community — starting from the low $500s.",
+      headline: "Now Selling — Kwasen in Squamish",
+      description: "Modern homes from the low $500s",
+      cta: "Learn More",
+    },
+  },
+  {
+    id: "ad2",
+    name: "Lead_EN_SingleImage_202602_Interior",
+    type: "Single Image",
+    placement: "Feed",
+    sub_placements: ["Feed"],
+    concept: "Interior",
+    files: ["Kwasen_Interior_Feed_1080x1080.jpg"],
+    copy: {
+      primary: "Open-concept layouts designed for how you live. 9-ft ceilings, engineered hardwood, and mountain views from every home at Kwasen.",
+      headline: "Thoughtfully Designed Interiors",
+      description: "Register for priority access",
+      cta: "Sign Up",
+    },
+  },
+  {
+    id: "ad3",
+    name: "Lead_EN_Carousel_202602_Amenities",
+    type: "Carousel",
+    placement: "Feed",
+    sub_placements: ["Feed"],
+    concept: "Amenities",
+    files: ["Kwasen_Amenity1_1080x1080.jpg","Kwasen_Amenity2_1080x1080.jpg","Kwasen_Amenity3_1080x1080.jpg"],
+    copy: {
+      primary: "Resort-style amenities steps from your door. Rooftop terrace, fitness centre, co-working lounge & more at Kwasen.",
+      headline: "Live the Kwasen Lifestyle",
+      description: "Register today",
+      cta: "Learn More",
+    },
+  },
+  {
+    id: "ad4",
+    name: "Lead_EN_SingleImage_202602_Exterior_StoryReel",
+    type: "Single Image",
+    placement: "StoryReel",
+    sub_placements: ["Story", "Reel"],
+    concept: "Exterior",
+    files: ["Kwasen_Exterior_Story_1080x1920.jpg", "Kwasen_Exterior_Reel_1080x1920.mp4"],
+    copy: {
+      primary: "Kwasen — West Coast living in Squamish. Starting from the low $500s.",
+      headline: "Now Selling",
+      cta: "Learn More",
+    },
+  },
+  {
+    id: "ad5",
+    name: "Lead_EN_SingleImage_202602_Interior_StoryReel",
+    type: "Single Image",
+    placement: "StoryReel",
+    sub_placements: ["Story", "Reel"],
+    concept: "Interior",
+    files: ["Kwasen_Interior_Story_1080x1920.jpg", "Kwasen_Interior_Reel_1080x1920.mp4"],
+    copy: {
+      primary: "Thoughtfully designed interiors with mountain views. Register for priority access.",
+      headline: "Kwasen Interiors",
+      cta: "Sign Up",
+    },
+  },
+  {
+    id: "ad6",
+    name: "Lead_EN_Video_202602_Walkthrough_StoryReel",
+    type: "Video",
+    placement: "StoryReel",
+    sub_placements: ["Story", "Reel"],
+    concept: "Walkthrough",
+    files: ["Kwasen_Walkthrough_Story_1080x1920.mp4", "Kwasen_Walkthrough_Reel_1080x1920.mp4"],
+    copy: {
+      primary: "Take a virtual tour of Kwasen's stunning show suite. Book your private viewing today.",
+      headline: "Tour Kwasen",
+      cta: "Learn More",
+    },
+  },
+];
+
+/* ─── END CAMPAIGN DATA ─── */
+
+function CampaignBoard() {
+  const [view, setView] = useState("internal");
+  const [expandedSets, setExpandedSets] = useState(new Set(AD_SETS.map(s => s.id)));
+
+  const toggleSet = (id) => {
+    setExpandedSets(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+
+  const tierColor = (tier) => {
+    if (tier === "Broad") return "tier-broad";
+    if (tier === "Interest") return "tier-interest";
+    return "tier-retargeting";
+  };
+  const tierBadge = (tier) => {
+    if (tier === "Broad") return "tier-badge-broad";
+    if (tier === "Interest") return "tier-badge-interest";
+    return "tier-badge-retargeting";
+  };
+  const tierDot = (tier) => {
+    if (tier === "Broad") return "dot-broad";
+    if (tier === "Interest") return "dot-interest";
+    return "dot-retargeting";
+  };
+
+  const isClient = view === "client";
+
+  return (
+    <div className="max-w-6xl mx-auto p-6">
+      {/* Header */}
+      <div className="bg-white rounded-xl shadow-sm border p-6 mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-periphery flex items-center justify-center">
+              <span className="text-white font-bold text-sm">PD</span>
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-gray-900">
+                {isClient ? CAMPAIGN.project + " — Campaign Preview" : CAMPAIGN.name}
+              </h1>
+              <p className="text-sm text-gray-500">
+                {CAMPAIGN.objective} · {CAMPAIGN.languages.join(", ")} · {CAMPAIGN.budget}
+                {!isClient && CAMPAIGN.housing_category && <span className="ml-2 px-2 py-0.5 bg-yellow-100 text-yellow-800 text-xs rounded-full font-medium">Housing Category</span>}
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
+            <button onClick={() => setView("internal")} className={`toggle-btn px-3 py-1.5 rounded-md text-sm font-medium ${view==="internal"?"active":""}`}>
+              Internal
+            </button>
+            <button onClick={() => setView("client")} className={`toggle-btn px-3 py-1.5 rounded-md text-sm font-medium ${view==="client"?"active":""}`}>
+              Client
+            </button>
+          </div>
+        </div>
+
+        {/* Structure Summary */}
+        {!isClient && (
+          <div className="flex gap-6 text-sm text-gray-600 border-t pt-4 mt-2">
+            <div><span className="font-semibold text-gray-900">{AD_SETS.length}</span> Ad Sets</div>
+            <div><span className="font-semibold text-gray-900">{ADS.length}</span> Unique Ads</div>
+            <div><span className="font-semibold text-gray-900">{ADS.reduce((n,a) => n + a.files.length, 0)}</span> Creative Files</div>
+            <div className="flex gap-3 ml-auto">
+              <span className="flex items-center gap-1"><span className="ad-dot dot-broad"></span>Broad</span>
+              <span className="flex items-center gap-1"><span className="ad-dot dot-interest"></span>Interest</span>
+              <span className="flex items-center gap-1"><span className="ad-dot dot-retargeting"></span>Retargeting</span>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Campaign Structure Tree (internal only) */}
+      {!isClient && (
+        <div className="bg-white rounded-xl shadow-sm border p-5 mb-6">
+          <h2 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-3">Campaign Structure</h2>
+          <div className="text-sm">
+            <div className="font-semibold text-gray-900 mb-1">📁 {CAMPAIGN.name}</div>
+            <div className="structure-tree-line">
+              {AD_SETS.map(as => (
+                <div key={as.id} className="mb-1 flex items-center gap-2">
+                  <span className={`ad-dot ${tierDot(as.tier)}`}></span>
+                  <span className="text-gray-700">{as.name}</span>
+                  <span className="text-gray-400 text-xs">({as.ads.length} ads)</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Ad Sets + Ads */}
+      {AD_SETS.map(adSet => {
+        const ads = ADS.filter(a => adSet.ads.includes(a.id));
+        const isExpanded = expandedSets.has(adSet.id);
+        const isFeed = adSet.placement === "Feed";
+
+        return (
+          <div key={adSet.id} className={`rounded-xl shadow-sm border mb-4 overflow-hidden ${tierColor(adSet.tier)}`}>
+            {/* Ad Set Header */}
+            <button onClick={() => toggleSet(adSet.id)} className="w-full px-5 py-3 flex items-center justify-between text-left hover:bg-opacity-80 transition-colors">
+              <div className="flex items-center gap-3">
+                <span className="text-lg">{isExpanded ? "▾" : "▸"}</span>
+                <div>
+                  <span className="font-semibold text-gray-900 text-sm">
+                    {isClient
+                      ? `${adSet.placement === "Feed" ? "Feed Ads" : "Story & Reel Ads"} — ${adSet.tier}`
+                      : adSet.name}
+                  </span>
+                </div>
+                <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${tierBadge(adSet.tier)}`}>
+                  {adSet.tier}
+                </span>
+                <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700">
+                  {adSet.placement}
+                </span>
+              </div>
+              <span className="text-xs text-gray-500">{ads.length} ad{ads.length !== 1 ? "s" : ""}</span>
+            </button>
+
+            {/* Ads Grid */}
+            {isExpanded && (
+              <div className="px-5 pb-5 pt-1">
+                <div className="flex flex-wrap gap-5">
+                  {ads.map(ad => (
+                    <div key={ad.id} className="bg-white rounded-lg shadow-sm border overflow-hidden" style={{ width: isFeed ? 320 : 180 }}>
+                      {/* Ad Card */}
+                      {isFeed ? (
+                        /* Feed Card */
+                        <div className="feed-card">
+                          {/* Page header row */}
+                          <div className="flex items-center gap-2 p-3 pb-2">
+                            <div className="w-8 h-8 rounded-full bg-periphery flex items-center justify-center">
+                              <span className="text-white text-xs font-bold">K</span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-xs font-semibold text-gray-900 truncate">{CAMPAIGN.project}</div>
+                              <div className="text-xs text-gray-400">Sponsored</div>
+                            </div>
+                            <span className="text-gray-300">···</span>
+                          </div>
+                          {/* Primary text */}
+                          <div className="px-3 pb-2 text-xs text-gray-700 leading-relaxed" style={{display:'-webkit-box',WebkitLineClamp:3,WebkitBoxOrient:'vertical',overflow:'hidden'}}>
+                            {ad.copy.primary}
+                          </div>
+                          {/* Creative area */}
+                          <div className="creative-placeholder" style={{ height: ad.type === "Carousel" ? 260 : 320, background: '#f0f0f0' }}>
+                            {ad.type === "Carousel" ? (
+                              <div className="flex items-center gap-1">
+                                {ad.files.map((f, i) => (
+                                  <div key={i} className="w-16 h-16 rounded bg-gray-200 flex items-center justify-center text-xs text-gray-400 border">
+                                    {i+1}
+                                  </div>
+                                ))}
+                                <div className="ml-2 text-xs text-gray-400">Carousel · {ad.files.length} cards</div>
+                              </div>
+                            ) : (
+                              <div className="text-center">
+                                <div className="text-2xl mb-2">🖼</div>
+                                <div className="text-xs text-gray-400">{ad.files[0]}</div>
+                                <div className="text-xs text-gray-300 mt-1">1080 × 1080</div>
+                              </div>
+                            )}
+                          </div>
+                          {/* Link preview bar */}
+                          <div className="bg-gray-50 px-3 py-2 flex items-center justify-between border-t">
+                            <div className="flex-1 min-w-0">
+                              <div className="text-xs text-gray-400 truncate">{CAMPAIGN.landing_page}</div>
+                              <div className="text-sm font-semibold text-gray-900 truncate">{ad.copy.headline}</div>
+                              {ad.copy.description && <div className="text-xs text-gray-500 truncate">{ad.copy.description}</div>}
+                            </div>
+                            <button className="meta-cta-btn ml-2 flex-shrink-0">{ad.copy.cta}</button>
+                          </div>
+                          {/* Internal details */}
+                          {!isClient && (
+                            <div className="px-3 py-2 bg-gray-50 border-t text-xs space-y-1">
+                              <div className="font-mono text-gray-500 truncate" title={ad.name}>{ad.name}</div>
+                              <div className="flex gap-2 text-gray-400">
+                                <span>{ad.type}</span>
+                                <span>·</span>
+                                <span>{ad.files.length} file{ad.files.length>1?"s":""}</span>
+                                <span>·</span>
+                                <span>Concept: {ad.concept}</span>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        /* Story/Reel Card */
+                        <div className="story-card flex flex-col">
+                          <div className="creative-placeholder-story flex-1 rounded-t-lg relative">
+                            {/* Story UI overlay */}
+                            <div className="absolute top-0 left-0 right-0 p-2">
+                              <div className="h-0.5 bg-white bg-opacity-30 rounded-full mb-2">
+                                <div className="h-0.5 bg-white rounded-full" style={{width:'33%'}}></div>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-6 h-6 rounded-full bg-white bg-opacity-20 flex items-center justify-center">
+                                  <span className="text-white text-xs font-bold" style={{fontSize:8}}>K</span>
+                                </div>
+                                <span className="text-white text-xs font-medium" style={{fontSize:10}}>{CAMPAIGN.project}</span>
+                              </div>
+                            </div>
+                            {/* Center content */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-center px-3 text-center">
+                              <div className="text-xl mb-2">{ad.type === "Video" ? "🎬" : "🖼"}</div>
+                              <div className="text-white text-xs font-medium mb-1">{ad.concept}</div>
+                              {ad.sub_placements.length > 1 && (
+                                <div className="flex gap-1 mt-1">
+                                  {ad.sub_placements.map(sp => (
+                                    <span key={sp} className="px-1.5 py-0.5 rounded text-white bg-white bg-opacity-20" style={{fontSize:9}}>{sp}</span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                            {/* Bottom copy */}
+                            <div className="absolute bottom-0 left-0 right-0 p-3" style={{background:'linear-gradient(transparent, rgba(0,0,0,0.7))'}}>
+                              <div className="text-white text-xs leading-tight mb-2" style={{display:'-webkit-box',WebkitLineClamp:2,WebkitBoxOrient:'vertical',overflow:'hidden'}}>
+                                {ad.copy.primary}
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-white text-xs font-semibold">{ad.copy.headline}</span>
+                                <span className="px-2 py-1 rounded-full bg-white text-black font-semibold" style={{fontSize:9}}>{ad.copy.cta}</span>
+                              </div>
+                            </div>
+                          </div>
+                          {/* Internal details */}
+                          {!isClient && (
+                            <div className="px-2 py-2 bg-gray-50 text-xs space-y-1 border-t">
+                              <div className="font-mono text-gray-500 truncate" title={ad.name} style={{fontSize:9}}>{ad.name}</div>
+                              <div className="flex flex-wrap gap-1 text-gray-400" style={{fontSize:9}}>
+                                <span>{ad.type}</span>
+                                <span>·</span>
+                                <span>{ad.files.length} files</span>
+                              </div>
+                              <div className="flex gap-1">
+                                {ad.files.map((f,i) => (
+                                  <span key={i} className="px-1 py-0.5 bg-gray-100 rounded truncate" style={{fontSize:8,maxWidth:70}} title={f}>{f.split('_').pop()}</span>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {/* Footer */}
+      <div className="text-center text-xs text-gray-400 mt-8 mb-4">
+        {isClient
+          ? `${CAMPAIGN.project} Campaign Preview · Periphery Digital`
+          : `periphery-meta-ads plugin v0.3.0 · ${AD_SETS.length} ad sets · ${ADS.length} ads · ${ADS.reduce((n,a) => n + a.files.length, 0)} files`}
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.render(<CampaignBoard />, document.getElementById("root"));
+</script>
+</body>
+</html>

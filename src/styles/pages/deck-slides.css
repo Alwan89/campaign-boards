@@ -1,0 +1,141 @@
+/* ═══════════════════════════════════════════════════════════
+   Client Deck / Slide Layout — Figma "Mockup Deck v1"
+   ═══════════════════════════════════════════════════════════ */
+
+.deck-container{
+  max-width:1200px;margin:0 auto;padding:32px 20px;
+  display:flex;flex-direction:column;gap:32px;
+  animation:fadeIn .4s ease;
+}
+
+.deck-slide{
+  background:#fff;border-radius:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.04);
+  padding:48px 56px 32px;position:relative;
+  min-height:540px;display:flex;flex-direction:column;
+  overflow:hidden;
+}
+
+/* Title slide */
+.deck-slide--title{
+  min-height:400px;align-items:center;justify-content:center;
+  background:linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color:#fff;text-align:center;
+}
+.deck-slide--title__content h1{
+  font-size:48px;font-weight:800;margin:0 0 12px;
+  letter-spacing:-.02em;line-height:1.1;
+}
+.deck-slide--title__content p{
+  font-size:18px;font-weight:400;opacity:.6;margin:0;
+}
+
+/* Slide header area */
+.deck-slide__header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:4px;
+}
+.deck-slide__section{
+  font-size:14px;font-weight:700;color:#E8601C;
+  letter-spacing:.02em;
+}
+.deck-slide__num{
+  font-size:13px;font-weight:600;color:#E8601C;opacity:.7;
+}
+.deck-slide__rule{
+  height:2px;background:#E8601C;margin-bottom:12px;
+}
+.deck-slide__title{
+  font-size:26px;font-weight:700;color:#1a1a2e;
+  margin:0 0 32px;line-height:1.25;letter-spacing:-.01em;
+}
+
+/* Two-column body */
+.deck-slide__body{
+  display:flex;gap:40px;flex:1;min-height:0;
+}
+.deck-slide__copy{
+  flex:0 0 340px;max-height:420px;overflow-y:auto;
+  padding-right:16px;
+}
+.deck-slide__preview{
+  flex:1;display:flex;align-items:flex-start;justify-content:center;
+  min-width:0;
+}
+
+/* Copy field listing */
+.deck-copy-field{margin-bottom:14px}
+.deck-copy-field__label{
+  font-size:10px;font-weight:700;color:#1a1a2e;
+  text-transform:uppercase;letter-spacing:.6px;
+  display:flex;align-items:baseline;gap:6px;
+  margin-bottom:2px;
+}
+.deck-copy-field__hint{
+  font-weight:400;color:#999;font-size:10px;
+  text-transform:none;letter-spacing:0;
+}
+.deck-copy-field__value{
+  font-size:13px;color:#555;line-height:1.5;
+  word-break:break-word;
+}
+
+/* Slide footer */
+.deck-slide__footer{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:auto;padding-top:24px;
+  font-size:11px;color:#999;
+}
+.deck-slide__footer-brand{
+  color:#E8601C;font-weight:600;opacity:.5;font-size:11px;
+}
+.deck-slide--title .deck-slide__footer{
+  color:rgba(255,255,255,.3);
+}
+.deck-slide--title .deck-slide__footer-brand{
+  color:rgba(255,255,255,.4);
+}
+
+/* Device frames in deck mode */
+.deck-slide .device-frame{
+  border-radius:36px;padding:8px;
+}
+.deck-slide .device-frame:hover{
+  transform:translateY(-4px) scale(1.005);
+}
+.deck-slide .device-frame--feed{width:300px}
+.deck-slide .device-frame--story,
+.deck-slide .device-frame--reel{width:280px}
+.deck-slide .device-frame__notch{width:80px;height:22px;border-radius:0 0 16px 16px}
+.deck-slide .device-frame__screen{border-radius:28px}
+.deck-slide .device-frame__home-bar{width:100px;height:4px;margin:6px auto 3px}
+.deck-slide .device-frame__status-bar{padding:4px 20px 3px;height:20px}
+.deck-slide .device-frame__time{font-size:11px}
+
+.deck-slide .device-frame--feed .device-frame__screen{
+  max-height:580px;overflow-y:auto;
+}
+.deck-slide .device-frame--feed .device-frame__screen::-webkit-scrollbar{width:0}
+
+.deck-slide .device-frame--story .device-frame__screen,
+.deck-slide .device-frame--reel .device-frame__screen{
+  aspect-ratio:9/19.5;
+}
+
+/* Story/reel in deck: preserve fixed dimensions */
+.deck-slide .story-card,
+.deck-slide .reel-card{width:360px;height:640px}
+
+/* Scrollbar for copy column */
+.deck-slide__copy::-webkit-scrollbar{width:4px}
+.deck-slide__copy::-webkit-scrollbar-track{background:transparent}
+.deck-slide__copy::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px}
+
+/* Responsive: stack on narrow screens */
+@media(max-width:900px){
+  .deck-slide{padding:32px 28px 24px}
+  .deck-slide__body{flex-direction:column;gap:24px}
+  .deck-slide__copy{flex:none;max-height:none;padding-right:0}
+  .deck-slide__preview{justify-content:center}
+  .deck-slide .device-frame{transform:scale(.82);transform-origin:top center}
+}

@@ -1,0 +1,31 @@
+/* ═══════════════════════════════════════════════════════════
+   Browser Window Mockup (Google Search)
+   ═══════════════════════════════════════════════════════════ */
+
+.browser-mockup{
+  width:100%;max-width:560px;
+  background:#fff;border-radius:10px;
+  border:1px solid #dadce0;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+.browser-mockup__chrome{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px;background:#f1f3f4;
+  border-bottom:1px solid #dadce0;
+}
+.browser-mockup__dots{display:flex;gap:6px}
+.browser-mockup__dot{width:10px;height:10px;border-radius:50%}
+.browser-mockup__dot--red{background:#ff5f57}
+.browser-mockup__dot--yellow{background:#febc2e}
+.browser-mockup__dot--green{background:#28c840}
+.browser-mockup__url{
+  flex:1;display:flex;align-items:center;
+  background:#fff;border-radius:16px;
+  padding:5px 12px;font-size:12px;color:#5f6368;
+  border:1px solid #dadce0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.browser-mockup__body{
+  padding:20px 24px;
+}

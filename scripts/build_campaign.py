@@ -25,7 +25,7 @@ import os
 import sys
 
 from scripts.sheets_reader import parse_copy_from_sheet
-from scripts.drive_scanner import build_file_id_map
+from scripts.drive_scanner import build_file_id_map, download_files
 from scripts.assemble_data import assemble
 
 
@@ -121,6 +121,18 @@ def main():
     videos = [f for f, d in file_map.items() if d["is_video"]]
     print(f"   Files found: {len(file_map)} ({len(images)} images, {len(videos)} videos)")
 
+    # --- Step 2b: Download files locally ---
+    campaigns_dir = get_output_dir()
+    slug_dir = os.path.join(campaigns_dir, args.slug)
+    assets_dir = os.path.join(slug_dir, "assets")
+    print(f"\n📥 Downloading creative files to {assets_dir}")
+
+    try:
+        downloaded = download_files(file_map, assets_dir)
+        print(f"   Downloaded: {downloaded}/{len(file_map)} files")
+    except Exception as e:
+        print(f"\n⚠️  Download failed (will use Drive URLs): {e}")
+
     # --- Step 3: Assemble ---
     print(f"\n🔧 Assembling campaign data...")
 
@@ -138,7 +150,7 @@ def main():
         "date": args.date,
     }
 
-    data, report = assemble(copy_data, file_map, campaign_config, lang=args.lang)
+    data, report = assemble(copy_data, file_map, campaign_config, lang=args.lang, slug=args.slug)
 
     # --- Step 4: Report ---
     print(f"\n📊 Summary:")
@@ -162,8 +174,6 @@ def main():
         print(json.dumps(data, indent=2))
         return
 
-    campaigns_dir = get_output_dir()
-    slug_dir = os.path.join(campaigns_dir, args.slug)
     os.makedirs(slug_dir, exist_ok=True)
 
     data_path = os.path.join(slug_dir, "data.json")

@@ -1,9 +1,11 @@
 import { useCampaign } from '../context/CampaignContext';
-import { PlayIcon, LinkIcon } from './icons/Icons';
+import { PlayIcon } from './icons/Icons';
 import PlaceholderCreative from './PlaceholderCreative';
 
-export default function StoryCard({ ad, adIndex = 0, isClient }) {
+export default function StoryCard({ ad, adIndex = 0, isClient, platform = 'instagram' }) {
   const campaign = useCampaign();
+  const pageName = campaign.pageName || campaign.developer || campaign.project;
+  const isFB = platform === 'facebook';
 
   return (
     <div className="story-card">
@@ -16,25 +18,38 @@ export default function StoryCard({ ad, adIndex = 0, isClient }) {
       )}
       <div className="story-overlay">
         <div className="story-top">
-          {/* Progress bars — rounded, 3px height */}
-          <div className="story-progress">
-            <div className="story-progress-bar active"></div>
-            <div className="story-progress-bar"></div>
-            <div className="story-progress-bar"></div>
-          </div>
-          {/* Header: avatar, name · Sponsored, close */}
+          {!isFB && (
+            <div className="story-progress">
+              <div className="story-progress-bar active"></div>
+              <div className="story-progress-bar"></div>
+              <div className="story-progress-bar"></div>
+            </div>
+          )}
           <div className="story-header-row">
             <div className="story-avatar">
-              <span style={{color:'#fff',fontWeight:700,fontSize:11}}>{campaign.project.charAt(0)}</span>
+              {campaign.pageAvatar
+                ? <img src={campaign.pageAvatar} alt={pageName} />
+                : <span style={{color:'#fff',fontWeight:700,fontSize:11}}>{pageName.charAt(0)}</span>
+              }
             </div>
             <div className="story-name-wrap">
               <div className="story-page-name">
-                {campaign.developer || campaign.project}
-                <span style={{fontWeight:400,opacity:.65,fontSize:11}}> · Sponsored</span>
+                {pageName}
+                {isFB
+                  ? <><br/><span style={{fontWeight:400,opacity:.65,fontSize:10}}>Ad</span></>
+                  : <span style={{fontWeight:400,opacity:.65,fontSize:11}}> · Sponsored</span>
+                }
               </div>
             </div>
+            <span className="story-close" style={{marginRight:2}}>
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="rgba(255,255,255,.8)">
+                <circle cx="4" cy="10" r="1.5"/>
+                <circle cx="10" cy="10" r="1.5"/>
+                <circle cx="16" cy="10" r="1.5"/>
+              </svg>
+            </span>
             <span className="story-close">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </span>
           </div>
         </div>
@@ -47,12 +62,19 @@ export default function StoryCard({ ad, adIndex = 0, isClient }) {
           <div className="multi-badge">{ad.subPlacements.join(" + ")}</div>
         )}
 
-        {/* Bottom: CTA pill only (no swipe-up — removed in 2021) */}
         <div className="story-bottom">
-          <div className="story-cta-pill">
-            <LinkIcon />
-            {ad.copy.cta}
-          </div>
+          {isFB ? (
+            <div className="story-cta-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{marginRight:4}}>
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              {ad.copy.cta || 'Sign up'}
+            </div>
+          ) : (
+            <div className="story-cta-pill">
+              {ad.copy.cta || 'Learn More'}
+            </div>
+          )}
         </div>
       </div>
 

@@ -4,22 +4,51 @@ import { GlobeIcon, EllipsisIcon, LikeReactionIcon, LoveReactionIcon, ThumbIcon,
 import CarouselCreative from './CarouselCreative';
 import PlaceholderCreative from './PlaceholderCreative';
 
+/* Meta verified badge — matches the blue checkmark on business pages */
+function VerifiedBadge() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" style={{flexShrink:0,marginLeft:2,verticalAlign:'middle'}}>
+      <circle cx="8" cy="8" r="8" fill="#1877f2"/>
+      <path d="M6.5 11.5l-3-3 1.1-1.1 1.9 1.9 4.9-4.9 1.1 1.1z" fill="#fff"/>
+    </svg>
+  );
+}
+
+/* X close button — top-right of ad */
+function CloseButton() {
+  return (
+    <span className="fb-header-btn" title="Close ad" style={{marginLeft:4}}>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="#65676b">
+        <path d="M15.7 4.3a1 1 0 00-1.4 0L10 8.6 5.7 4.3a1 1 0 00-1.4 1.4L8.6 10l-4.3 4.3a1 1 0 001.4 1.4L10 11.4l4.3 4.3a1 1 0 001.4-1.4L11.4 10l4.3-4.3a1 1 0 000-1.4z"/>
+      </svg>
+    </span>
+  );
+}
+
 export default function FeedCard({ ad, adIndex = 0, isClient }) {
   const campaign = useCampaign();
   const [expanded, setExpanded] = useState(false);
   const text = ad.copy.primary;
   const truncLen = 125;
   const needsTrunc = text.length > truncLen && !expanded;
+  const pageName = campaign.pageName || campaign.developer || campaign.project;
+  const isLeadAd = campaign.objective?.toLowerCase().includes('lead');
 
   return (
     <div className="fb-card">
-      {/* Header — avatar, page name, Sponsored · globe, three-dot menu only */}
+      {/* Header — avatar, page name + verified, Sponsored · globe, ellipsis + close */}
       <div className="fb-card-header">
         <div className="fb-avatar">
-          <span style={{color:'var(--periphery)',fontWeight:700,fontSize:17}}>{campaign.project.charAt(0)}</span>
+          {campaign.pageAvatar
+            ? <img src={campaign.pageAvatar} alt={pageName} />
+            : <span style={{color:'var(--periphery)',fontWeight:700,fontSize:17}}>{pageName.charAt(0)}</span>
+          }
         </div>
         <div className="fb-page-info">
-          <div className="fb-page-name">{campaign.developer || campaign.project}</div>
+          <div className="fb-page-name">
+            {pageName}
+            <VerifiedBadge />
+          </div>
           <div className="fb-sponsored">
             Sponsored · <GlobeIcon />
           </div>
@@ -28,6 +57,7 @@ export default function FeedCard({ ad, adIndex = 0, isClient }) {
           <span className="fb-header-btn" title="More options">
             <EllipsisIcon />
           </span>
+          <CloseButton />
         </div>
       </div>
 
@@ -60,11 +90,22 @@ export default function FeedCard({ ad, adIndex = 0, isClient }) {
       {ad.type !== "Carousel" && (
         <div className="fb-link-bar">
           <div className="fb-link-left">
-            <div className="fb-link-domain">{campaign.landing_page}</div>
-            <div className="fb-link-headline">{ad.copy.headline}</div>
+            <div className="fb-link-domain">
+              {isLeadAd ? (
+                <span style={{display:'flex',alignItems:'center',gap:4}}>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{flexShrink:0}}>
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/>
+                  </svg>
+                  FORM ON FACEBOOK
+                </span>
+              ) : (
+                (ad.copy.link || campaign.landing_page || pageName.toLowerCase().replace(/\s+/g, '') + '.com').replace(/^https?:\/\//, '').replace(/\/.*$/, '')
+              )}
+            </div>
+            <div className="fb-link-headline">{ad.copy.headline || pageName}</div>
             {ad.copy.description && <div className="fb-link-desc">{ad.copy.description}</div>}
           </div>
-          <button className="fb-cta-button">{ad.copy.cta}</button>
+          <button className="fb-cta-button">{ad.copy.cta || 'Learn More'}</button>
         </div>
       )}
 

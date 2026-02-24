@@ -1,5 +1,9 @@
-import { useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { initGoogleAuth, requestAccessToken, isSignedIn, signOut } from '../utils/googleAuth';
+import { parseCopyFromSheet } from '../utils/sheetsReader';
+import { buildFileIdMap } from '../utils/driveScanner';
+import { assemble } from '../utils/assembleData';
 
 /* ── Helpers ── */
 function extractSheetId(url) {
@@ -27,7 +31,18 @@ const OBJECTIVES = [
 
 const LANGUAGES = ['EN', 'ZH_S', 'ZH_T', 'KR', 'FA'];
 
+/* ── Build Steps Config ── */
+const BUILD_STEPS = [
+  { key: 'auth', label: 'Authenticating with Google' },
+  { key: 'sheets', label: 'Reading ad copy from Google Sheet' },
+  { key: 'drive', label: 'Scanning Drive folder for creatives' },
+  { key: 'assemble', label: 'Assembling campaign data' },
+  { key: 'save', label: 'Saving campaign' },
+];
+
 export default function CampaignBuilder() {
+  const navigate = useNavigate();
+
   /* ── Form state ── */
   const [sheetUrl, setSheetUrl] = useState('');
   const [driveUrl, setDriveUrl] = useState('');
@@ -42,49 +57,160 @@ export default function CampaignBuilder() {
   const [campaignDate, setCampaignDate] = useState('');
   const [langCode, setLangCode] = useState('en');
   const [sheetTab, setSheetTab] = useState('');
-  const [dryRun, setDryRun] = useState(false);
 
-  const [copied, setCopied] = useState(false);
-  const outputRef = useRef(null);
+  /* ── Build state ── */
+  const [building, setBuilding] = useState(false);
+  const [buildStep, setBuildStep] = useState(null); // current step key
+  const [buildProgress, setBuildProgress] = useState(''); // detail message
+  const [buildError, setBuildError] = useState(null);
+  const [buildReport, setBuildReport] = useState(null);
+
+  /* ── Auth state ── */
+  const [googleReady, setGoogleReady] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
+
+  const progressRef = useRef(null);
 
   /* ── Extracted IDs ── */
   const sheetId = extractSheetId(sheetUrl);
   const driveId = extractDriveId(driveUrl);
   const slug = toSlug(campaignName);
+  const canBuild = sheetId && driveId && campaignName && slug && !building;
 
-  /* ── Generate CLI command ── */
-  const canGenerate = sheetId && driveId && campaignName && slug;
+  /* ── Initialize Google Identity Services ── */
+  useEffect(() => {
+    let timer;
+    function tryInit() {
+      if (window.google?.accounts?.oauth2) {
+        initGoogleAuth()
+          .then(() => {
+            setGoogleReady(true);
+            setSignedIn(isSignedIn());
+          })
+          .catch(err => console.warn('Google auth init failed:', err));
+      } else {
+        // GIS script may still be loading — retry
+        timer = setTimeout(tryInit, 500);
+      }
+    }
+    tryInit();
+    return () => clearTimeout(timer);
+  }, []);
 
-  function buildCommand() {
-    const parts = ['python -m scripts.build_campaign'];
-    // Required
-    parts.push(`  --sheet-id "${sheetId}"`);
-    parts.push(`  --drive-folder-id "${driveId}"`);
-    parts.push(`  --slug "${slug}"`);
-    parts.push(`  --name "${campaignName}"`);
-    // Optional metadata
-    if (projectName) parts.push(`  --project "${projectName}"`);
-    if (developer) parts.push(`  --developer "${developer}"`);
-    if (objective) parts.push(`  --objective "${objective}"`);
-    if (budget) parts.push(`  --budget "${budget}"`);
-    if (languages.length > 0) parts.push(`  --languages ${languages.join(' ')}`);
-    if (landingPage) parts.push(`  --landing-page "${landingPage}"`);
-    if (housing) parts.push('  --housing-category');
-    if (campaignDate) parts.push(`  --date "${campaignDate}"`);
-    // Options
-    if (langCode && langCode !== 'en') parts.push(`  --lang "${langCode}"`);
-    if (sheetTab) parts.push(`  --tab "${sheetTab}"`);
-    if (dryRun) parts.push('  --dry-run');
-    return parts.join(' \\\n');
+  /* ── Build Campaign ── */
+  async function handleBuild() {
+    setBuilding(true);
+    setBuildError(null);
+    setBuildReport(null);
+    setBuildStep('auth');
+    setBuildProgress('');
+
+    try {
+      // 1. Auth
+      setBuildProgress('Requesting Google access…');
+      await requestAccessToken();
+      setSignedIn(true);
+
+      // 2. Read Sheet
+      setBuildStep('sheets');
+      const copyData = await parseCopyFromSheet(
+        sheetId,
+        sheetTab || null,
+        msg => setBuildProgress(msg),
+      );
+
+      // 3. Scan Drive
+      setBuildStep('drive');
+      const fileMap = await buildFileIdMap(
+        driveId,
+        msg => setBuildProgress(msg),
+      );
+
+      console.log('[Builder] Sheet copy groups:', Object.keys(copyData.meta_ads || {}));
+      console.log('[Builder] Drive files found:', Object.keys(fileMap).length, Object.keys(fileMap));
+
+      const fileCount = Object.keys(fileMap).length;
+      if (fileCount === 0) {
+        setBuildProgress('Drive scan complete — 0 creative files found. Check the folder URL or try signing out and back in to re-grant Drive access.');
+      } else {
+        setBuildProgress(`Drive scan complete — ${fileCount} creative file${fileCount !== 1 ? 's' : ''} found.`);
+      }
+
+      // 4. Assemble
+      setBuildStep('assemble');
+      setBuildProgress(`Assembling ${Object.keys(fileMap).length} files…`);
+      const campaignConfig = {
+        name: campaignName,
+        project: projectName || copyData.project_name || '',
+        developer: developer,
+        objective: objective,
+        budget: budget,
+        languages: languages,
+        housing_category: housing,
+        landing_page: landingPage,
+        sheet_id: sheetId,
+        drive_folder_id: driveId,
+      };
+
+      const { data, report } = assemble(copyData, fileMap, campaignConfig, langCode);
+
+      // 5. Save to localStorage
+      setBuildStep('save');
+      setBuildProgress('Saving campaign locally…');
+
+      // Add slug + status metadata
+      data.meta = {
+        ...data.meta,
+        slug,
+        builtAt: new Date().toISOString(),
+        source: 'browser-builder',
+      };
+
+      // Store campaign data
+      const storageKey = `campaign:${slug}`;
+      localStorage.setItem(storageKey, JSON.stringify(data));
+
+      // Update local campaign index
+      const indexRaw = localStorage.getItem('campaigns:index');
+      const localIndex = indexRaw ? JSON.parse(indexRaw) : [];
+      const existing = localIndex.findIndex(c => c.slug === slug);
+      const indexEntry = {
+        slug,
+        name: campaignName,
+        project: data.campaign.project,
+        client: developer,
+        date: campaignDate || new Date().toISOString().slice(0, 7),
+        status: 'draft',
+        source: 'local',
+      };
+      if (existing >= 0) {
+        localIndex[existing] = indexEntry;
+      } else {
+        localIndex.push(indexEntry);
+      }
+      localStorage.setItem('campaigns:index', JSON.stringify(localIndex));
+
+      setBuildReport(report);
+      setBuildProgress('Done!');
+
+      // Only auto-navigate if we actually got ads
+      if (report.total_ads > 0) {
+        setTimeout(() => {
+          navigate(`/${slug}`);
+        }, 3000);
+      }
+
+    } catch (err) {
+      console.error('Build failed:', err);
+      setBuildError(err.message || 'Unknown error');
+    } finally {
+      setBuilding(false);
+    }
   }
 
-  const command = canGenerate ? buildCommand() : '';
-
-  function handleCopy() {
-    navigator.clipboard.writeText(command).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+  function handleSignOut() {
+    signOut();
+    setSignedIn(false);
   }
 
   function toggleLanguage(lang) {
@@ -92,6 +218,13 @@ export default function CampaignBuilder() {
       prev.includes(lang) ? prev.filter(l => l !== lang) : [...prev, lang]
     );
   }
+
+  // Scroll progress into view when build starts
+  useEffect(() => {
+    if (building && progressRef.current) {
+      progressRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [building]);
 
   return (
     <div className="builder-page">
@@ -102,22 +235,55 @@ export default function CampaignBuilder() {
             <span>PD</span>
           </div>
         </Link>
-        <div>
+        <div style={{ flex: 1 }}>
           <h1 style={{ fontSize: 24, fontWeight: 700, margin: 0, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
             New Campaign
           </h1>
           <p style={{ fontSize: 13, color: 'var(--text-secondary)', margin: '2px 0 0' }}>
-            Generate a build command from your Google Sheet &amp; Drive folder
+            Connect your Google Sheet &amp; Drive folder to build a campaign board
           </p>
         </div>
+        {/* Auth status */}
+        {googleReady && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <div style={{
+              width: 8, height: 8, borderRadius: '50%',
+              background: signedIn ? '#22c55e' : '#94a3b8',
+            }} />
+            <span style={{ fontSize: 12, color: 'var(--text-secondary)' }}>
+              {signedIn ? 'Google connected' : 'Not signed in'}
+            </span>
+            {signedIn && (
+              <button
+                onClick={handleSignOut}
+                style={{
+                  fontSize: 11, color: 'var(--text-secondary)', background: 'none',
+                  border: 'none', textDecoration: 'underline', cursor: 'pointer', padding: 0,
+                }}
+              >
+                Sign out
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       <div style={{ width: 60, height: 3, background: 'var(--periphery-gradient, var(--periphery))', borderRadius: 3, marginBottom: 32, marginTop: 12 }}></div>
 
+      {/* GIS not loaded warning */}
+      {!googleReady && (
+        <div style={{
+          padding: '12px 16px', borderRadius: 8, marginBottom: 20,
+          background: '#fef3c7', color: '#92400e', fontSize: 13,
+        }}>
+          Loading Google Identity Services…
+        </div>
+      )}
+
       {/* Section 1: Data Sources */}
       <div className="builder-section">
         <h2 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 16px', color: 'var(--text-primary)' }}>
-          📊 Data Sources
+          Data Sources
         </h2>
 
         <div className="builder-field">
@@ -130,17 +296,20 @@ export default function CampaignBuilder() {
             onChange={e => setSheetUrl(e.target.value)}
           />
           {sheetId && (
-            <div className="builder-id-badge">✓ Sheet ID: {sheetId.slice(0, 20)}…</div>
+            <div className="builder-id-badge">Sheet ID: {sheetId.slice(0, 20)}…</div>
           )}
           {sheetUrl && !sheetId && (
             <div className="builder-id-badge" style={{ background: '#fef2f2', color: '#dc2626' }}>
-              ✗ Could not extract Sheet ID
+              Could not extract Sheet ID
             </div>
           )}
         </div>
 
         <div className="builder-field">
           <label className="builder-label">Google Drive Folder URL</label>
+          <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginBottom: 6 }}>
+            Paste the folder containing the creative files for <strong>this campaign</strong> (not the parent folder with all campaigns).
+          </div>
           <input
             className="builder-input builder-input--mono"
             type="url"
@@ -149,11 +318,11 @@ export default function CampaignBuilder() {
             onChange={e => setDriveUrl(e.target.value)}
           />
           {driveId && (
-            <div className="builder-id-badge">✓ Folder ID: {driveId.slice(0, 20)}…</div>
+            <div className="builder-id-badge">Folder ID: {driveId.slice(0, 20)}…</div>
           )}
           {driveUrl && !driveId && (
             <div className="builder-id-badge" style={{ background: '#fef2f2', color: '#dc2626' }}>
-              ✗ Could not extract Folder ID
+              Could not extract Folder ID
             </div>
           )}
         </div>
@@ -173,7 +342,7 @@ export default function CampaignBuilder() {
       {/* Section 2: Campaign Identity */}
       <div className="builder-section">
         <h2 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 16px', color: 'var(--text-primary)' }}>
-          🏷️ Campaign Identity
+          Campaign Identity
         </h2>
 
         <div className="builder-field">
@@ -219,7 +388,7 @@ export default function CampaignBuilder() {
       {/* Section 3: Settings */}
       <div className="builder-section">
         <h2 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 16px', color: 'var(--text-primary)' }}>
-          ⚙️ Settings
+          Settings
         </h2>
 
         <div className="builder-row">
@@ -301,7 +470,7 @@ export default function CampaignBuilder() {
         <div className="builder-row" style={{ alignItems: 'center' }}>
           <div className="builder-field" style={{ flex: 1 }}>
             <label className="builder-label">Housing Category</label>
-            <div className="builder-toggle" onClick={() => setHousing(!housing)}>
+            <div className="builder-toggle" onClick={() => !building && setHousing(!housing)}>
               <div className={`builder-toggle__track${housing ? ' on' : ''}`}>
                 <div className="builder-toggle__thumb" />
               </div>
@@ -310,67 +479,144 @@ export default function CampaignBuilder() {
               </span>
             </div>
           </div>
-          <div className="builder-field" style={{ flex: 1 }}>
-            <label className="builder-label">Dry Run</label>
-            <div className="builder-toggle" onClick={() => setDryRun(!dryRun)}>
-              <div className={`builder-toggle__track${dryRun ? ' on' : ''}`}>
-                <div className="builder-toggle__thumb" />
-              </div>
-              <span className="builder-toggle__label">
-                {dryRun ? 'Enabled — preview only, no files written' : 'Disabled'}
-              </span>
-            </div>
-          </div>
         </div>
       </div>
 
-      {/* Generate button */}
+      {/* Build button */}
       <button
         className="builder-generate-btn"
-        disabled={!canGenerate}
-        onClick={() => {
-          if (outputRef.current) {
-            outputRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }}
+        disabled={!canBuild || !googleReady}
+        onClick={handleBuild}
       >
-        Generate Build Command
+        {building ? (
+          <>
+            <svg className="builder-spinner" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 12a9 9 0 11-6.22-8.56" />
+            </svg>
+            Building…
+          </>
+        ) : (
+          <>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
+            Build Campaign
+          </>
+        )}
       </button>
 
-      {/* Output */}
-      {canGenerate && (
-        <div className="builder-section" ref={outputRef} style={{ marginTop: 24 }}>
+      {/* Build Progress */}
+      {(building || buildReport || buildError) && (
+        <div className="builder-section" ref={progressRef} style={{ marginTop: 24 }}>
           <h2 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 16px', color: 'var(--text-primary)' }}>
-            🖥️ Build Command
+            Build Progress
           </h2>
-          <div className="builder-output">
-            <div className="builder-output__header">
-              <span className="builder-output__title">Terminal</span>
-              <button className={`builder-copy-btn${copied ? ' copied' : ''}`} onClick={handleCopy}>
-                {copied ? (
-                  <>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20,6 9,17 4,12" />
-                    </svg>
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                      <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-                    </svg>
-                    Copy
-                  </>
-                )}
-              </button>
-            </div>
-            <pre>{command}</pre>
+
+          <div className="builder-progress">
+            {BUILD_STEPS.map(step => {
+              const stepIdx = BUILD_STEPS.findIndex(s => s.key === step.key);
+              const currentIdx = BUILD_STEPS.findIndex(s => s.key === buildStep);
+              let status = 'pending';
+              if (buildError && currentIdx === stepIdx) {
+                status = 'error';
+              } else if (currentIdx > stepIdx) {
+                status = 'done';
+              } else if (currentIdx === stepIdx) {
+                status = building ? 'active' : (buildError ? 'error' : 'done');
+              }
+
+              return (
+                <div key={step.key} className={`builder-progress__step ${status}`}>
+                  <div className="builder-progress__icon">
+                    {status === 'done' && (
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20,6 9,17 4,12" />
+                      </svg>
+                    )}
+                    {status === 'active' && (
+                      <svg className="builder-spinner" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 12a9 9 0 11-6.22-8.56" />
+                      </svg>
+                    )}
+                    {status === 'error' && (
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+                      </svg>
+                    )}
+                    {status === 'pending' && (
+                      <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'currentColor', opacity: 0.3 }} />
+                    )}
+                  </div>
+                  <span className="builder-progress__label">{step.label}</span>
+                </div>
+              );
+            })}
           </div>
-          <p style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 12 }}>
-            Run this command in the <code style={{ background: 'var(--bg-subtle)', padding: '1px 6px', borderRadius: 4, fontSize: 11 }}>campaign-boards</code> project root.
-            Make sure you have Google Cloud credentials configured and the venv activated.
-          </p>
+
+          {/* Detail message */}
+          {buildProgress && (
+            <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginTop: 12, fontStyle: 'italic' }}>
+              {buildProgress}
+            </div>
+          )}
+
+          {/* Error */}
+          {buildError && (
+            <div style={{
+              marginTop: 16, padding: '12px 16px', borderRadius: 8,
+              background: '#fef2f2', color: '#dc2626', fontSize: 13,
+              border: '1px solid #fecaca',
+            }}>
+              <strong>Build failed:</strong> {buildError}
+            </div>
+          )}
+
+          {/* Report */}
+          {buildReport && !buildError && (
+            <div style={{
+              marginTop: 16, padding: '12px 16px', borderRadius: 8,
+              background: buildReport.total_files > 0 ? '#f0fdf4' : '#fefce8',
+              color: buildReport.total_files > 0 ? '#166534' : '#854d0e',
+              fontSize: 13,
+              border: `1px solid ${buildReport.total_files > 0 ? '#bbf7d0' : '#fde68a'}`,
+            }}>
+              <strong>Build complete!</strong> {buildReport.total_ads} ads across {buildReport.total_ad_sets} ad sets from {buildReport.total_files} creative files.
+              {buildReport.total_files === 0 && (
+                <div style={{ marginTop: 6, fontSize: 12 }}>
+                  No creative files found in the Drive folder. Make sure the folder contains image files (jpg, png, gif, webp) or videos (mp4, mov). The scanner checks all subfolders.
+                  <div style={{ marginTop: 8 }}>
+                    <button
+                      onClick={() => { handleSignOut(); setBuildReport(null); setBuildStep(null); }}
+                      style={{
+                        fontSize: 12, fontWeight: 600, color: '#854d0e', background: '#fef3c7',
+                        border: '1px solid #fde68a', borderRadius: 6, padding: '5px 12px',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      Sign out &amp; retry with fresh permissions
+                    </button>
+                  </div>
+                </div>
+              )}
+              {buildReport.unmatched_ads?.length > 0 && (
+                <div style={{ marginTop: 6, fontSize: 12, color: '#854d0e' }}>
+                  Unmatched ad groups: {buildReport.unmatched_ads.join(', ')}
+                </div>
+              )}
+              {buildReport.total_ads > 0 && (
+                <div style={{ marginTop: 8, fontSize: 12, fontStyle: 'italic' }}>
+                  Redirecting to campaign board…
+                </div>
+              )}
+              {buildReport.total_ads === 0 && (
+                <div style={{ marginTop: 8, fontSize: 12 }}>
+                  <Link to={`/${slug}`} style={{ color: 'inherit', fontWeight: 600 }}>
+                    View campaign board anyway →
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 

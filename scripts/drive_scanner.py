@@ -9,6 +9,7 @@ Usage:
     file_map = build_file_id_map("1DEF...uvw")
     # Returns: { "filename.jpg": { "file_id": "...", "image_url": "...", ... } }
 """
+import os
 from scripts.google_auth import get_drive_service
 
 
@@ -30,7 +31,7 @@ MIME_TO_EXT = {
 
 def _make_image_url(file_id):
     """Direct view URL for images (renders in browser/img tag)."""
-    return f"https://drive.google.com/uc?export=view&id={file_id}"
+    return f"https://lh3.googleusercontent.com/d/{file_id}=s1200"
 
 
 def _make_download_url(file_id):
@@ -71,6 +72,8 @@ def scan_drive_folder(folder_id, service=None):
                 pageSize=100,
                 pageToken=page_token,
                 orderBy="name",
+                supportsAllDrives=True,
+                includeItemsFromAllDrives=True,
             )
             .execute()
         )
@@ -133,6 +136,44 @@ def build_file_id_map(folder_id, service=None):
         }
         for f in files
     }
+
+
+def download_files(file_map, output_dir, service=None):
+    """
+    Download all files from the file_map to a local directory.
+
+    Returns an updated file_map with local_path added to each entry.
+    """
+    if service is None:
+        service = get_drive_service()
+
+    os.makedirs(output_dir, exist_ok=True)
+    downloaded = 0
+
+    for filename, meta in file_map.items():
+        local_path = os.path.join(output_dir, filename)
+
+        # Skip if already downloaded
+        if os.path.exists(local_path) and os.path.getsize(local_path) > 0:
+            meta["local_path"] = local_path
+            downloaded += 1
+            continue
+
+        try:
+            content = (
+                service.files()
+                .get_media(fileId=meta["file_id"], supportsAllDrives=True)
+                .execute()
+            )
+            with open(local_path, "wb") as f:
+                f.write(content)
+            meta["local_path"] = local_path
+            downloaded += 1
+        except Exception as e:
+            print(f"   ⚠️  Failed to download {filename}: {e}")
+            meta["local_path"] = None
+
+    return downloaded
 
 
 def print_drive_summary(folder_id, service=None):

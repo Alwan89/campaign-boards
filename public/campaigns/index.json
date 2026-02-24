@@ -6,5 +6,13 @@
     "client": "Domus Homes",
     "date": "2026-02",
     "status": "active"
+  },
+  {
+    "slug": "senakw-feb2026",
+    "name": "PD_Senakw_Lead_EN",
+    "project": "Sen\u0301a\u0301\u1e35w",
+    "client": "Senakw",
+    "date": "",
+    "status": "active"
   }
 ]

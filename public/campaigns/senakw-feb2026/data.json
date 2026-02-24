@@ -1,0 +1,360 @@
+{
+  "campaign": {
+    "name": "PD_Senakw_Lead_EN",
+    "project": "Seńáḵw",
+    "developer": "Seńáḵw",
+    "objective": "Lead Generation",
+    "budget": "",
+    "languages": [
+      "en"
+    ],
+    "housing_category": true,
+    "landing_page": "https://senakw.com/register",
+    "pageName": "Seńákw Village",
+    "pageAvatar": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Logo_EN_Feb2026.jpg"
+  },
+  "adSets": [
+    {
+      "id": "as1",
+      "name": "Lead_en_Broad_Feed",
+      "tier": "Broad",
+      "placement": "Feed",
+      "targeting": "Location only — Advantage+ ON",
+      "ads": [
+        "ad1",
+        "ad2",
+        "ad3"
+      ]
+    },
+    {
+      "id": "as2",
+      "name": "Lead_en_Broad_StoryReel",
+      "tier": "Broad",
+      "placement": "StoryReel",
+      "targeting": "Location only — Advantage+ ON",
+      "ads": [
+        "ad4"
+      ]
+    },
+    {
+      "id": "as3",
+      "name": "Lead_en_Interest_Feed",
+      "tier": "Interest",
+      "placement": "Feed",
+      "targeting": "Combined audience — all interests",
+      "ads": [
+        "ad1",
+        "ad2",
+        "ad3"
+      ]
+    },
+    {
+      "id": "as4",
+      "name": "Lead_en_Interest_StoryReel",
+      "tier": "Interest",
+      "placement": "StoryReel",
+      "targeting": "Combined audience — all interests",
+      "ads": [
+        "ad4"
+      ]
+    },
+    {
+      "id": "as5",
+      "name": "Lead_en_Retargeting_Feed",
+      "tier": "Retargeting",
+      "placement": "Feed",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": [
+        "ad1",
+        "ad2",
+        "ad3"
+      ]
+    },
+    {
+      "id": "as6",
+      "name": "Lead_en_Retargeting_StoryReel",
+      "tier": "Retargeting",
+      "placement": "StoryReel",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": [
+        "ad4"
+      ]
+    }
+  ],
+  "ads": [
+    {
+      "id": "ad1",
+      "name": "Lead_EN_Image_Feb2026_General",
+      "type": "Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Senakw_Meta_Lead-Form_EN_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Meta_Lead-Form_EN_Feb2026.jpg",
+      "copy": {
+        "primary": "An ancestral Squamish village rises again – 1–4 bedroom rental homes born from the land at the foot of the Burrard Bridge",
+        "headline": "Find Your Home in the Village",
+        "description": "Rental homes on Squamish ancestral land in Kitsilano – where every home is part of a story centuries in the making",
+        "cta": "Sign Up",
+        "link": "https://senakw.com/register"
+      }
+    },
+    {
+      "id": "ad2",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Senakw_Meta_Single_1200x1200_EN_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Meta_Single_1200x1200_EN_Feb2026.jpg",
+      "copy": {
+        "primary": "An ancestral Squamish village rises again – 1–4 bedroom rental homes born from the land at the foot of the Burrard Bridge",
+        "headline": "Find Your Home in the Village",
+        "description": "Rental homes on Squamish ancestral land in Kitsilano – where every home is part of a story centuries in the making",
+        "cta": "Sign Up",
+        "link": "https://senakw.com/register"
+      }
+    },
+    {
+      "id": "ad3",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Senakw_Meta_Single_1200x628_EN_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Meta_Single_1200x628_EN_Feb2026.jpg",
+      "copy": {
+        "primary": "An ancestral Squamish village rises again – 1–4 bedroom rental homes born from the land at the foot of the Burrard Bridge",
+        "headline": "Find Your Home in the Village",
+        "description": "Rental homes on Squamish ancestral land in Kitsilano – where every home is part of a story centuries in the making",
+        "cta": "Sign Up",
+        "link": "https://senakw.com/register"
+      }
+    },
+    {
+      "id": "ad4",
+      "name": "Lead_EN_SingleImage_Feb2026_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Senakw_Meta_Reel-Single_EN_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Meta_Reel-Single_EN_Feb2026.jpg",
+      "copy": {
+        "primary": "An ancestral Squamish village rises again – 1–4 bedroom rental homes born from the land at the foot of the Burrard Bridge",
+        "headline": "Find Your Home in the Village",
+        "description": "Rental homes on Squamish ancestral land in Kitsilano – where every home is part of a story centuries in the making",
+        "cta": "Sign Up",
+        "link": "https://senakw.com/register"
+      },
+      "subPlacements": [
+        "Reel"
+      ]
+    }
+  ],
+  "googleAds": [
+    {
+      "filename": "Senakw_Google_Search-Image-Extension_EN_Feb2026.jpg",
+      "type": "Search",
+      "dimensions": "",
+      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Search-Image-Extension_EN_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Senakw_Google_Demand-Gen-Single_1200x1200_EN_Feb2026.jpg",
+      "type": "Demand Gen",
+      "dimensions": "1200x1200",
+      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Demand-Gen-Single_1200x1200_EN_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Senakw_Google_Logo_EN_Feb2026.jpg",
+      "type": "Logo",
+      "dimensions": "",
+      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Logo_EN_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Senakw_Google_Demand-Gen-Single_1200x628_EN_Feb2026.jpg",
+      "type": "Demand Gen",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Demand-Gen-Single_1200x628_EN_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    }
+  ],
+  "googleCopy": {
+    "Display": {
+      "groupName": "Display",
+      "headlines": [
+        "A place that remembers",
+        "A village that welcomes",
+        "Right into the heart of our territory"
+      ],
+      "descriptions": [],
+      "link": "",
+      "cta": "Register Now",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Search – Responsive Ad": {
+      "groupName": "Search – Responsive Ad",
+      "headlines": [
+        "Seńáḵw",
+        "Register Now",
+        "Coming Soon",
+        "Near Granville Island",
+        "Vancouver Waterfront",
+        "Three Towers Rising",
+        "A Place That Remembers",
+        "Rentals in Kitsilano",
+        "A Village That Welcomes",
+        "Born from the Land",
+        "1–4 Bedroom Homes",
+        "At the Burrard Bridge",
+        "Squamish Ancestral Village",
+        "Modern Rental Homes",
+        "Steps to Kits Beach"
+      ],
+      "descriptions": [
+        "An ancestral Squamish village rises again – modern 1–4 bedroom rental homes in Kitsilano",
+        "Rental homes at the foot of the Burrard Bridge – born from Squamish ancestral land",
+        "New rental homes where the story of the land becomes your home – register today",
+        "Steps to Kits Beach and Granville Island – 1–4 bedroom homes in a Squamish village"
+      ],
+      "link": "https://senakw.com",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen – Single Image Ad": {
+      "groupName": "Demand Gen – Single Image Ad",
+      "headlines": [
+        "A Village That Welcomes",
+        "Born from the Land",
+        "Modern Homes, Ancient Roots",
+        "Rental Homes at the Burrard Bridge",
+        "Find Your Home in the Village"
+      ],
+      "descriptions": [
+        "An ancestral Squamish village rises again – modern 1–4 bedroom rental homes in Kitsilano",
+        "Rental homes at the foot of the Burrard Bridge – born from Squamish ancestral land",
+        "New rental homes where the story of the land becomes your home – register today",
+        "Steps to Kits Beach and Granville Island – 1–4 bedroom homes in a Squamish village",
+        "Three towers rising on ancestral land – register to learn about homes in Kitsilano"
+      ],
+      "link": "https://senakw.com/register",
+      "cta": "Sign Up",
+      "businessName": "Seńáḵw",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen – Carousel Ad": {
+      "groupName": "Demand Gen – Carousel Ad",
+      "headlines": [
+        "A Place That Remembers",
+        "Born from the Land",
+        "Modern Homes, Ancient Roots",
+        "Find Your Home in the Village"
+      ],
+      "descriptions": [],
+      "link": "https://senakw.com/register",
+      "cta": "Sign Up",
+      "businessName": "Seńáḵw",
+      "mainHeadline": "A Village That Welcomes",
+      "mainDescription": "An ancestral Squamish village rises again – modern 1–4 bedroom rental homes in Kitsilano",
+      "callouts": [],
+      "amenities": []
+    },
+    "Search Callout Extension": {
+      "groupName": "Search Callout Extension",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [
+        "1–4 Bedroom Rental Homes",
+        "Steps to Kits Beach",
+        "Near Granville Island",
+        "At the Burrard Bridge",
+        "Squamish Ancestral Land",
+        "Register for Updates"
+      ],
+      "amenities": []
+    },
+    "Structured Snippet Extension": {
+      "groupName": "Structured Snippet Extension",
+      "headlines": [],
+      "descriptions": [
+        "Be among the first to know.",
+        "Join the village."
+      ],
+      "link": "https://senakw.com/register",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": [
+        "Waterfront Location",
+        "Modern Kitchen Finishes",
+        "In-Suite Laundry",
+        "Rooftop Amenity Space",
+        "Bike Storage",
+        "Pet Friendly"
+      ],
+      "sitelinks": [
+        {
+          "title": "Village",
+          "desc1": "Be among the first to know.",
+          "desc2": "Join the village."
+        },
+        {
+          "title": "Homes",
+          "desc1": "Be among the first to know.",
+          "desc2": "Join the village."
+        },
+        {
+          "title": "Location",
+          "desc1": "Be among the first to know.",
+          "desc2": "Join the village."
+        },
+        {
+          "title": "Register",
+          "desc1": "Be among the first to know.",
+          "desc2": "Join the village."
+        }
+      ]
+    }
+  },
+  "sources": {
+    "driveFolder": null,
+    "copySheet": null,
+    "clickupTask": null
+  },
+  "meta": {
+    "generatedAt": "2026-02-24T01:05:29.861240+00:00",
+    "generatedBy": "build_campaign.py",
+    "boardVersion": "1.0"
+  }
+}

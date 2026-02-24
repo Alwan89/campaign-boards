@@ -208,20 +208,39 @@ def _match_copy_to_ad(ad_group, meta_ads_copy):
 
 
 def _extract_ad_copy(fields, lang="en"):
-    """Extract ad copy fields for a given language."""
+    """Extract ad copy fields for a given language.
+
+    Handles both unnumbered fields (headline) and numbered fields
+    (headline_1, headline_40, etc.) — picks the first non-empty match.
+    """
     if not fields:
-        return {"primary": "", "headline": "", "description": "", "cta": ""}
+        return {"primary": "", "headline": "", "description": "", "cta": "", "link": ""}
+
+    def _first_match(prefix):
+        """Return first non-empty value for a field prefix."""
+        # Try unnumbered key first
+        val = fields.get(prefix, {}).get(lang, "")
+        if val:
+            return val
+        # Then try any numbered variant (headline_1, headline_40, etc.)
+        for k in sorted(fields.keys()):
+            if k.startswith(prefix + "_"):
+                v = fields[k].get(lang, "")
+                if v:
+                    return v
+        return ""
 
     copy = {}
     copy["primary"] = fields.get("text", {}).get(lang, "")
-    copy["headline"] = fields.get("headline", {}).get(lang, "")
-    copy["description"] = fields.get("description", {}).get(lang, "")
+    copy["headline"] = _first_match("headline")
+    copy["description"] = _first_match("description")
     copy["cta"] = fields.get("cta", {}).get(lang, "") or fields.get("button", {}).get(lang, "")
+    copy["link"] = fields.get("link", {}).get(lang, "")
 
     return copy
 
 
-def _extract_carousel_cards(fields, file_map, ad_files, lang="en"):
+def _extract_carousel_cards(fields, file_map, ad_files, lang="en", slug=""):
     """
     Build carousel card objects from copy + file map.
 
@@ -249,7 +268,7 @@ def _extract_carousel_cards(fields, file_map, ad_files, lang="en"):
         if i < len(carousel_files):
             fname = carousel_files[i]["filename"]
             fdata = file_map.get(fname, {})
-            card["imageUrl"] = fdata.get("image_url", "")
+            card["imageUrl"] = _get_image_url(fdata, fname, slug)
         else:
             card["imageUrl"] = ""
 
@@ -336,25 +355,24 @@ def _generate_ad_sets(ads, campaign_config, lang="EN"):
 #  Main assembler
 # --------------------------------------------------------------------------- #
 
-def assemble(copy_data, file_map, campaign_config, lang="en"):
+def _get_image_url(fdata, filename, slug):
+    """Get the best available image URL — prefer local asset, fall back to Drive."""
+    if fdata.get("local_path"):
+        # Relative to the Vite base path — resolved by the React app
+        return f"/campaign-boards/campaigns/{slug}/assets/{filename}"
+    return fdata.get("image_url", "")
+
+
+def assemble(copy_data, file_map, campaign_config, lang="en", slug=""):
     """
     Combine parsed copy + Drive file map + campaign config into data.json.
 
     Args:
         copy_data: Output of sheets_reader.parse_copy_from_sheet()
         file_map: Output of drive_scanner.build_file_id_map()
-        campaign_config: Dict with campaign-level metadata:
-            {
-                "name": "PD_Edgemont_Lead_EN",
-                "project": "The Edgemont Collection",
-                "developer": "Domus Homes",
-                "objective": "Lead Generation",
-                "budget": "$75/day",
-                "languages": ["EN"],
-                "housing_category": True,
-                "landing_page": "theedgemontcollection.com"
-            }
+        campaign_config: Dict with campaign-level metadata
         lang: Language code to use for copy (default "en")
+        slug: Campaign slug for local asset paths
 
     Returns:
         dict matching the data.json schema for the React app.
@@ -367,8 +385,12 @@ def assemble(copy_data, file_map, campaign_config, lang="en"):
         parsed = _parse_filename(filename)
         parsed_files.append(parsed)
 
-    # 2. Group into ads
-    ad_groups = _group_into_ads(parsed_files)
+    # 1b. Separate Meta vs Google (and other platforms)
+    meta_files = [f for f in parsed_files if f["platform"] == "Meta"]
+    google_files = [f for f in parsed_files if f["platform"] == "Google"]
+
+    # 2. Group Meta files into ads (Google handled separately below)
+    ad_groups = _group_into_ads(meta_files)
 
     # 3. Build ad objects
     ads = []
@@ -387,7 +409,8 @@ def assemble(copy_data, file_map, campaign_config, lang="en"):
 
         # Determine primary image/video URL
         primary_file = group["files"][0]
-        primary_fdata = file_map.get(primary_file["filename"], {})
+        primary_fname = primary_file["filename"]
+        primary_fdata = file_map.get(primary_fname, {})
 
         # Build naming parts
         date_label = group["date_label"] or "undated"
@@ -406,7 +429,7 @@ def assemble(copy_data, file_map, campaign_config, lang="en"):
             "placement": placement,
             "concept": group["sub_community"],
             "files": [f["filename"] for f in group["files"]],
-            "imageUrl": primary_fdata.get("image_url", ""),
+            "imageUrl": _get_image_url(primary_fdata, primary_fname, slug),
             "copy": ad_copy,
         }
 
@@ -427,7 +450,7 @@ def assemble(copy_data, file_map, campaign_config, lang="en"):
         # Carousel cards
         if is_carousel:
             ad["carouselCards"] = _extract_carousel_cards(
-                matched_copy, file_map, group["files"], lang
+                matched_copy, file_map, group["files"], lang, slug
             )
 
         ads.append(ad)
@@ -437,6 +460,78 @@ def assemble(copy_data, file_map, campaign_config, lang="en"):
     lang_upper = (campaign_config.get("languages", ["EN"])[0]
                   if campaign_config.get("languages") else "EN")
     ad_sets = _generate_ad_sets(ads, campaign_config, lang_upper)
+
+    # 4b. Build Google ad objects + attach copy from sheet
+    google_ads_copy = copy_data.get("google_ads", {})
+    google_ads = []
+
+    # Helper to extract all numbered fields as a list
+    def _collect_numbered(fields, prefix, lang="en"):
+        items = []
+        for k in sorted(fields.keys()):
+            if k.startswith(prefix):
+                val = fields[k].get(lang, "")
+                if val:
+                    items.append(val)
+        return items
+
+    for gf in google_files:
+        fdata = file_map.get(gf["filename"], {})
+        # Detect ad type from filename
+        fname_lower = gf["filename"].lower()
+        if "demand-gen" in fname_lower or "demand_gen" in fname_lower:
+            ad_type = "Demand Gen"
+        elif "search" in fname_lower:
+            ad_type = "Search"
+        elif "display" in fname_lower:
+            ad_type = "Display"
+        elif "logo" in fname_lower:
+            ad_type = "Logo"
+        elif "pmax" in fname_lower or "performance-max" in fname_lower:
+            ad_type = "Performance Max"
+        else:
+            ad_type = "Google"
+
+        # Extract dimensions from filename if present (e.g., 1200x628)
+        dim_match = re.search(r"(\d{3,4})x(\d{3,4})", gf["filename"])
+        dimensions = f"{dim_match.group(1)}x{dim_match.group(2)}" if dim_match else ""
+
+        google_ads.append({
+            "filename": gf["filename"],
+            "type": ad_type,
+            "dimensions": dimensions,
+            "imageUrl": _get_image_url(fdata, gf["filename"], slug),
+            "isVideo": gf["ext"] in ("mp4", "mov"),
+            "videoUrl": fdata.get("download_url", "") if gf["ext"] in ("mp4", "mov") else "",
+        })
+
+    # Build structured Google copy objects from the sheet
+    google_copy = {}
+    for group_name, fields in google_ads_copy.items():
+        entry = {"groupName": group_name}
+        entry["headlines"] = _collect_numbered(fields, "headline_", lang)
+        entry["descriptions"] = _collect_numbered(fields, "description_", lang)
+        entry["link"] = fields.get("link", {}).get(lang, "")
+        entry["cta"] = fields.get("cta", {}).get(lang, "")
+        entry["businessName"] = fields.get("business_name", {}).get(lang, "")
+        entry["mainHeadline"] = fields.get("main_headline", {}).get(lang, "")
+        entry["mainDescription"] = fields.get("main_description", {}).get(lang, "")
+        entry["callouts"] = _collect_numbered(fields, "callout_", lang)
+        entry["amenities"] = _collect_numbered(fields, "amenity_", lang)
+
+        # Sitelinks
+        sitelinks = []
+        for k in sorted(fields.keys()):
+            if k.startswith("sitelink_"):
+                num = re.search(r"(\d+)", k).group(1)
+                sl = {"title": fields[k].get(lang, "")}
+                sl["desc1"] = fields.get(f"description_1", {}).get(lang, "")
+                sl["desc2"] = fields.get(f"description_2", {}).get(lang, "")
+                sitelinks.append(sl)
+        if sitelinks:
+            entry["sitelinks"] = sitelinks
+
+        google_copy[group_name] = entry
 
     # 5. Assemble final structure
     data = {
@@ -452,6 +547,8 @@ def assemble(copy_data, file_map, campaign_config, lang="en"):
         },
         "adSets": ad_sets,
         "ads": ads,
+        "googleAds": google_ads,
+        "googleCopy": google_copy,
         "sources": {
             "driveFolder": campaign_config.get("drive_folder_id"),
             "copySheet": campaign_config.get("sheet_id"),

@@ -4,14 +4,19 @@ sheets_reader.py — Read ad copy from a Google Sheet via the Sheets API.
 Adapts the Google Sheets API response into the same format that
 parse_ad_copy.py expects, then reuses its section extraction logic.
 
+Also supports uploaded .xlsx files in Google Drive — if the Sheets API
+fails with "not supported for this document", the file is downloaded via
+the Drive API and parsed locally with pandas.
+
 Usage:
     from scripts.sheets_reader import parse_copy_from_sheet
     copy_data = parse_copy_from_sheet("1ABC...xyz")
     # Returns: { "project_name": "...", "meta_ads": { ... } }
 """
+import io
 import re
 import pandas as pd
-from scripts.google_auth import get_sheets_service
+from scripts.google_auth import get_sheets_service, get_drive_service
 
 
 # Language column mapping (same as parse_ad_copy.py)
@@ -25,6 +30,14 @@ LANG_MAP = {
 
 # Tabs to skip when auto-detecting the copy tab
 SKIP_TABS = {"lead form", "example mockups"}
+
+
+def _download_xlsx_from_drive(file_id):
+    """Download an .xlsx file from Google Drive and return {tab_name: DataFrame}."""
+    service = get_drive_service()
+    request = service.files().get_media(fileId=file_id)
+    content = request.execute()
+    return pd.read_excel(io.BytesIO(content), sheet_name=None, header=None)
 
 
 def get_sheet_tabs(spreadsheet_id, service=None):
@@ -158,6 +171,108 @@ def _extract_meta_ads_section(df):
     return meta_ads
 
 
+def _extract_google_ads_section(df):
+    """
+    Find and extract the Google Ads sections from the ad copy sheet.
+
+    Returns a dict of ad groups, each with their copy fields.
+    Handles: Search Responsive Ads, Demand Gen, Display, Callout Extensions,
+    Sitelink Extensions, Structured Snippets.
+    """
+    google_ads = {}
+    in_google = False
+    current_group = None
+    current_fields = {}
+
+    for i in range(df.shape[0]):
+        label = str(df.iloc[i, 0]).strip() if pd.notna(df.iloc[i, 0]) else ""
+        label_lower = label.lower()
+
+        # Detect Google Ads section start
+        if "google ads" in label_lower and "meta" not in label_lower:
+            in_google = True
+            continue
+
+        # Detect section exit
+        if in_google and any(
+            kw in label_lower
+            for kw in ("meta ads", "linkedin ads", "wechat ads", "youtube")
+        ):
+            if current_group and current_fields:
+                google_ads[current_group] = current_fields
+            in_google = False
+            current_group = None
+            current_fields = {}
+            continue
+
+        # Also exit on priority headers
+        if in_google and "priority #" in label_lower:
+            if current_group and current_fields:
+                google_ads[current_group] = current_fields
+            in_google = False
+            current_group = None
+            current_fields = {}
+            continue
+
+        if not in_google:
+            continue
+
+        # Detect group headers (text in col 0, no copy in col 1)
+        is_field = any(
+            label_lower.startswith(kw)
+            for kw in ("text", "primary text", "headline", "description", "button",
+                        "link", "cta", "business name", "callout", "amenity",
+                        "sitelink", "main headline", "main description")
+        )
+        if label and not is_field:
+            col1 = df.iloc[i, 1] if 1 < df.shape[1] else None
+            if pd.isna(col1) or str(col1).strip() == "":
+                if current_group and current_fields:
+                    google_ads[current_group] = current_fields
+                current_group = label
+                current_fields = {}
+                continue
+
+        # Parse copy fields
+        if current_group:
+            if label_lower.startswith("business name"):
+                current_fields["business_name"] = _get_copy(df, i)
+            elif label_lower.startswith("main headline"):
+                current_fields["main_headline"] = _get_copy(df, i)
+            elif label_lower.startswith("main description"):
+                current_fields["main_description"] = _get_copy(df, i)
+            elif label_lower.startswith("headline"):
+                num_match = re.search(r"(\d+)", label)
+                key = f"headline_{num_match.group(1)}" if num_match else "headline"
+                current_fields[key] = _get_copy(df, i)
+            elif label_lower.startswith("description"):
+                num_match = re.search(r"(\d+)", label)
+                key = f"description_{num_match.group(1)}" if num_match else "description"
+                current_fields[key] = _get_copy(df, i)
+            elif label_lower.startswith("button") or label_lower.startswith("cta"):
+                current_fields["cta"] = _get_copy(df, i)
+            elif label_lower.startswith("link"):
+                current_fields["link"] = _get_copy(df, i)
+            elif label_lower.startswith("callout"):
+                num_match = re.search(r"(\d+)", label)
+                key = f"callout_{num_match.group(1)}" if num_match else "callout"
+                current_fields[key] = _get_copy(df, i)
+            elif label_lower.startswith("amenity"):
+                num_match = re.search(r"(\d+)", label)
+                key = f"amenity_{num_match.group(1)}" if num_match else "amenity"
+                current_fields[key] = _get_copy(df, i)
+            elif label_lower.startswith("sitelink"):
+                num_match = re.search(r"(\d+)", label)
+                key = f"sitelink_{num_match.group(1)}" if num_match else "sitelink"
+                current_fields[key] = _get_copy(df, i)
+
+    # Save last group
+    if current_group and current_fields:
+        google_ads[current_group] = current_fields
+
+    return google_ads
+
+
 def _extract_lead_form(df):
     """Extract lead form configuration (same logic as parse_ad_copy.py)."""
     form = {}
@@ -189,6 +304,9 @@ def parse_copy_from_sheet(spreadsheet_id, tab_name=None, service=None):
     """
     Read ad copy from a Google Sheet and return structured copy data.
 
+    Falls back to downloading the file via Drive API if the Sheets API
+    rejects it (e.g., uploaded .xlsx files).
+
     Returns same structure as parse_ad_copy.parse_ad_copy_sheet():
     {
         "project_name": "The Edgemont Collection",
@@ -197,16 +315,23 @@ def parse_copy_from_sheet(spreadsheet_id, tab_name=None, service=None):
         "lead_form": { ... },
     }
     """
-    if service is None:
-        service = get_sheets_service()
-
-    tabs = get_sheet_tabs(spreadsheet_id, service)
-    df, used_tab = read_sheet_as_dataframe(spreadsheet_id, tab_name, service)
+    # Try native Sheets API first, fall back to Drive download for .xlsx files
+    try:
+        if service is None:
+            service = get_sheets_service()
+        tabs = get_sheet_tabs(spreadsheet_id, service)
+        df, used_tab = read_sheet_as_dataframe(spreadsheet_id, tab_name, service)
+    except Exception as e:
+        if "not supported for this document" in str(e):
+            print("   ℹ️  File is an uploaded .xlsx — downloading via Drive API...")
+            return _parse_copy_from_xlsx(spreadsheet_id, tab_name)
+        raise
 
     result = {
         "project_name": "",
         "sheets": tabs,
         "meta_ads": {},
+        "google_ads": {},
         "lead_form": {},
     }
 
@@ -220,10 +345,58 @@ def parse_copy_from_sheet(spreadsheet_id, tab_name=None, service=None):
     # Extract Meta Ads copy
     result["meta_ads"] = _extract_meta_ads_section(df)
 
+    # Extract Google Ads copy
+    result["google_ads"] = _extract_google_ads_section(df)
+
     # Extract Lead Form if tab exists
     if "Lead Form" in tabs:
         lf_df, _ = read_sheet_as_dataframe(spreadsheet_id, "Lead Form", service)
         if not lf_df.empty:
             result["lead_form"] = _extract_lead_form(lf_df)
+
+    return result
+
+
+def _parse_copy_from_xlsx(file_id, tab_name=None):
+    """Parse ad copy from a .xlsx file downloaded via Google Drive."""
+    all_sheets = _download_xlsx_from_drive(file_id)
+    tabs = list(all_sheets.keys())
+
+    # Pick the right tab
+    if tab_name and tab_name in all_sheets:
+        df = all_sheets[tab_name]
+    else:
+        df = None
+        for t in tabs:
+            if t.lower() not in SKIP_TABS:
+                df = all_sheets[t]
+                break
+        if df is None:
+            df = pd.DataFrame()
+
+    result = {
+        "project_name": "",
+        "sheets": tabs,
+        "meta_ads": {},
+        "google_ads": {},
+        "lead_form": {},
+    }
+
+    if df.empty:
+        return result
+
+    if pd.notna(df.iloc[0, 0]):
+        result["project_name"] = str(df.iloc[0, 0]).strip()
+
+    result["meta_ads"] = _extract_meta_ads_section(df)
+    result["google_ads"] = _extract_google_ads_section(df)
+
+    # Extract Lead Form if tab exists
+    for t in tabs:
+        if t.lower() == "lead form" and t in all_sheets:
+            lf_df = all_sheets[t]
+            if not lf_df.empty:
+                result["lead_form"] = _extract_lead_form(lf_df)
+            break
 
     return result

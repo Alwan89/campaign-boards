@@ -213,26 +213,26 @@
       "groupName": "Search – Responsive Ad",
       "headlines": [
         "Seńáḵw",
-        "Register Now",
-        "Coming Soon",
-        "Near Granville Island",
-        "Vancouver Waterfront",
-        "Three Towers Rising",
-        "A Place That Remembers",
         "Rentals in Kitsilano",
         "A Village That Welcomes",
         "Born from the Land",
-        "1–4 Bedroom Homes",
-        "At the Burrard Bridge",
-        "Squamish Ancestral Village",
-        "Modern Rental Homes",
-        "Steps to Kits Beach"
+        "New Studio to 4 Bed Homes",
+        "Rentals Coming in Summer 2026",
+        "A Modern Sḵwx̱wú7mesh Village",
+        "Kitsilano Waterfront Rentals",
+        "Steps to Kits Beach",
+        "Register for More Information",
+        "A Place That Remembers",
+        "Near Granville Island",
+        "Fully Transit-integrated",
+        "Highly Walkable Neighbourhood",
+        "Generous Green Space"
       ],
       "descriptions": [
-        "An ancestral Squamish village rises again – modern 1–4 bedroom rental homes in Kitsilano",
-        "Rental homes at the foot of the Burrard Bridge – born from Squamish ancestral land",
-        "New rental homes where the story of the land becomes your home – register today",
-        "Steps to Kits Beach and Granville Island – 1–4 bedroom homes in a Squamish village"
+        "Brand new studio to 4 bedroom rental homes. A Modern Sḵwx̱wú7mesh Village near Kitsilano.",
+        "Everything is close by, with a transit hub outside your door.",
+        "Purpose-built rentals born from the land on ancestral territory. Coming in Summer 2026.",
+        "Vancouver’s most desirable location, steps to Kits Beach & Granville Island."
       ],
       "link": "https://senakw.com",
       "cta": "",
@@ -245,18 +245,18 @@
     "Demand Gen – Single Image Ad": {
       "groupName": "Demand Gen – Single Image Ad",
       "headlines": [
-        "A Village That Welcomes",
-        "Born from the Land",
-        "Modern Homes, Ancient Roots",
-        "Rental Homes at the Burrard Bridge",
-        "Find Your Home in the Village"
+        "New Studio to 4 Bed Rental Homes",
+        "Homes Coming in Summer 2026",
+        "Kitsilano Waterfront Rentals",
+        "A Highly Walkable Neighbourhood",
+        "Register for More Information"
       ],
       "descriptions": [
-        "An ancestral Squamish village rises again – modern 1–4 bedroom rental homes in Kitsilano",
-        "Rental homes at the foot of the Burrard Bridge – born from Squamish ancestral land",
-        "New rental homes where the story of the land becomes your home – register today",
-        "Steps to Kits Beach and Granville Island – 1–4 bedroom homes in a Squamish village",
-        "Three towers rising on ancestral land – register to learn about homes in Kitsilano"
+        "Brand new studio to 4 bedroom rental homes. A Modern Sḵwx̱wú7mesh Village near Kitsilano.",
+        "Everything is close by, with a transit hub outside your door.",
+        "Purpose-built rentals born from the land on ancestral territory. Coming in Summer 2026.",
+        "Vancouver’s most desirable location, steps to Kits Beach & Granville Island.",
+        "A place that remembers. A village that welcomes."
       ],
       "link": "https://senakw.com/register",
       "cta": "Sign Up",
@@ -293,12 +293,12 @@
       "mainHeadline": "",
       "mainDescription": "",
       "callouts": [
-        "1–4 Bedroom Rental Homes",
-        "Steps to Kits Beach",
-        "Near Granville Island",
-        "At the Burrard Bridge",
-        "Squamish Ancestral Land",
-        "Register for Updates"
+        "New Studio to 4 Bed Homes",
+        "Waterfront Location",
+        "Modern Village Living",
+        "Steps to Downtown",
+        "On Ancestral Lands",
+        "Purpose-Built Rentals"
       ],
       "amenities": []
     },
@@ -316,33 +316,37 @@
       "mainDescription": "",
       "callouts": [],
       "amenities": [
-        "Waterfront Location",
-        "Modern Kitchen Finishes",
-        "In-Suite Laundry",
+        "Swimming Pool & Sauna",
+        "Fitness Room",
+        "Outdoor Workout Area",
         "Rooftop Amenity Space",
-        "Bike Storage",
-        "Pet Friendly"
+        "Theatre Room",
+        "Co-Working Space"
       ],
       "sitelinks": [
         {
-          "title": "Village",
-          "desc1": "Be among the first to know.",
-          "desc2": "Join the village."
+          "title": "The Village",
+          "desc1": "An Ancestral Squamish Village.",
+          "desc2": "Born from the Land.",
+          "link": "https://senakw.com/village"
         },
         {
           "title": "Homes",
-          "desc1": "Be among the first to know.",
-          "desc2": "Join the village."
+          "desc1": "New Studio to 4 Bed Rentals.",
+          "desc2": "A Variety of Layouts Available.",
+          "link": "https://senakw.com/homes"
         },
         {
           "title": "Location",
-          "desc1": "Be among the first to know.",
-          "desc2": "Join the village."
+          "desc1": "At the foot of the Burrard Bridge.",
+          "desc2": "Steps to Kits Beach.",
+          "link": "https://senakw.com/location"
         },
         {
-          "title": "Register",
-          "desc1": "Be among the first to know.",
-          "desc2": "Join the village."
+          "title": "Register Now",
+          "desc1": "Be Among the First to Know.",
+          "desc2": "Join the Village.",
+          "link": "https://senakw.com/register"
         }
       ]
     }

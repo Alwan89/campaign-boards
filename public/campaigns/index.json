@@ -14,5 +14,13 @@
     "client": "Senakw",
     "date": "",
     "status": "active"
+  },
+  {
+    "slug": "w45-mar2026",
+    "name": "PD_W45_Lead_EN",
+    "project": "W45th at Oakridge",
+    "client": "Magnum Projects",
+    "date": "2026-03",
+    "status": "active"
   }
 ]

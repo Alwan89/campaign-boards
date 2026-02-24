@@ -2,7 +2,7 @@
 
 ## What This Is
 
-React web app (Vite + React Router) that generates pixel-accurate ad preview mockups for client review. Replaces the manual Figma "Mockup Deck v1" process. Deployed on GitHub Pages at `peripherydigital.github.io/campaign-boards/`.
+React web app (Vite + React Router) that generates pixel-accurate ad preview mockups for client review. Replaces the manual Figma "Mockup Deck v1" process. Deployed on GitHub Pages at `alwan89.github.io/campaign-boards/`.
 
 ## Architecture
 
@@ -10,31 +10,36 @@ React web app (Vite + React Router) that generates pixel-accurate ad preview moc
 tools/campaign-boards/
 ├── src/
 │   ├── components/
-│   │   ├── FeedCard.jsx          # Meta Feed ad (Facebook/Instagram)
-│   │   ├── StoryCard.jsx         # Meta Story ad (Instagram)
-│   │   ├── ReelCard.jsx          # Meta Reel ad (Instagram)
+│   │   ├── FeedCard.jsx          # Meta Feed ad (Facebook)
+│   │   ├── InstagramFeedCard.jsx # Meta Feed ad (Instagram variant)
+│   │   ├── StoryCard.jsx         # Meta Story ad (Facebook + Instagram via platform prop)
+│   │   ├── ReelCard.jsx          # Meta Reel ad (Facebook + Instagram via platform prop)
 │   │   ├── GoogleAdCards.jsx     # Google Search SERP + Demand Gen cards
 │   │   ├── CarouselCreative.jsx  # Carousel swiper for multi-card ads
 │   │   ├── PlaceholderCreative.jsx # Gradient placeholder when no image
-│   │   ├── DeviceFrame.jsx       # Phone device frame wrapper
+│   │   ├── DeviceFrame.jsx       # Phone device frame wrapper (internal view only)
 │   │   ├── EditPanel.jsx         # Internal view: editable copy fields
 │   │   ├── Sidebar.jsx           # Internal view: sidebar nav
 │   │   ├── AppShell.jsx          # Layout wrapper
 │   │   └── icons/Icons.jsx       # SVG icon components
 │   ├── pages/
-│   │   └── CampaignBoard.jsx     # Main page — client deck + internal view
+│   │   ├── CampaignBoard.jsx     # Main page — routes to client or internal view
+│   │   └── ClientPreview.jsx     # Client deck: slides + sticky TOC sidebar
 │   ├── context/
 │   │   └── CampaignContext.jsx   # Campaign data provider
 │   ├── hooks/
 │   │   └── useCampaignData.js    # Fetches campaign JSON
 │   ├── styles/
-│   │   └── campaign-board.css    # All styles
+│   │   ├── ad-cards.css          # Feed, Story, Reel, IG card styles
+│   │   ├── google-ads.css        # Google Search + Demand Gen styles
+│   │   └── pages/
+│   │       └── client-preview.css # Client deck layout, TOC, slides
 │   └── main.jsx                  # Entry point + router
 ├── public/
 │   └── campaigns/
 │       └── senakw-feb2026/       # Example campaign
 │           ├── data.json         # Campaign data (ads, copy, assets)
-│           └── assets/           # Creative images
+│           └── assets/           # Creative images + hero bg
 ├── scripts/
 │   ├── build_campaign.py         # CLI: Sheet + Drive → data.json
 │   ├── sheets_reader.py          # Parse Google Sheets / .xlsx ad copy
@@ -48,10 +53,14 @@ tools/campaign-boards/
 ## Two Views
 
 ### Client View (`?view=client`)
-- Presentation deck layout — one slide per ad
-- Each slide has: section tag, title, copy fields on left, mockup preview on right
+- Slide-based presentation with sticky left TOC sidebar
+- Title slide with hero background image + gradient overlay
+- Each ad gets a full-width slide with multi-placement row (e.g. Facebook Feed + Instagram Feed side by side)
+- Placement column headers with platform icons (Facebook/Instagram)
+- Feed cards scaled via `zoom: 0.54`, Story/Reel cards rendered at 360x640 then `zoom: 0.56`
+- TOC sidebar: sections grouped by "Social Ads" / "Google Ads", active slide tracking via IntersectionObserver
 - Footer: "periphery | Project Name | Ad Preview"
-- No internal controls, no edit panel
+- No device frames, no internal controls
 
 ### Internal View (`?view=internal`)
 - Full app shell with sidebar navigation
@@ -64,23 +73,30 @@ tools/campaign-boards/
 
 ### Meta Ads
 
-**FeedCard** — Facebook/Instagram feed ad
-- Header: avatar + page name + verified badge + "Sponsored · globe" + ellipsis + close
+**FeedCard** — Facebook feed ad
+- Header: avatar (uses `campaign.pageAvatar` image or letter initial) + page name (`campaign.pageName`) + verified badge + "Sponsored · globe" + ellipsis + close
 - Primary text with "See more" truncation at 125 chars
 - Creative: single image, video, or carousel
-- Link bar: domain, headline, description, CTA button
+- Link bar: domain (or "FORM ON FACEBOOK" for lead gen campaigns), headline, description, CTA button
 - Engagement row: reactions, comments, shares, Like/Comment/Share buttons
-- Internal bar: ad name, type, file count, concept
+- Internal bar: ad name, type, file count, concept (hidden in client view via `isClient` prop)
 
-**StoryCard** (360x640, 9:16 ratio)
+**InstagramFeedCard** — Instagram feed ad variant
+- IG-specific header with avatar + page name + "Sponsored" + ellipsis
+- Heart/comment/share/bookmark action icons below creative
+- "View all X comments" link
+- Uses same `campaign.pageAvatar` / `campaign.pageName` as FeedCard
+
+**StoryCard** (360x640, 9:16 ratio) — supports `platform` prop ("facebook" | "instagram")
 - Progress bars (3 segments)
-- Header: avatar + page name + "Sponsored" + 3-dot menu + close
+- Header: avatar (uses `campaign.pageAvatar`) + page name + "Sponsored" + 3-dot menu + close
+- Facebook variant: blue "f" logo badge on avatar, slightly different header layout
 - Full-bleed creative background
 - Bottom: CTA pill sticker ("Learn More" / "Sign Up")
 - Safe zones: top 13%, bottom 5%, sides 7.4%
 
-**ReelCard** (360x640, 9:16 ratio)
-- "Reels" header with camera icon
+**ReelCard** (360x640, 9:16 ratio) — supports `platform` prop ("facebook" | "instagram")
+- "Reels" header with camera icon (Instagram) or blue "f" badge (Facebook)
 - Right-side icon stack: heart, comment, share, bookmark, 3-dot, audio disc
 - Bottom overlay: avatar + page name + "Follow" button + "Sponsored" label
 - Caption text with "...more" truncation at 80 chars
@@ -91,13 +107,14 @@ tools/campaign-boards/
 
 ### Google Ads
 
-**SearchAdCard** — Desktop + Mobile SERP with toggle
+**SearchAdCard** — Desktop + Mobile SERP with toggle + headline carousel
 - Toggle button switches between Desktop and Mobile layouts
-- **Desktop**: Browser chrome → Google logo + search bar → tabs row (All/Images/Maps/Shopping/News/More/Tools) → results count → "Sponsored" label → favicon + domain + "Ad" badge → blue headline → description → callouts → image extension (right side) → sitelinks (2x2 grid) → amenities → organic placeholders
-- **Mobile**: Phone status bar → hamburger + Google logo + avatar → pill search bar → tabs (All/Images/Videos/Shopping/News) → "Ad" badge + domain + info icon → headline + image (side by side) → description → callouts → sitelinks (vertical list) → organic placeholder
+- Carousel arrows cycle through headline/description combinations
+- **Desktop**: Browser chrome → Google logo + search bar → tabs row → results count → "Sponsored" label → favicon + domain + "Ad" badge → blue headline → description → callouts → image extension (right side) → sitelinks (2x2 grid) → amenities → organic placeholders
+- **Mobile**: Phone status bar → hamburger + Google logo + avatar → pill search bar → tabs → "Ad" badge + domain → headline + image → description → callouts → sitelinks (vertical list) → organic placeholder
 
 **DemandGenCard** — Three variants, all accept `logoUrl` for advertiser avatar
-- **gmail**: Email promo layout — back arrow + action icons header → logo avatar + business name + "Sponsored" → full-width creative image → headline + description → blue CTA button (full-width pill)
+- **gmail**: Email promo layout — logo avatar + business name + "Sponsored" → full-width creative image → headline + description → blue CTA button (full-width pill)
 - **youtube**: Feed card — creative with CTA overlay → logo + headline + "Sponsored · Business" + description
 - **compact**: Thumbnail card — square creative → logo + business name → description → "Sponsored"
 
@@ -112,16 +129,18 @@ tools/campaign-boards/
     "objective": "Lead Generation",
     "landing_page": "https://senakw.com/register",
     "housing_category": true,
-    "languages": ["en"]
+    "languages": ["en"],
+    "pageName": "Seńákw Village",
+    "pageAvatar": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Logo_EN_Feb2026.jpg"
   },
   "adSets": [
     { "id": "as1", "name": "Lead_en_Broad_Feed", "tier": "Broad", "placement": "Feed", "targeting": "...", "ads": ["ad1","ad2"] }
   ],
   "ads": [
-    { "id": "ad1", "name": "Lead_EN_Image_Feb2026_General", "type": "Image", "placement": "Feed", "concept": "General",
+    { "id": "ad1", "name": "...", "type": "Image|Single Image", "placement": "Feed|StoryReel|LeadForm", "concept": "General",
       "files": ["filename.jpg"], "imageUrl": "/campaign-boards/campaigns/slug/assets/filename.jpg",
       "copy": { "primary": "...", "headline": "...", "description": "...", "cta": "Sign Up", "link": "..." },
-      "subPlacements": ["Story", "Reel"]  // for StoryReel placement
+      "subPlacements": ["Story", "Reel"]
     }
   ],
   "googleAds": [
@@ -131,12 +150,25 @@ tools/campaign-boards/
     "Search – Responsive Ad": { "headlines": [...], "descriptions": [...], "link": "..." },
     "Demand Gen – Single Image Ad": { "headlines": [...], "descriptions": [...], "businessName": "...", "cta": "...", "link": "..." },
     "Search Callout Extension": { "callouts": [...] },
-    "Structured Snippet Extension": { "sitelinks": [{"title":"...","desc1":"...","desc2":"..."}], "amenities": [...] }
+    "Structured Snippet Extension": { "sitelinks": [{"title":"...","desc1":"...","desc2":"...","link":"..."}], "amenities": [...] }
   }
 }
 ```
 
+### Placement Values
+- `"Feed"` — renders in feed placement slides (Facebook Feed + Instagram Feed side by side)
+- `"StoryReel"` — renders in story/reel slides (IG Stories + FB Stories + IG Reels + FB Reels)
+- `"LeadForm"` — excluded from client preview (lead form creative, not a feed ad)
+- Only `"Feed"` and `"StoryReel"` are recognized by `CampaignBoard.jsx` for `adsByPlacement`
+
 ## Key Design Decisions
+
+### Client View Layout
+- Sticky left TOC sidebar (220px) with section grouping and active slide indicator
+- IntersectionObserver tracks which slide is in viewport to highlight TOC item
+- Title slide uses hero background image (`senakw-hero-bg.jpg`) with gradient overlay
+- Multi-placement rows show the same ad across Facebook + Instagram side by side
+- Cards are scaled down using CSS `zoom` property to fit multiple placements per slide
 
 ### Safe Zones (Instagram, at 1080x1920 native)
 - Top zone: 250px = **13%** — status bar, progress bars, avatar row
@@ -147,18 +179,31 @@ tools/campaign-boards/
 ### Card Dimensions
 - Feed card: flexible width (constrained by parent)
 - Story/Reel cards: **360 x 640px** (9:16 at 0.333 scale of 1080x1920)
+- In client slides: Story/Reel at 320x568 (or 260x462 on narrow screens)
 - Figma native sizes: Story/Reel = 1080x1920, Single 1:1 = 1200x1200, Single 4:5 = 960x1200, Feed 16:9 = 1920x1080
+
+### Page Identity
+- `campaign.pageName` — Facebook page display name (e.g. "Seńákw Village")
+- `campaign.pageAvatar` — path to page profile image (used across all card types)
+- Falls back to letter initial if no avatar image provided
 
 ### Logo Asset Handling
 - The `Logo` type in `googleAds` array is NOT rendered as a standalone asset
 - Instead, its `imageUrl` is passed as `logoUrl` to `DemandGenCard` components
 - Used as the circular advertiser avatar in all Demand Gen card variants
-- Filtered out of the "Additional Assets" slide
 
 ### SERP Toggle
 - `SearchAdCard` has internal `useState` for `desktop`/`mobile` mode
 - Desktop: browser chrome wrapper (`.browser-mockup` class)
 - Mobile: phone-style frame with status bar, 360px wide
+
+## Ad Copy Source
+
+The ad copy sheet is at:
+```
+/Users/alexwan/Library/CloudStorage/GoogleDrive-alex.wan@peripherydigital.com/Shared drives/Clients/Claude Cowork Shared Drive [TEST]/Senakw/Deliverables/Senakw Digital Ad Copy (Internal Use_View Only).xlsx
+```
+Current copy version: **March 2026** (sheet tab: "March 2026")
 
 ## Python Pipeline
 
@@ -198,12 +243,27 @@ data, warnings = assemble(copy_data, file_map, config, lang="en", slug="project-
 - QC safe zones: `figma.com/design/w3x9ZLdNQcvoBxoHt7fnin/QC` (node 6024:299)
 - Kwasen Demand Gen reference: `figma.com/design/iPTuyoFIhQjVNdFD9oNkxC/Kwasen_2025_09` (node 24233:9)
 
-## CSS Classes (campaign-board.css)
-- `.browser-mockup` — Desktop SERP browser chrome wrapper
-- `.browser-mockup__chrome` / `__dots` / `__url` — Browser toolbar
-- `.fb-card` — Feed card container
+## CSS Architecture
+
+Styles are split across multiple files:
+- `ad-cards.css` — Feed card, Instagram feed card, Story card, Reel card styles
+- `google-ads.css` — Google Search SERP, Demand Gen card styles, browser mockup
+- `pages/client-preview.css` — Client deck layout, TOC sidebar, slides, placement rows
+
+### Key CSS Classes
+- `.client-deck` — Top-level flex container (sidebar + slides)
+- `.client-toc` — Sticky left sidebar TOC
+- `.client-slide` — Individual slide card
+- `.client-slide--title` — Title slide with hero bg + overlay
+- `.placement-row` / `.placement-col` — Multi-placement layout within slides
+- `.placement-col--feed` / `.placement-col--story` — Zoom scaling per placement type
+- `.fb-card` — Facebook feed card container
+- `.ig-card` — Instagram feed card container
 - `.story-card` / `.reel-card` — 360x640 story/reel containers
-- `.deck-slide` — Client view presentation slide
-- `.deck-slide__header` / `__body` / `__copy` / `__preview` / `__footer` — Slide sections
-- `.deck-container` — Client view scroll container
-- `.internal-bar` / `.internal-bar-dark` — Ad name/meta shown in internal view only
+- `.browser-mockup` — Desktop SERP browser chrome wrapper
+
+## Deployment
+- GitHub repo: `github.com/Alwan89/campaign-boards`
+- GitHub Pages: `alwan89.github.io/campaign-boards/`
+- Client preview URL: `alwan89.github.io/campaign-boards/#/senakw-feb2026?view=client`
+- Vite base path: `/campaign-boards/`

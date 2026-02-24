@@ -1,0 +1,373 @@
+{
+  "campaign": {
+    "name": "PD_W45_Lead_EN",
+    "project": "W45th at Oakridge",
+    "developer": "Magnum Projects",
+    "objective": "Lead Generation",
+    "budget": "",
+    "languages": ["en"],
+    "housing_category": true,
+    "landing_page": "https://w45oakridge.ca",
+    "pageName": "Magnum Projects Ltd.",
+    "pageAvatar": "/campaign-boards/campaigns/w45-mar2026/assets/Magnum_avatar.jpg",
+    "heroBackground": "/campaign-boards/campaigns/w45-mar2026/assets/w45-hero-bg.jpg"
+  },
+  "adSets": [
+    {
+      "id": "as1",
+      "name": "Lead_en_Broad_Feed",
+      "tier": "Broad",
+      "placement": "Feed",
+      "targeting": "Location only — Advantage+ ON",
+      "ads": ["ad1", "ad2", "ad3"]
+    },
+    {
+      "id": "as2",
+      "name": "Lead_en_Broad_StoryReel",
+      "tier": "Broad",
+      "placement": "StoryReel",
+      "targeting": "Location only — Advantage+ ON",
+      "ads": ["ad4", "ad5"]
+    },
+    {
+      "id": "as3",
+      "name": "Lead_en_Interest_Feed",
+      "tier": "Interest",
+      "placement": "Feed",
+      "targeting": "Combined audience — real estate interests",
+      "ads": ["ad1", "ad2", "ad3"]
+    },
+    {
+      "id": "as4",
+      "name": "Lead_en_Interest_StoryReel",
+      "tier": "Interest",
+      "placement": "StoryReel",
+      "targeting": "Combined audience — real estate interests",
+      "ads": ["ad4", "ad5"]
+    },
+    {
+      "id": "as5",
+      "name": "Lead_en_Retargeting_Feed",
+      "tier": "Retargeting",
+      "placement": "Feed",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": ["ad1", "ad2", "ad3"]
+    },
+    {
+      "id": "as6",
+      "name": "Lead_en_Retargeting_StoryReel",
+      "tier": "Retargeting",
+      "placement": "StoryReel",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": ["ad4", "ad5"]
+    }
+  ],
+  "ads": [
+    {
+      "id": "ad1",
+      "name": "Lead_EN_SingleImage_Mar2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": ["W45_Meta_Single_1080x1080.jpg"],
+      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
+      "isVideo": false,
+      "copy": {
+        "primary": "Tucked into a tree-lined residential street, yet just steps from the vibrant energy of Oakridge–Vancouver's Newest Global Luxury & Lifestyle Hub.",
+        "headline": "A Westside Retreat",
+        "description": "Enjoy a rare lifestyle where calm living and urban convenience meet effortlessly with world-class shopping and dining at your doorstep.",
+        "cta": "Sign Up",
+        "link": "https://w45oakridge.ca"
+      }
+    },
+    {
+      "id": "ad2",
+      "name": "Lead_EN_Carousel_Mar2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": ["W45_Carousel_card1.jpg", "W45_Carousel_card2.jpg", "W45_Carousel_card3.jpg"],
+      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card1.jpg",
+      "isVideo": false,
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card1.jpg",
+          "headline": "A Westside Retreat",
+          "description": "Across from Oakridge Park–introducing 100+ global and local brands, exceptional dining, wellness and lifestyle amenities, and a 9-acre rooftop park."
+        },
+        {
+          "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card2.jpg",
+          "headline": "On A Quiet Street",
+          "description": "Tucked into a tree-lined residential street, yet just steps from the vibrant energy of Oakridge–Vancouver's Newest Global Luxury & Lifestyle Hub."
+        },
+        {
+          "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card3.jpg",
+          "headline": "Steps to the New Oakridge",
+          "description": "Move-in ready Garden Flats, Townhomes & Duplexes crafted for elevated living with premium integrated appliances, A/C in all homes, & bespoke finishes."
+        }
+      ],
+      "copy": {
+        "primary": "Tucked into a tree-lined residential street, yet just steps from the vibrant energy of Oakridge–Vancouver's Newest Global Luxury & Lifestyle Hub.",
+        "headline": "A Westside Retreat",
+        "description": "Across from Oakridge Park–introducing 100+ global and local brands, exceptional dining, wellness and lifestyle amenities, and a 9-acre rooftop park.",
+        "cta": "Sign Up",
+        "link": "https://w45oakridge.ca"
+      }
+    },
+    {
+      "id": "ad3",
+      "name": "Lead_EN_Video_Mar2026_General",
+      "type": "Video",
+      "placement": "Feed",
+      "concept": "General",
+      "files": ["W45_Meta_Video_Square.mp4"],
+      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
+      "videoUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Video_Square.mp4",
+      "isVideo": true,
+      "copy": {
+        "primary": "Tucked into a tree-lined residential street, yet just steps from the vibrant energy of Oakridge–Vancouver's Newest Global Luxury & Lifestyle Hub.",
+        "headline": "A Westside Retreat",
+        "description": "Enjoy a rare lifestyle where calm living and urban convenience meet effortlessly with world-class shopping and dining at your doorstep.",
+        "cta": "Sign Up",
+        "link": "https://w45oakridge.ca"
+      }
+    },
+    {
+      "id": "ad4",
+      "name": "Lead_EN_StoryReel_Mar2026_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": ["W45_Meta_StoryReel_1080x1920.jpg"],
+      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_StoryReel_1080x1920.jpg",
+      "isVideo": false,
+      "copy": {
+        "primary": "Tucked into a tree-lined residential street, yet just steps from the vibrant energy of Oakridge–Vancouver's Newest Global Luxury & Lifestyle Hub.",
+        "headline": "A Westside Retreat",
+        "description": "Enjoy a rare lifestyle where calm living and urban convenience meet effortlessly with world-class shopping and dining at your doorstep.",
+        "cta": "Sign Up",
+        "link": "https://w45oakridge.ca"
+      },
+      "subPlacements": ["Story", "Reel"]
+    },
+    {
+      "id": "ad5",
+      "name": "Lead_EN_VideoStoryReel_Mar2026_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": ["W45_Meta_Video_Landscape.mp4"],
+      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_StoryReel_1080x1920.jpg",
+      "videoUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Video_Landscape.mp4",
+      "isVideo": true,
+      "copy": {
+        "primary": "Tucked into a tree-lined residential street, yet just steps from the vibrant energy of Oakridge–Vancouver's Newest Global Luxury & Lifestyle Hub.",
+        "headline": "A Westside Retreat",
+        "description": "Enjoy a rare lifestyle where calm living and urban convenience meet effortlessly with world-class shopping and dining at your doorstep.",
+        "cta": "Sign Up",
+        "link": "https://w45oakridge.ca"
+      },
+      "subPlacements": ["Story", "Reel"]
+    }
+  ],
+  "googleAds": [
+    {
+      "filename": "W45_Google_1200x628.jpg",
+      "type": "Search",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Google_1200x628.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "W45_Meta_Single_1080x1080.jpg",
+      "type": "Demand Gen",
+      "dimensions": "1200x1200",
+      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "W45_Google_1200x628.jpg",
+      "type": "Demand Gen",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Google_1200x628.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Magnum_avatar.jpg",
+      "type": "Logo",
+      "dimensions": "",
+      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/Magnum_avatar.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    }
+  ],
+  "googleCopy": {
+    "Display": {
+      "groupName": "Display",
+      "headlines": [
+        "A Westside Retreat",
+        "Tree-Lined and Serene",
+        "Life Grows in Oakridge"
+      ],
+      "descriptions": [],
+      "link": "",
+      "cta": "Register Now",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Search – Responsive Ad": {
+      "groupName": "Search – Responsive Ad",
+      "headlines": [
+        "W45th at Oakridge",
+        "A Westside Retreat",
+        "Tree-Lined and Serene",
+        "Life Grows in Oakridge",
+        "Move-in Ready Homes",
+        "Garden Flats & Townhomes",
+        "Duplexes at Oakridge",
+        "Westside Living",
+        "Steps from Oakridge Park",
+        "Register Now",
+        "9ft Ceilings & Oak Floors",
+        "Fisher & Paykel Appliances",
+        "Near Eric Hamber Secondary",
+        "On the Canada Line",
+        "50+ Dining Destinations"
+      ],
+      "descriptions": [
+        "Across from Oakridge Park–100+ brands, dining, wellness amenities & a 9-acre rooftop park.",
+        "On a tree-lined street, steps from Oakridge–Vancouverʼs Global Luxury & Lifestyle Hub.",
+        "Move-in ready Garden Flats, Townhomes & Duplexes with premium appliances, A/C & finishes.",
+        "Calm living meets urban convenience with world-class shopping and dining at your doorstep."
+      ],
+      "link": "https://w45oakridge.ca",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen – Single Image Ad": {
+      "groupName": "Demand Gen – Single Image Ad",
+      "headlines": [
+        "A Westside Retreat",
+        "Tree-Lined and Serene",
+        "Life Grows in Oakridge",
+        "Move-in Ready Homes at Oakridge",
+        "Designed for Everyday Luxury"
+      ],
+      "descriptions": [
+        "Across from Oakridge Park–100+ brands, dining, wellness amenities & a 9-acre rooftop park.",
+        "On a tree-lined street, steps from Oakridge–Vancouverʼs Global Luxury & Lifestyle Hub.",
+        "Move-in ready Garden Flats, Townhomes & Duplexes with premium appliances, A/C & finishes.",
+        "Calm living meets urban convenience with world-class shopping and dining at your doorstep.",
+        "Steps to reimagined Oakridge Park–civic centre, library, Time Out Market, daycare & more."
+      ],
+      "link": "https://w45oakridge.ca",
+      "cta": "Sign Up",
+      "businessName": "W45th at Oakridge",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen – Carousel Ad": {
+      "groupName": "Demand Gen – Carousel Ad",
+      "headlines": [
+        "A Westside Retreat",
+        "Tree-Lined and Serene",
+        "Life Grows in Oakridge",
+        "Move-in Ready Homes at Oakridge"
+      ],
+      "descriptions": [],
+      "link": "https://w45oakridge.ca",
+      "cta": "Sign Up",
+      "businessName": "W45th at Oakridge",
+      "mainHeadline": "A Westside Retreat",
+      "mainDescription": "On a tree-lined street, steps from Oakridge–Vancouverʼs Global Luxury & Lifestyle Hub.",
+      "callouts": [],
+      "amenities": []
+    },
+    "Search Callout Extension": {
+      "groupName": "Search Callout Extension",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [
+        "Move-in Ready Homes",
+        "Garden Flats & Townhomes",
+        "Steps from Oakridge Park",
+        "Premium Finishes & A/C",
+        "Near Canada Line",
+        "50+ Dining Destinations"
+      ],
+      "amenities": []
+    },
+    "Structured Snippet Extension": {
+      "groupName": "Structured Snippet Extension",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": [
+        "9-Acre Rooftop Park",
+        "Premium Appliances",
+        "A/C in All Homes",
+        "Bespoke Finishes",
+        "Near Canada Line",
+        "100+ Brands & Dining"
+      ],
+      "sitelinks": [
+        {
+          "title": "Interiors",
+          "desc1": "Fisher & Paykel Appliances.",
+          "desc2": "with 9ft Ceilings & A/C.",
+          "link": "https://w45oakridge.ca/interiors"
+        },
+        {
+          "title": "Location",
+          "desc1": "Steps from Oakridge Park.",
+          "desc2": "On the Canada Line.",
+          "link": "https://w45oakridge.ca/location"
+        },
+        {
+          "title": "Register",
+          "desc1": "Move-in Ready Homes",
+          "desc2": "in Vancouver's Westside.",
+          "link": "https://w45oakridge.ca/register"
+        },
+        {
+          "title": "Oakridge Park",
+          "desc1": "9-Acre Park & Time Out Market.",
+          "desc2": "100+ Global Brands & Dining.",
+          "link": "https://w45oakridge.ca"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "driveFolder": "Magnum - W45 Oakridge",
+    "copySheet": "W45 at Oakridge Digital Ad Copy (Internal Use_View Only).xlsx",
+    "clickupTask": null
+  },
+  "meta": {
+    "generatedAt": "2026-02-24T13:15:00.000000+00:00",
+    "generatedBy": "claude-cowork",
+    "boardVersion": "1.0"
+  }
+}

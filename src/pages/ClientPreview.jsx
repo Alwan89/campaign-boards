@@ -196,9 +196,9 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
         {/* Slides */}
         <main className="client-slides">
           {/* Title slide */}
-          <div className="client-slide client-slide--title">
+          <div className="client-slide client-slide--title" style={campaign.heroBackground ? {background:`url(${campaign.heroBackground}) center/cover no-repeat`} : undefined}>
             <div className="client-slide__hero-overlay" />
-            <h1 className="client-slide__hero-title">{campaign.project} Village</h1>
+            <h1 className="client-slide__hero-title">{campaign.project}</h1>
             <p className="client-slide__hero-subtitle">Ad Preview</p>
             <p className="client-slide__hero-date">{dateStr}</p>
           </div>

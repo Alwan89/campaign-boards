@@ -50,7 +50,7 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
   const sitelinkCopy = gc['Structured Snippet Extension'];
   const demandGenSingle = gc['Demand Gen – Single Image Ad'];
   const demandGenImages = gAds.filter(g => g.type === 'Demand Gen');
-  const searchImage = gAds.find(g => g.type === 'Search');
+  const searchImage = gAds.find(g => g.type === 'Search Image Extension') || gAds.find(g => g.type === 'Search');
   const logoAsset = gAds.find(g => g.type === 'Logo');
   const logoUrl = logoAsset?.imageUrl || '';
 

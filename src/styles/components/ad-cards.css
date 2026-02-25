@@ -309,6 +309,28 @@ video.reel-bg{z-index:0}
 .ig-card__caption-user{font-weight:600}
 .ig-card__caption-more{color:#8e8e8e;cursor:pointer}
 
+/* Instagram Carousel Nav */
+.ig-carousel-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(255,255,255,.9);border:none;
+  box-shadow:0 1px 4px rgba(0,0,0,.15);cursor:pointer;
+  font-size:18px;display:flex;align-items:center;justify-content:center;
+  z-index:2;color:#262626;opacity:.85;transition:opacity .15s;
+}
+.ig-carousel-nav:hover{opacity:1}
+.ig-carousel-nav.left{left:8px}
+.ig-carousel-nav.right{right:8px}
+.ig-carousel-dots{
+  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  display:flex;gap:4px;z-index:2;
+}
+.ig-carousel-dot{
+  width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);
+  cursor:pointer;transition:all .15s;
+}
+.ig-carousel-dot.active{background:#0095f6}
+
 /* ═══════════════════════════════════════════════════════════
    Placeholder Creative — Gradient Backgrounds
    ═══════════════════════════════════════════════════════════ */

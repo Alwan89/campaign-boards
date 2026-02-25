@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useCampaign } from '../context/CampaignContext';
 import PlaceholderCreative from './PlaceholderCreative';
 
@@ -5,6 +6,8 @@ export default function InstagramFeedCard({ ad, adIndex = 0, isClient }) {
   const campaign = useCampaign();
   const pageName = campaign.pageName || campaign.developer || campaign.project;
   const handle = pageName.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const isCarousel = ad.type === 'Carousel' && ad.carouselCards?.length > 1;
+  const [cardIdx, setCardIdx] = useState(0);
 
   return (
     <div className="ig-card">
@@ -30,9 +33,24 @@ export default function InstagramFeedCard({ ad, adIndex = 0, isClient }) {
         </svg>
       </div>
 
-      {/* Creative image */}
-      <div className="ig-card__creative">
-        {ad.imageUrl?.includes('placehold.co') ? (
+      {/* Creative image / carousel */}
+      <div className="ig-card__creative" style={{position:'relative'}}>
+        {isCarousel ? (
+          <>
+            <img src={ad.carouselCards[cardIdx].imageUrl} alt={ad.carouselCards[cardIdx].headline} />
+            {cardIdx > 0 && (
+              <button className="ig-carousel-nav left" onClick={() => setCardIdx(i => i - 1)}>&#8249;</button>
+            )}
+            {cardIdx < ad.carouselCards.length - 1 && (
+              <button className="ig-carousel-nav right" onClick={() => setCardIdx(i => i + 1)}>&#8250;</button>
+            )}
+            <div className="ig-carousel-dots">
+              {ad.carouselCards.map((_, i) => (
+                <span key={i} className={`ig-carousel-dot${i === cardIdx ? ' active' : ''}`} onClick={() => setCardIdx(i)} />
+              ))}
+            </div>
+          </>
+        ) : ad.imageUrl?.includes('placehold.co') ? (
           <PlaceholderCreative concept={ad.concept} index={adIndex} style={{width:'100%',aspectRatio:'1/1'}} />
         ) : (
           <img src={ad.imageUrl} alt={ad.concept} />
@@ -41,7 +59,11 @@ export default function InstagramFeedCard({ ad, adIndex = 0, isClient }) {
 
       {/* CTA row */}
       <div className="ig-card__cta-row">
-        <span className="ig-card__cta-text">{ad.copy.cta || 'Sign up'}</span>
+        {isCarousel ? (
+          <span className="ig-card__cta-text">{ad.carouselCards[cardIdx].headline}</span>
+        ) : (
+          <span className="ig-card__cta-text">{ad.copy.cta || 'Sign up'}</span>
+        )}
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0095f6" strokeWidth="3">
           <polyline points="9,6 15,12 9,18"/>
         </svg>

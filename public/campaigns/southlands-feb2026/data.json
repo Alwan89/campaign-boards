@@ -30,17 +30,10 @@
         "ad14",
         "ad16",
         "ad17",
-        "ad18",
         "ad19",
-        "ad20",
+        "ad21",
         "ad22",
-        "ad24",
-        "ad25",
-        "ad26",
-        "ad27",
-        "ad28",
-        "ad29",
-        "ad31"
+        "ad24"
       ]
     },
     {
@@ -56,10 +49,10 @@
         "ad10",
         "ad12",
         "ad15",
-        "ad21",
+        "ad18",
+        "ad20",
         "ad23",
-        "ad30",
-        "ad32"
+        "ad25"
       ]
     },
     {
@@ -80,17 +73,10 @@
         "ad14",
         "ad16",
         "ad17",
-        "ad18",
         "ad19",
-        "ad20",
+        "ad21",
         "ad22",
-        "ad24",
-        "ad25",
-        "ad26",
-        "ad27",
-        "ad28",
-        "ad29",
-        "ad31"
+        "ad24"
       ]
     },
     {
@@ -106,10 +92,10 @@
         "ad10",
         "ad12",
         "ad15",
-        "ad21",
+        "ad18",
+        "ad20",
         "ad23",
-        "ad30",
-        "ad32"
+        "ad25"
       ]
     },
     {
@@ -130,17 +116,10 @@
         "ad14",
         "ad16",
         "ad17",
-        "ad18",
         "ad19",
-        "ad20",
+        "ad21",
         "ad22",
-        "ad24",
-        "ad25",
-        "ad26",
-        "ad27",
-        "ad28",
-        "ad29",
-        "ad31"
+        "ad24"
       ]
     },
     {
@@ -156,10 +135,10 @@
         "ad10",
         "ad12",
         "ad15",
-        "ad21",
+        "ad18",
+        "ad20",
         "ad23",
-        "ad30",
-        "ad32"
+        "ad25"
       ]
     }
   ],
@@ -182,7 +161,7 @@
         "link": "discoversouthlands.ca"
       },
       "isVideo": true,
-      "videoUrl": ""
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_Feed_Feb2026.mp4"
     },
     {
       "id": "ad2",
@@ -202,7 +181,7 @@
         "link": ""
       },
       "isVideo": true,
-      "videoUrl": "",
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_StoryReel_Feb2026.mp4",
       "subPlacements": [
         "Story"
       ]
@@ -284,7 +263,7 @@
         "link": "discoversouthlands.ca"
       },
       "isVideo": true,
-      "videoUrl": ""
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_Feed_Feb2026.mp4"
     },
     {
       "id": "ad7",
@@ -304,7 +283,7 @@
         "link": ""
       },
       "isVideo": true,
-      "videoUrl": "",
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_StoryReel_Feb2026.mp4",
       "subPlacements": [
         "Story"
       ]
@@ -386,7 +365,7 @@
         "link": "discoversouthlands.ca"
       },
       "isVideo": true,
-      "videoUrl": ""
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_Feed_Feb2026.mp4"
     },
     {
       "id": "ad12",
@@ -406,7 +385,7 @@
         "link": ""
       },
       "isVideo": true,
-      "videoUrl": "",
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_StoryReel_Feb2026.mp4",
       "subPlacements": [
         "Story"
       ]
@@ -477,7 +456,10 @@
       "placement": "Feed",
       "concept": "General",
       "files": [
-        "Southlands_Set1_Meta_Carousel_1_Feb2026.jpg"
+        "Southlands_Set1_Meta_Carousel_1_Feb2026.jpg",
+        "Southlands_Set1_Meta_Carousel_2_Feb2026.jpg",
+        "Southlands_Set1_Meta_Carousel_3_Feb2026.jpg",
+        "Southlands_Set1_Meta_Carousel_4_Feb2026.jpg"
       ],
       "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_1_Feb2026.jpg",
       "copy": {
@@ -494,17 +476,17 @@
           "description": "Built for Life Together"
         },
         {
-          "imageUrl": "",
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_2_Feb2026.jpg",
           "headline": "The Ocean, Your Backyard",
           "description": "A Generational Community"
         },
         {
-          "imageUrl": "",
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_3_Feb2026.jpg",
           "headline": "Rooted in Farming and Food",
           "description": "Freehold Townhomes and Cottages"
         },
         {
-          "imageUrl": "",
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_4_Feb2026.jpg",
           "headline": "Visit the Discovery Centre",
           "description": "Where Ownership Feels Right"
         }
@@ -512,126 +494,6 @@
     },
     {
       "id": "ad17",
-      "name": "Lead_EN_Carousel_Feb2026_General",
-      "type": "Carousel",
-      "placement": "Feed",
-      "concept": "General",
-      "files": [
-        "Southlands_Set1_Meta_Carousel_2_Feb2026.jpg"
-      ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_2_Feb2026.jpg",
-      "copy": {
-        "primary": "Life feels fuller when there\u2019s time for what matters most. Discover a community shaped by slower days and deeper connection.",
-        "headline": "Life in Tsawwassen",
-        "description": "Built for Life Together",
-        "cta": "Sign Up",
-        "link": "FORM ON FACEBOOK"
-      },
-      "carouselCards": [
-        {
-          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_2_Feb2026.jpg",
-          "headline": "Life in Tsawwassen",
-          "description": "Built for Life Together"
-        },
-        {
-          "imageUrl": "",
-          "headline": "The Ocean, Your Backyard",
-          "description": "A Generational Community"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Rooted in Farming and Food",
-          "description": "Freehold Townhomes and Cottages"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Visit the Discovery Centre",
-          "description": "Where Ownership Feels Right"
-        }
-      ]
-    },
-    {
-      "id": "ad18",
-      "name": "Lead_EN_Carousel_Feb2026_General",
-      "type": "Carousel",
-      "placement": "Feed",
-      "concept": "General",
-      "files": [
-        "Southlands_Set1_Meta_Carousel_3_Feb2026.jpg"
-      ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_3_Feb2026.jpg",
-      "copy": {
-        "primary": "Life feels fuller when there\u2019s time for what matters most. Discover a community shaped by slower days and deeper connection.",
-        "headline": "Life in Tsawwassen",
-        "description": "Built for Life Together",
-        "cta": "Sign Up",
-        "link": "FORM ON FACEBOOK"
-      },
-      "carouselCards": [
-        {
-          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_3_Feb2026.jpg",
-          "headline": "Life in Tsawwassen",
-          "description": "Built for Life Together"
-        },
-        {
-          "imageUrl": "",
-          "headline": "The Ocean, Your Backyard",
-          "description": "A Generational Community"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Rooted in Farming and Food",
-          "description": "Freehold Townhomes and Cottages"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Visit the Discovery Centre",
-          "description": "Where Ownership Feels Right"
-        }
-      ]
-    },
-    {
-      "id": "ad19",
-      "name": "Lead_EN_Carousel_Feb2026_General",
-      "type": "Carousel",
-      "placement": "Feed",
-      "concept": "General",
-      "files": [
-        "Southlands_Set1_Meta_Carousel_4_Feb2026.jpg"
-      ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_4_Feb2026.jpg",
-      "copy": {
-        "primary": "Life feels fuller when there\u2019s time for what matters most. Discover a community shaped by slower days and deeper connection.",
-        "headline": "Life in Tsawwassen",
-        "description": "Built for Life Together",
-        "cta": "Sign Up",
-        "link": "FORM ON FACEBOOK"
-      },
-      "carouselCards": [
-        {
-          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_4_Feb2026.jpg",
-          "headline": "Life in Tsawwassen",
-          "description": "Built for Life Together"
-        },
-        {
-          "imageUrl": "",
-          "headline": "The Ocean, Your Backyard",
-          "description": "A Generational Community"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Rooted in Farming and Food",
-          "description": "Freehold Townhomes and Cottages"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Visit the Discovery Centre",
-          "description": "Where Ownership Feels Right"
-        }
-      ]
-    },
-    {
-      "id": "ad20",
       "name": "Lead_EN_Video_Feb2026_General",
       "type": "Video",
       "placement": "Feed",
@@ -648,10 +510,10 @@
         "link": ""
       },
       "isVideo": true,
-      "videoUrl": ""
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Feed_Feb2026.mp4"
     },
     {
-      "id": "ad21",
+      "id": "ad18",
       "name": "Lead_EN_Video_Feb2026_StoryReel_General",
       "type": "Video",
       "placement": "StoryReel",
@@ -669,14 +531,14 @@
         "link": "FORM ON FACEBOOK"
       },
       "isVideo": true,
-      "videoUrl": "",
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Reel_Feb2026.mp4",
       "subPlacements": [
         "Reel",
         "Story"
       ]
     },
     {
-      "id": "ad22",
+      "id": "ad19",
       "name": "Lead_EN_SingleImage_Feb2026_General",
       "type": "Single Image",
       "placement": "Feed",
@@ -694,7 +556,7 @@
       }
     },
     {
-      "id": "ad23",
+      "id": "ad20",
       "name": "Lead_EN_SingleImage_Feb2026_StoryReel_General",
       "type": "Single Image",
       "placement": "StoryReel",
@@ -717,13 +579,17 @@
       ]
     },
     {
-      "id": "ad24",
+      "id": "ad21",
       "name": "Lead_EN_Carousel_Feb2026_General",
       "type": "Carousel",
       "placement": "Feed",
       "concept": "General",
       "files": [
-        "Southlands_Set2_Meta_Carousel_1_Feb2026.jpg"
+        "Southlands_Set2_Meta_Carousel_1_Feb2026.jpg",
+        "Southlands_Set2_Meta_Carousel_2_Feb2026.jpg",
+        "Southlands_Set2_Meta_Carousel_3_Feb2026.jpg",
+        "Southlands_Set2_Meta_Carousel_4_Feb2026.jpg",
+        "Southlands_Set2_Meta_Carousel_5_Feb2026.jpg"
       ],
       "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_1_Feb2026.jpg",
       "copy": {
@@ -740,184 +606,29 @@
           "description": "FORM ON FACEBOOK"
         },
         {
-          "imageUrl": "",
-          "headline": "Walk to Centennial Beach",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Visit Our Discovery Centre",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
-          "headline": "",
-          "description": "FORM ON FACEBOOK"
-        }
-      ]
-    },
-    {
-      "id": "ad25",
-      "name": "Lead_EN_Carousel_Feb2026_General",
-      "type": "Carousel",
-      "placement": "Feed",
-      "concept": "General",
-      "files": [
-        "Southlands_Set2_Meta_Carousel_2_Feb2026.jpg"
-      ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_2_Feb2026.jpg",
-      "copy": {
-        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
-        "headline": "Freehold Homes Now Selling",
-        "description": "FORM ON FACEBOOK",
-        "cta": "Sign Up",
-        "link": "FORM ON FACEBOOK"
-      },
-      "carouselCards": [
-        {
           "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_2_Feb2026.jpg",
-          "headline": "Freehold Homes Now Selling",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
           "headline": "Walk to Centennial Beach",
           "description": "FORM ON FACEBOOK"
         },
-        {
-          "imageUrl": "",
-          "headline": "Visit Our Discovery Centre",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
-          "headline": "",
-          "description": "FORM ON FACEBOOK"
-        }
-      ]
-    },
-    {
-      "id": "ad26",
-      "name": "Lead_EN_Carousel_Feb2026_General",
-      "type": "Carousel",
-      "placement": "Feed",
-      "concept": "General",
-      "files": [
-        "Southlands_Set2_Meta_Carousel_3_Feb2026.jpg"
-      ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_3_Feb2026.jpg",
-      "copy": {
-        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
-        "headline": "Freehold Homes Now Selling",
-        "description": "FORM ON FACEBOOK",
-        "cta": "Sign Up",
-        "link": "FORM ON FACEBOOK"
-      },
-      "carouselCards": [
         {
           "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_3_Feb2026.jpg",
-          "headline": "Freehold Homes Now Selling",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Walk to Centennial Beach",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
           "headline": "Visit Our Discovery Centre",
           "description": "FORM ON FACEBOOK"
         },
-        {
-          "imageUrl": "",
-          "headline": "",
-          "description": "FORM ON FACEBOOK"
-        }
-      ]
-    },
-    {
-      "id": "ad27",
-      "name": "Lead_EN_Carousel_Feb2026_General",
-      "type": "Carousel",
-      "placement": "Feed",
-      "concept": "General",
-      "files": [
-        "Southlands_Set2_Meta_Carousel_4_Feb2026.jpg"
-      ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_4_Feb2026.jpg",
-      "copy": {
-        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
-        "headline": "Freehold Homes Now Selling",
-        "description": "FORM ON FACEBOOK",
-        "cta": "Sign Up",
-        "link": "FORM ON FACEBOOK"
-      },
-      "carouselCards": [
         {
           "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_4_Feb2026.jpg",
-          "headline": "Freehold Homes Now Selling",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Walk to Centennial Beach",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Visit Our Discovery Centre",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
           "headline": "",
           "description": "FORM ON FACEBOOK"
-        }
-      ]
-    },
-    {
-      "id": "ad28",
-      "name": "Lead_EN_Carousel_Feb2026_General",
-      "type": "Carousel",
-      "placement": "Feed",
-      "concept": "General",
-      "files": [
-        "Southlands_Set2_Meta_Carousel_5_Feb2026.jpg"
-      ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_5_Feb2026.jpg",
-      "copy": {
-        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
-        "headline": "Freehold Homes Now Selling",
-        "description": "FORM ON FACEBOOK",
-        "cta": "Sign Up",
-        "link": "FORM ON FACEBOOK"
-      },
-      "carouselCards": [
+        },
         {
           "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_5_Feb2026.jpg",
-          "headline": "Freehold Homes Now Selling",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Walk to Centennial Beach",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
-          "headline": "Visit Our Discovery Centre",
-          "description": "FORM ON FACEBOOK"
-        },
-        {
-          "imageUrl": "",
           "headline": "",
-          "description": "FORM ON FACEBOOK"
+          "description": ""
         }
       ]
     },
     {
-      "id": "ad29",
+      "id": "ad22",
       "name": "Lead_EN_Video_Feb2026_General",
       "type": "Video",
       "placement": "Feed",
@@ -934,10 +645,10 @@
         "link": ""
       },
       "isVideo": true,
-      "videoUrl": ""
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Feed_Feb2026.mp4"
     },
     {
-      "id": "ad30",
+      "id": "ad23",
       "name": "Lead_EN_Video_Feb2026_StoryReel_General",
       "type": "Video",
       "placement": "StoryReel",
@@ -955,14 +666,14 @@
         "link": ""
       },
       "isVideo": true,
-      "videoUrl": "",
+      "videoUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Reel_Feb2026.mp4",
       "subPlacements": [
         "Reel",
         "Story"
       ]
     },
     {
-      "id": "ad31",
+      "id": "ad24",
       "name": "Lead_EN_SingleImage_Feb2026_General",
       "type": "Single Image",
       "placement": "Feed",
@@ -980,7 +691,7 @@
       }
     },
     {
-      "id": "ad32",
+      "id": "ad25",
       "name": "Lead_EN_SingleImage_Feb2026_StoryReel_General",
       "type": "Single Image",
       "placement": "StoryReel",
@@ -1299,7 +1010,7 @@
     "clickupTask": null
   },
   "meta": {
-    "generatedAt": "2026-02-25T03:43:44.065511+00:00",
+    "generatedAt": "2026-02-25T04:30:22.899750+00:00",
     "generatedBy": "build_campaign.py",
     "boardVersion": "1.0"
   }

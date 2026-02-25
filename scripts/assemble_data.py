@@ -110,10 +110,17 @@ def _parse_filename(filename):
         if date_match2:
             date_label = date_match2.group(0)
 
-    # Concept key — strip placement keywords to group Story+Reel together
+    # Concept key — strip placement keywords to group Story+Reel together,
+    # and strip carousel card numbers so all cards group as one ad
     skip_keywords = {"story", "reel", "storyreel", "feed", "stories", "reels"}
     concept_segments = [s.lower() for s in segments if s.lower() not in skip_keywords]
-    concept_key = "_".join(concept_segments)
+    # Remove pure-digit segments that follow "carousel" (card numbers like "1", "2")
+    filtered = []
+    for j, seg in enumerate(concept_segments):
+        if seg.isdigit() and j > 0 and concept_segments[j - 1] == "carousel":
+            continue
+        filtered.append(seg)
+    concept_key = "_".join(filtered)
 
     return {
         "filename": filename,
@@ -355,12 +362,23 @@ def _generate_ad_sets(ads, campaign_config, lang="EN"):
 #  Main assembler
 # --------------------------------------------------------------------------- #
 
-def _get_image_url(fdata, filename, slug):
-    """Get the best available image URL — prefer local asset, fall back to Drive."""
+def _get_asset_url(fdata, filename, slug):
+    """Get the best available asset URL — prefer local asset path, fall back to Drive URL."""
     if fdata.get("local_path"):
-        # Relative to the Vite base path — resolved by the React app
         return f"/campaign-boards/campaigns/{slug}/assets/{filename}"
     return fdata.get("image_url", "")
+
+
+def _get_image_url(fdata, filename, slug):
+    """Get image URL — alias for _get_asset_url."""
+    return _get_asset_url(fdata, filename, slug)
+
+
+def _get_video_url(fdata, filename, slug):
+    """Get video URL — prefer local asset path, fall back to Drive download URL."""
+    if fdata.get("local_path"):
+        return f"/campaign-boards/campaigns/{slug}/assets/{filename}"
+    return fdata.get("download_url", "")
 
 
 def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_overrides=None):
@@ -449,7 +467,7 @@ def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_ove
             video_file = next((f for f in group["files"] if f["ext"] in ("mp4", "mov")), None)
             if video_file:
                 vdata = file_map.get(video_file["filename"], {})
-                ad["videoUrl"] = vdata.get("download_url")
+                ad["videoUrl"] = _get_video_url(vdata, video_file["filename"], slug)
             else:
                 ad["videoUrl"] = None
 
@@ -512,7 +530,7 @@ def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_ove
             "dimensions": dimensions,
             "imageUrl": _get_image_url(fdata, gf["filename"], slug),
             "isVideo": gf["ext"] in ("mp4", "mov"),
-            "videoUrl": fdata.get("download_url", "") if gf["ext"] in ("mp4", "mov") else "",
+            "videoUrl": _get_video_url(fdata, gf["filename"], slug) if gf["ext"] in ("mp4", "mov") else "",
         })
 
     # Build structured Google copy objects from the sheet

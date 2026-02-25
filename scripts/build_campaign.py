@@ -2,31 +2,37 @@
 """
 build_campaign.py — CLI to generate a campaign board data.json.
 
-Reads ad copy from a Google Sheet, scans a Google Drive folder for creatives,
-matches copy to ads, and writes public/campaigns/<slug>/data.json.
+Reads ad copy from a Google Sheet or local .xlsx file, scans a Google Drive
+folder or local directory for creatives, matches copy to ads, and writes
+public/campaigns/<slug>/data.json.
 
-Usage:
+Usage (Google API mode):
     python -m scripts.build_campaign \
         --sheet-id 1ABC...xyz \
         --drive-folder-id 1DEF...uvw \
         --slug edgemont-feb2026 \
-        --name "PD_Edgemont_Lead_EN" \
-        --project "The Edgemont Collection" \
-        --developer "Domus Homes" \
-        --objective "Lead Generation" \
-        --budget "$75/day" \
-        --languages EN \
-        --landing-page "theedgemontcollection.com" \
-        --housing-category
+        --name "PD_Edgemont_Lead_EN"
+
+Usage (local filesystem mode):
+    python -m scripts.build_campaign \
+        --xlsx "/path/to/ad-copy.xlsx" \
+        --creative-folder "/path/to/creative-assets/" \
+        --slug edgemont-feb2026 \
+        --name "PD_Edgemont_Lead_EN"
 """
 import argparse
 import json
 import os
+import shutil
 import sys
 
-from scripts.sheets_reader import parse_copy_from_sheet
-from scripts.drive_scanner import build_file_id_map, download_files
 from scripts.assemble_data import assemble
+
+
+# File extensions recognized as creative assets
+IMAGE_EXTS = {"jpg", "jpeg", "png", "gif", "webp"}
+VIDEO_EXTS = {"mp4", "mov"}
+ALL_CREATIVE_EXTS = IMAGE_EXTS | VIDEO_EXTS
 
 
 def get_output_dir():
@@ -63,18 +69,75 @@ def update_index(campaigns_dir, slug, campaign_config):
     return index_path
 
 
+def build_local_file_map(folder_path):
+    """
+    Recursively scan a local folder for creative assets and return a file_map.
+
+    Same format as drive_scanner.build_file_id_map() but for local files.
+    Walks all subdirectories to find assets in nested folder structures.
+    """
+    file_map = {}
+
+    for dirpath, _dirnames, filenames in os.walk(folder_path):
+        for filename in sorted(filenames):
+            ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
+            if ext not in ALL_CREATIVE_EXTS:
+                continue
+
+            # If duplicate filename exists in a different subfolder, prefix with subfolder name
+            if filename in file_map:
+                rel = os.path.relpath(dirpath, folder_path)
+                unique_name = rel.replace(os.sep, "_") + "_" + filename
+            else:
+                unique_name = filename
+
+            file_map[unique_name] = {
+                "local_path": os.path.join(dirpath, filename),
+                "image_url": "",
+                "download_url": "",
+                "is_video": ext in VIDEO_EXTS,
+                "ext": ext,
+            }
+
+    return file_map
+
+
+def copy_local_assets(file_map, assets_dir):
+    """Copy local creative files to the campaign assets directory."""
+    os.makedirs(assets_dir, exist_ok=True)
+    copied = 0
+
+    for filename, meta in file_map.items():
+        src = meta.get("local_path", "")
+        if not src or not os.path.exists(src):
+            continue
+
+        dst = os.path.join(assets_dir, filename)
+        if not os.path.exists(dst) or os.path.getmtime(src) > os.path.getmtime(dst):
+            shutil.copy2(src, dst)
+            copied += 1
+        meta["local_path"] = dst
+
+    return copied
+
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Build a campaign board data.json from Google Sheet + Drive folder."
+        description="Build a campaign board data.json from ad copy + creative assets."
     )
 
-    # Required sources
-    parser.add_argument("--sheet-id", required=True, help="Google Sheet spreadsheet ID")
-    parser.add_argument("--drive-folder-id", required=True, help="Google Drive folder ID for creatives")
+    # Sources — either Google API or local filesystem
+    source_group = parser.add_argument_group("Data sources (use Google API OR local files)")
+    source_group.add_argument("--sheet-id", default=None, help="Google Sheet spreadsheet ID")
+    source_group.add_argument("--drive-folder-id", default=None, help="Google Drive folder ID for creatives")
+    source_group.add_argument("--xlsx", default=None, help="Path to local .xlsx ad copy file")
+    source_group.add_argument("--creative-folder", default=None, help="Path to local creative assets folder")
+
+    # Required
     parser.add_argument("--slug", required=True, help="Campaign slug (e.g., edgemont-feb2026)")
+    parser.add_argument("--name", required=True, help="Campaign name (e.g., PD_Edgemont_Lead_EN)")
 
     # Campaign metadata
-    parser.add_argument("--name", required=True, help="Campaign name (e.g., PD_Edgemont_Lead_EN)")
     parser.add_argument("--project", default="", help="Project name (e.g., The Edgemont Collection)")
     parser.add_argument("--developer", default="", help="Developer/client name (e.g., Domus Homes)")
     parser.add_argument("--objective", default="Lead Generation", help="Campaign objective")
@@ -86,21 +149,45 @@ def main():
 
     # Options
     parser.add_argument("--lang", default="en", help="Language code for copy (default: en)")
-    parser.add_argument("--tab", default=None, help="Specific Google Sheet tab name")
+    parser.add_argument("--tab", default=None, help="Specific sheet tab name")
+    parser.add_argument("--match-overrides", default=None,
+        help="JSON file path with creative→copy match overrides (concept_key → copy group name)")
     parser.add_argument("--dry-run", action="store_true", help="Print summary without writing files")
 
     args = parser.parse_args()
 
-    # --- Step 1: Read copy from Google Sheet ---
-    print(f"\n📋 Reading ad copy from Google Sheet: {args.sheet_id}")
-    if args.tab:
-        print(f"   Tab: {args.tab}")
+    # Validate: need either Google API sources or local filesystem sources
+    use_local_copy = args.xlsx is not None
+    use_local_assets = args.creative_folder is not None
+    use_api_copy = args.sheet_id is not None
+    use_api_assets = args.drive_folder_id is not None
 
-    try:
-        copy_data = parse_copy_from_sheet(args.sheet_id, tab_name=args.tab)
-    except Exception as e:
-        print(f"\n❌ Failed to read Google Sheet: {e}")
-        sys.exit(1)
+    if not use_local_copy and not use_api_copy:
+        parser.error("Provide either --xlsx (local file) or --sheet-id (Google API)")
+    if not use_local_assets and not use_api_assets:
+        parser.error("Provide either --creative-folder (local) or --drive-folder-id (Google API)")
+
+    # --- Step 1: Read ad copy ---
+    if use_local_copy:
+        print(f"\n📋 Reading ad copy from local .xlsx: {args.xlsx}")
+        if args.tab:
+            print(f"   Tab: {args.tab}")
+        try:
+            from scripts.sheets_reader import read_copy_from_xlsx
+            copy_data = read_copy_from_xlsx(args.xlsx, tab_name=args.tab)
+        except Exception as e:
+            print(f"\n❌ Failed to read .xlsx: {e}")
+            sys.exit(1)
+    else:
+        print(f"\n📋 Reading ad copy from Google Sheet: {args.sheet_id}")
+        if args.tab:
+            print(f"   Tab: {args.tab}")
+        try:
+            from scripts.sheets_reader import parse_copy_from_sheet
+            copy_data = parse_copy_from_sheet(args.sheet_id, tab_name=args.tab)
+        except Exception as e:
+            print(f"\n❌ Failed to read Google Sheet: {e}")
+            sys.exit(1)
 
     meta_groups = copy_data.get("meta_ads", {})
     print(f"   Project: {copy_data.get('project_name', '(unknown)')}")
@@ -108,30 +195,47 @@ def main():
     for g in meta_groups:
         print(f"     • {g}")
 
-    # --- Step 2: Scan Drive folder ---
-    print(f"\n📁 Scanning Drive folder: {args.drive_folder_id}")
-
-    try:
-        file_map = build_file_id_map(args.drive_folder_id)
-    except Exception as e:
-        print(f"\n❌ Failed to scan Drive folder: {e}")
-        sys.exit(1)
+    # --- Step 2: Scan for creative assets ---
+    if use_local_assets:
+        print(f"\n📁 Scanning local folder: {args.creative_folder}")
+        try:
+            file_map = build_local_file_map(args.creative_folder)
+        except Exception as e:
+            print(f"\n❌ Failed to scan folder: {e}")
+            sys.exit(1)
+    else:
+        print(f"\n📁 Scanning Drive folder: {args.drive_folder_id}")
+        try:
+            from scripts.drive_scanner import build_file_id_map
+            file_map = build_file_id_map(args.drive_folder_id)
+        except Exception as e:
+            print(f"\n❌ Failed to scan Drive folder: {e}")
+            sys.exit(1)
 
     images = [f for f, d in file_map.items() if not d["is_video"]]
     videos = [f for f, d in file_map.items() if d["is_video"]]
     print(f"   Files found: {len(file_map)} ({len(images)} images, {len(videos)} videos)")
 
-    # --- Step 2b: Download files locally ---
+    # --- Step 2b: Copy/download assets locally ---
     campaigns_dir = get_output_dir()
     slug_dir = os.path.join(campaigns_dir, args.slug)
     assets_dir = os.path.join(slug_dir, "assets")
-    print(f"\n📥 Downloading creative files to {assets_dir}")
 
-    try:
-        downloaded = download_files(file_map, assets_dir)
-        print(f"   Downloaded: {downloaded}/{len(file_map)} files")
-    except Exception as e:
-        print(f"\n⚠️  Download failed (will use Drive URLs): {e}")
+    if use_local_assets:
+        print(f"\n📥 Copying creative files to {assets_dir}")
+        try:
+            copied = copy_local_assets(file_map, assets_dir)
+            print(f"   Copied: {copied}/{len(file_map)} files")
+        except Exception as e:
+            print(f"\n⚠️  Copy failed: {e}")
+    else:
+        print(f"\n📥 Downloading creative files to {assets_dir}")
+        try:
+            from scripts.drive_scanner import download_files
+            downloaded = download_files(file_map, assets_dir)
+            print(f"   Downloaded: {downloaded}/{len(file_map)} files")
+        except Exception as e:
+            print(f"\n⚠️  Download failed (will use Drive URLs): {e}")
 
     # --- Step 3: Assemble ---
     print(f"\n🔧 Assembling campaign data...")
@@ -145,12 +249,20 @@ def main():
         "languages": args.languages,
         "housing_category": args.housing_category,
         "landing_page": args.landing_page,
-        "sheet_id": args.sheet_id,
-        "drive_folder_id": args.drive_folder_id,
+        "sheet_id": args.sheet_id or "",
+        "drive_folder_id": args.drive_folder_id or "",
         "date": args.date,
     }
 
-    data, report = assemble(copy_data, file_map, campaign_config, lang=args.lang, slug=args.slug)
+    # Load match overrides if provided
+    overrides = None
+    if args.match_overrides:
+        with open(args.match_overrides, "r") as f:
+            overrides = json.load(f)
+        print(f"   Using {len(overrides)} match override(s)")
+
+    data, report = assemble(copy_data, file_map, campaign_config,
+                            lang=args.lang, slug=args.slug, match_overrides=overrides)
 
     # --- Step 4: Report ---
     print(f"\n📊 Summary:")

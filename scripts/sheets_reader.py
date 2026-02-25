@@ -300,6 +300,162 @@ def _extract_lead_form(df):
     return form
 
 
+def read_copy_from_xlsx(xlsx_path, tab_name=None):
+    """
+    Read ad copy from a local .xlsx file.
+
+    Same output format as parse_copy_from_sheet() but reads directly from
+    the local filesystem — no Google API auth needed.
+
+    Args:
+        xlsx_path: Path to the .xlsx file (e.g., on synced Google Drive)
+        tab_name: Specific tab to read (auto-detects if None)
+
+    Returns:
+        Same structure as parse_copy_from_sheet().
+    """
+    all_sheets = pd.read_excel(xlsx_path, sheet_name=None, header=None)
+    tabs = list(all_sheets.keys())
+
+    # Pick the right tab
+    if tab_name and tab_name in all_sheets:
+        df = all_sheets[tab_name]
+    else:
+        df = None
+        for t in tabs:
+            if t.lower() not in SKIP_TABS:
+                df = all_sheets[t]
+                break
+        if df is None:
+            df = pd.DataFrame()
+
+    result = {
+        "project_name": "",
+        "sheets": tabs,
+        "meta_ads": {},
+        "google_ads": {},
+        "lead_form": {},
+    }
+
+    if df.empty:
+        return result
+
+    if pd.notna(df.iloc[0, 0]):
+        result["project_name"] = str(df.iloc[0, 0]).strip()
+
+    result["meta_ads"] = _extract_meta_ads_section(df)
+    result["google_ads"] = _extract_google_ads_section(df)
+
+    # Extract Lead Form if tab exists
+    for t in tabs:
+        if t.lower() == "lead form" and t in all_sheets:
+            lf_df = all_sheets[t]
+            if not lf_df.empty:
+                result["lead_form"] = _extract_lead_form(lf_df)
+            break
+
+    return result
+
+
+def update_copy_in_xlsx(xlsx_path, group_name, field_name, new_value, lang="en", tab_name=None):
+    """
+    Update a single copy field in a local .xlsx file.
+
+    Finds the row matching group_name + field_name and updates the
+    language column with new_value. Saves the file in place.
+
+    Args:
+        xlsx_path: Path to the .xlsx file
+        group_name: Copy group name (e.g., "Single Image Ad - Brookridge Lane")
+        field_name: Field to update (e.g., "text", "headline", "headline_1",
+                    "description", "cta", "link")
+        new_value: New copy text
+        lang: Language column to update (default "en")
+        tab_name: Specific tab (auto-detects if None)
+
+    Returns:
+        True if the field was found and updated, False otherwise.
+    """
+    from openpyxl import load_workbook
+
+    # Map language to column index (1-based for openpyxl)
+    lang_to_col = {"en": 2, "zh_s": 3, "zh_t": 4, "kr": 5, "fa": 6}
+    col_idx = lang_to_col.get(lang.lower(), 2)
+
+    wb = load_workbook(xlsx_path)
+
+    # Find the right sheet
+    if tab_name and tab_name in wb.sheetnames:
+        ws = wb[tab_name]
+    else:
+        ws = None
+        for name in wb.sheetnames:
+            if name.lower() not in SKIP_TABS:
+                ws = wb[name]
+                break
+        if ws is None:
+            return False
+
+    # Find the group, then the field within it
+    in_target_group = False
+    field_label = _normalize_field_label(field_name)
+
+    for row in range(1, ws.max_row + 1):
+        cell_a = str(ws.cell(row=row, column=1).value or "").strip()
+        cell_a_lower = cell_a.lower()
+
+        # Check if this row is the target group header
+        if cell_a == group_name:
+            in_target_group = True
+            continue
+
+        # Exit group on next header (text in col A, no text in col B)
+        if in_target_group and cell_a and not _is_field_label(cell_a_lower):
+            cell_b = ws.cell(row=row, column=2).value
+            if cell_b is None or str(cell_b).strip() == "":
+                in_target_group = False
+                continue
+
+        if in_target_group and _matches_field(cell_a_lower, field_label):
+            ws.cell(row=row, column=col_idx).value = new_value
+            wb.save(xlsx_path)
+            return True
+
+    wb.close()
+    return False
+
+
+def _normalize_field_label(field_name):
+    """Normalize a field name for matching (e.g., 'headline_1' → 'headline 1')."""
+    return field_name.replace("_", " ").lower()
+
+
+def _is_field_label(label_lower):
+    """Check if a label is a copy field (not a group header)."""
+    return any(
+        label_lower.startswith(kw)
+        for kw in ("text", "primary text", "headline", "description",
+                    "button", "link", "cta", "business name", "callout",
+                    "amenity", "sitelink", "main headline", "main description")
+    )
+
+
+def _matches_field(cell_lower, target):
+    """Check if a cell label matches the target field name."""
+    # Direct match
+    if cell_lower == target:
+        return True
+    # "headline 1" matches "headline 1", "text" matches "text" or "primary text"
+    if target == "text" and (cell_lower == "text" or cell_lower == "primary text"):
+        return True
+    if target == "cta" and (cell_lower.startswith("button") or cell_lower.startswith("cta")):
+        return True
+    # Numbered field match (e.g., "headline 1" == "headline 1")
+    if cell_lower.replace(" ", "") == target.replace(" ", ""):
+        return True
+    return False
+
+
 def parse_copy_from_sheet(spreadsheet_id, tab_name=None, service=None):
     """
     Read ad copy from a Google Sheet and return structured copy data.

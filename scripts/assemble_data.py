@@ -363,7 +363,7 @@ def _get_image_url(fdata, filename, slug):
     return fdata.get("image_url", "")
 
 
-def assemble(copy_data, file_map, campaign_config, lang="en", slug=""):
+def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_overrides=None):
     """
     Combine parsed copy + Drive file map + campaign config into data.json.
 
@@ -373,9 +373,12 @@ def assemble(copy_data, file_map, campaign_config, lang="en", slug=""):
         campaign_config: Dict with campaign-level metadata
         lang: Language code to use for copy (default "en")
         slug: Campaign slug for local asset paths
+        match_overrides: Optional dict mapping concept_keys to copy group
+            names, bypassing _match_copy_to_ad() for those entries.
+            Format: {"concept_key": "Copy Group Name"}
 
     Returns:
-        dict matching the data.json schema for the React app.
+        tuple of (data_dict, warnings_dict) matching the data.json schema.
     """
     meta_ads_copy = copy_data.get("meta_ads", {})
 
@@ -398,8 +401,15 @@ def assemble(copy_data, file_map, campaign_config, lang="en", slug=""):
     unmatched_ads = []
 
     for (concept_key, placement), group in sorted(ad_groups.items()):
-        # Match copy
-        matched_copy = _match_copy_to_ad(group, meta_ads_copy)
+        # Match copy — use override if provided, otherwise fuzzy match
+        # Support placement-aware keys (e.g., "concept_key::Feed") and plain keys
+        placement_key = f"{concept_key}::{placement}"
+        if match_overrides and placement_key in match_overrides:
+            matched_copy = meta_ads_copy.get(match_overrides[placement_key])
+        elif match_overrides and concept_key in match_overrides:
+            matched_copy = meta_ads_copy.get(match_overrides[concept_key])
+        else:
+            matched_copy = _match_copy_to_ad(group, meta_ads_copy)
         if matched_copy is None and group["sub_community"] != "General":
             unmatched_ads.append(f"{group['sub_community']} / {group['creative_type']} / {placement}")
 
@@ -564,11 +574,17 @@ def assemble(copy_data, file_map, campaign_config, lang="en", slug=""):
     # 6. Report unmatched items
     matched_groups = set()
     for (concept_key, placement), group in ad_groups.items():
-        match = _match_copy_to_ad(group, meta_ads_copy)
-        if match:
-            for gname, fields in meta_ads_copy.items():
-                if fields is match:
-                    matched_groups.add(gname)
+        placement_key = f"{concept_key}::{placement}"
+        if match_overrides and placement_key in match_overrides:
+            matched_groups.add(match_overrides[placement_key])
+        elif match_overrides and concept_key in match_overrides:
+            matched_groups.add(match_overrides[concept_key])
+        else:
+            match = _match_copy_to_ad(group, meta_ads_copy)
+            if match:
+                for gname, fields in meta_ads_copy.items():
+                    if fields is match:
+                        matched_groups.add(gname)
 
     unmatched_copy = [g for g in meta_ads_copy if g not in matched_groups]
 

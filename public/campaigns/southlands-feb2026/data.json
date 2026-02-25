@@ -1,0 +1,1306 @@
+{
+  "campaign": {
+    "name": "PD_Southlands_Lead_EN",
+    "project": "Southlands",
+    "developer": "Century Group",
+    "objective": "Lead Generation",
+    "budget": "",
+    "languages": [
+      "EN"
+    ],
+    "housing_category": true,
+    "landing_page": ""
+  },
+  "adSets": [
+    {
+      "id": "as1",
+      "name": "Lead_EN_Broad_Feed",
+      "tier": "Broad",
+      "placement": "Feed",
+      "targeting": "Location only \u2014 Advantage+ ON",
+      "ads": [
+        "ad1",
+        "ad3",
+        "ad4",
+        "ad6",
+        "ad8",
+        "ad9",
+        "ad11",
+        "ad13",
+        "ad14",
+        "ad16",
+        "ad17",
+        "ad18",
+        "ad19",
+        "ad20",
+        "ad22",
+        "ad24",
+        "ad25",
+        "ad26",
+        "ad27",
+        "ad28",
+        "ad29",
+        "ad31"
+      ]
+    },
+    {
+      "id": "as2",
+      "name": "Lead_EN_Broad_StoryReel",
+      "tier": "Broad",
+      "placement": "StoryReel",
+      "targeting": "Location only \u2014 Advantage+ ON",
+      "ads": [
+        "ad2",
+        "ad5",
+        "ad7",
+        "ad10",
+        "ad12",
+        "ad15",
+        "ad21",
+        "ad23",
+        "ad30",
+        "ad32"
+      ]
+    },
+    {
+      "id": "as3",
+      "name": "Lead_EN_Interest_Feed",
+      "tier": "Interest",
+      "placement": "Feed",
+      "targeting": "Combined audience \u2014 all interests",
+      "ads": [
+        "ad1",
+        "ad3",
+        "ad4",
+        "ad6",
+        "ad8",
+        "ad9",
+        "ad11",
+        "ad13",
+        "ad14",
+        "ad16",
+        "ad17",
+        "ad18",
+        "ad19",
+        "ad20",
+        "ad22",
+        "ad24",
+        "ad25",
+        "ad26",
+        "ad27",
+        "ad28",
+        "ad29",
+        "ad31"
+      ]
+    },
+    {
+      "id": "as4",
+      "name": "Lead_EN_Interest_StoryReel",
+      "tier": "Interest",
+      "placement": "StoryReel",
+      "targeting": "Combined audience \u2014 all interests",
+      "ads": [
+        "ad2",
+        "ad5",
+        "ad7",
+        "ad10",
+        "ad12",
+        "ad15",
+        "ad21",
+        "ad23",
+        "ad30",
+        "ad32"
+      ]
+    },
+    {
+      "id": "as5",
+      "name": "Lead_EN_Retargeting_Feed",
+      "tier": "Retargeting",
+      "placement": "Feed",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": [
+        "ad1",
+        "ad3",
+        "ad4",
+        "ad6",
+        "ad8",
+        "ad9",
+        "ad11",
+        "ad13",
+        "ad14",
+        "ad16",
+        "ad17",
+        "ad18",
+        "ad19",
+        "ad20",
+        "ad22",
+        "ad24",
+        "ad25",
+        "ad26",
+        "ad27",
+        "ad28",
+        "ad29",
+        "ad31"
+      ]
+    },
+    {
+      "id": "as6",
+      "name": "Lead_EN_Retargeting_StoryReel",
+      "tier": "Retargeting",
+      "placement": "StoryReel",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": [
+        "ad2",
+        "ad5",
+        "ad7",
+        "ad10",
+        "ad12",
+        "ad15",
+        "ad21",
+        "ad23",
+        "ad30",
+        "ad32"
+      ]
+    }
+  ],
+  "ads": [
+    {
+      "id": "ad1",
+      "name": "Lead_EN_Video_Feb2026_General",
+      "type": "Video",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_BSM_Meta_Feed_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_Feed_Feb2026.mp4",
+      "copy": {
+        "primary": "White picket fence dream townhome with private outdoor space you've been missing.",
+        "headline": "Live by Centennial Beach",
+        "description": "Discover Southlands Tsawwassen",
+        "cta": "Sign Up",
+        "link": "discoversouthlands.ca"
+      },
+      "isVideo": true,
+      "videoUrl": ""
+    },
+    {
+      "id": "ad2",
+      "name": "Lead_EN_Video_Feb2026_StoryReel_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_BSM_Meta_StoryReel_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_StoryReel_Feb2026.mp4",
+      "copy": {
+        "primary": "Townhome living with plenty outdoor space.",
+        "headline": "",
+        "description": "",
+        "cta": "Sign Up",
+        "link": ""
+      },
+      "isVideo": true,
+      "videoUrl": "",
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad3",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_BSM_Meta_Single_1_Feb2026.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_Single_1_Feb2026.png",
+      "copy": {
+        "primary": "Charming white picket fence 3 bed + den townhomes, designed for outdoor lovers with front yards, porches, private rear patios & minutes to the beach.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "Coastal Living at Southlands Tsawwassen",
+        "cta": "Sign Up",
+        "link": "discoversouthlands.ca"
+      }
+    },
+    {
+      "id": "ad4",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_BSM_Meta_Single_2_Feb2026.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_Single_2_Feb2026.png",
+      "copy": {
+        "primary": "Charming white picket fence 3 bed + den townhomes, designed for outdoor lovers with front yards, porches, private rear patios & minutes to the beach.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "Coastal Living at Southlands Tsawwassen",
+        "cta": "Sign Up",
+        "link": "discoversouthlands.ca"
+      }
+    },
+    {
+      "id": "ad5",
+      "name": "Lead_EN_SingleImage_Feb2026_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_BSM_Meta_Reel_Single_Feb2026.png",
+        "Southlands_BSM_Meta_Story_Single_Feb2026.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_Reel_Single_Feb2026.png",
+      "copy": {
+        "primary": "Townhome living with plenty outdoor space.",
+        "headline": "",
+        "description": "",
+        "cta": "Sign Up",
+        "link": ""
+      },
+      "subPlacements": [
+        "Reel",
+        "Story"
+      ]
+    },
+    {
+      "id": "ad6",
+      "name": "Lead_EN_Video_Feb2026_General",
+      "type": "Video",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_CGN_Meta_Feed_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_Feed_Feb2026.mp4",
+      "copy": {
+        "primary": "Large townhomes up to 1,800 SF across 3 levels with a penthouse primary suite.",
+        "headline": "Live by Centennial Beach",
+        "description": "Discover Southlands Tsawwassen",
+        "cta": "Sign Up",
+        "link": "discoversouthlands.ca"
+      },
+      "isVideo": true,
+      "videoUrl": ""
+    },
+    {
+      "id": "ad7",
+      "name": "Lead_EN_Video_Feb2026_StoryReel_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_CGN_Meta_StoryReel_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_StoryReel_Feb2026.mp4",
+      "copy": {
+        "primary": "Spacious 3 level townhomes up to 1,800 SF",
+        "headline": "",
+        "description": "",
+        "cta": "",
+        "link": ""
+      },
+      "isVideo": true,
+      "videoUrl": "",
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad8",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_CGN_Meta_Single_1_Feb2026.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_Single_1_Feb2026.png",
+      "copy": {
+        "primary": "Spacious 3 bed + den townhomes spanning up to 1,800 SF across 3 levels, with a penthouse primary suite. More space. More life.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "Coastal Living at Southlands Tsawwassen",
+        "cta": "Sign Up",
+        "link": "discoversouthlands.ca"
+      }
+    },
+    {
+      "id": "ad9",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_CGN_Meta_Single_2_Feb2026.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_Single_2_Feb2026.png",
+      "copy": {
+        "primary": "Spacious 3 bed + den townhomes spanning up to 1,800 SF across 3 levels, with a penthouse primary suite. More space. More life.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "Coastal Living at Southlands Tsawwassen",
+        "cta": "Sign Up",
+        "link": "discoversouthlands.ca"
+      }
+    },
+    {
+      "id": "ad10",
+      "name": "Lead_EN_SingleImage_Feb2026_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_CGN_Meta_Reel_Single_Feb2026.png",
+        "Southlands_CGN_Meta_Story_Single_Feb2026.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_Reel_Single_Feb2026.png",
+      "copy": {
+        "primary": "Spacious 3 level townhomes up to 1,800 SF",
+        "headline": "",
+        "description": "",
+        "cta": "",
+        "link": ""
+      },
+      "subPlacements": [
+        "Reel",
+        "Story"
+      ]
+    },
+    {
+      "id": "ad11",
+      "name": "Lead_EN_Video_Feb2026_General",
+      "type": "Video",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_HEC_Meta_Feed_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_Feed_Feb2026.mp4",
+      "copy": {
+        "primary": "Your best years start here in a 4 bed single family home with 2 primary suites.",
+        "headline": "Live by Centennial Beach",
+        "description": "Discover Southlands Tsawwassen",
+        "cta": "Sign Up",
+        "link": "discoversouthlands.ca"
+      },
+      "isVideo": true,
+      "videoUrl": ""
+    },
+    {
+      "id": "ad12",
+      "name": "Lead_EN_Video_Feb2026_StoryReel_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_HEC_Meta_StoryReel_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_StoryReel_Feb2026.mp4",
+      "copy": {
+        "primary": "Your forever home by Centennial Beach",
+        "headline": "",
+        "description": "",
+        "cta": "",
+        "link": ""
+      },
+      "isVideo": true,
+      "videoUrl": "",
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad13",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_HEC_Meta_Single_1_Feb2026.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_Single_1_Feb2026.png",
+      "copy": {
+        "primary": "Your best years start here at Harrow Estate Cottages. 4 bed single family homes featuring two primary suites including one on the main floor.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "Coastal Living at Southlands Tsawwassen",
+        "cta": "Sign Up",
+        "link": "discoversouthlands.ca"
+      }
+    },
+    {
+      "id": "ad14",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_HEC_Meta_Single_2_Feb2026.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_Single_2_Feb2026.png",
+      "copy": {
+        "primary": "Your best years start here at Harrow Estate Cottages. 4 bed single family homes featuring two primary suites including one on the main floor.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "Coastal Living at Southlands Tsawwassen",
+        "cta": "Sign Up",
+        "link": "discoversouthlands.ca"
+      }
+    },
+    {
+      "id": "ad15",
+      "name": "Lead_EN_SingleImage_Feb2026_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_HEC_Meta_Reel_Single_Feb2026.png",
+        "Southlands_HEC_Meta_Story_Single_Feb2026.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_Reel_Single_Feb2026.png",
+      "copy": {
+        "primary": "Your forever home by Centennial Beach",
+        "headline": "",
+        "description": "",
+        "cta": "",
+        "link": ""
+      },
+      "subPlacements": [
+        "Reel",
+        "Story"
+      ]
+    },
+    {
+      "id": "ad16",
+      "name": "Lead_EN_Carousel_Feb2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set1_Meta_Carousel_1_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_1_Feb2026.jpg",
+      "copy": {
+        "primary": "Life feels fuller when there\u2019s time for what matters most. Discover a community shaped by slower days and deeper connection.",
+        "headline": "Life in Tsawwassen",
+        "description": "Built for Life Together",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_1_Feb2026.jpg",
+          "headline": "Life in Tsawwassen",
+          "description": "Built for Life Together"
+        },
+        {
+          "imageUrl": "",
+          "headline": "The Ocean, Your Backyard",
+          "description": "A Generational Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Rooted in Farming and Food",
+          "description": "Freehold Townhomes and Cottages"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Visit the Discovery Centre",
+          "description": "Where Ownership Feels Right"
+        }
+      ]
+    },
+    {
+      "id": "ad17",
+      "name": "Lead_EN_Carousel_Feb2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set1_Meta_Carousel_2_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_2_Feb2026.jpg",
+      "copy": {
+        "primary": "Life feels fuller when there\u2019s time for what matters most. Discover a community shaped by slower days and deeper connection.",
+        "headline": "Life in Tsawwassen",
+        "description": "Built for Life Together",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_2_Feb2026.jpg",
+          "headline": "Life in Tsawwassen",
+          "description": "Built for Life Together"
+        },
+        {
+          "imageUrl": "",
+          "headline": "The Ocean, Your Backyard",
+          "description": "A Generational Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Rooted in Farming and Food",
+          "description": "Freehold Townhomes and Cottages"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Visit the Discovery Centre",
+          "description": "Where Ownership Feels Right"
+        }
+      ]
+    },
+    {
+      "id": "ad18",
+      "name": "Lead_EN_Carousel_Feb2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set1_Meta_Carousel_3_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_3_Feb2026.jpg",
+      "copy": {
+        "primary": "Life feels fuller when there\u2019s time for what matters most. Discover a community shaped by slower days and deeper connection.",
+        "headline": "Life in Tsawwassen",
+        "description": "Built for Life Together",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_3_Feb2026.jpg",
+          "headline": "Life in Tsawwassen",
+          "description": "Built for Life Together"
+        },
+        {
+          "imageUrl": "",
+          "headline": "The Ocean, Your Backyard",
+          "description": "A Generational Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Rooted in Farming and Food",
+          "description": "Freehold Townhomes and Cottages"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Visit the Discovery Centre",
+          "description": "Where Ownership Feels Right"
+        }
+      ]
+    },
+    {
+      "id": "ad19",
+      "name": "Lead_EN_Carousel_Feb2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set1_Meta_Carousel_4_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_4_Feb2026.jpg",
+      "copy": {
+        "primary": "Life feels fuller when there\u2019s time for what matters most. Discover a community shaped by slower days and deeper connection.",
+        "headline": "Life in Tsawwassen",
+        "description": "Built for Life Together",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Carousel_4_Feb2026.jpg",
+          "headline": "Life in Tsawwassen",
+          "description": "Built for Life Together"
+        },
+        {
+          "imageUrl": "",
+          "headline": "The Ocean, Your Backyard",
+          "description": "A Generational Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Rooted in Farming and Food",
+          "description": "Freehold Townhomes and Cottages"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Visit the Discovery Centre",
+          "description": "Where Ownership Feels Right"
+        }
+      ]
+    },
+    {
+      "id": "ad20",
+      "name": "Lead_EN_Video_Feb2026_General",
+      "type": "Video",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set1_Meta_Feed_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Feed_Feb2026.mp4",
+      "copy": {
+        "primary": "",
+        "headline": "",
+        "description": "",
+        "cta": "",
+        "link": ""
+      },
+      "isVideo": true,
+      "videoUrl": ""
+    },
+    {
+      "id": "ad21",
+      "name": "Lead_EN_Video_Feb2026_StoryReel_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_Set1_Meta_Reel_Feb2026.mp4",
+        "Southlands_Set1_Meta_Story_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Reel_Feb2026.mp4",
+      "copy": {
+        "primary": "",
+        "headline": "Register Now and Book a Private Viewing",
+        "description": "discoversouthlands.ca",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "isVideo": true,
+      "videoUrl": "",
+      "subPlacements": [
+        "Reel",
+        "Story"
+      ]
+    },
+    {
+      "id": "ad22",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set1_Meta_Single_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Single_Feb2026.jpg",
+      "copy": {
+        "primary": "Life feels fuller when there\u2019s time for what matters most. Discover a community shaped by slower days and deeper connection.",
+        "headline": "Life in Tsawwassen",
+        "description": "Built for Life Together",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      }
+    },
+    {
+      "id": "ad23",
+      "name": "Lead_EN_SingleImage_Feb2026_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_Set1_Meta_Reel_Single_Feb2026.jpg",
+        "Southlands_Set1_Meta_Story_Single_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Reel_Single_Feb2026.jpg",
+      "copy": {
+        "primary": "Life feels fuller when there\u2019s time for what matters most. Discover a community shaped by slower days and deeper connection.",
+        "headline": "Life in Tsawwassen",
+        "description": "Built for Life Together",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "subPlacements": [
+        "Reel",
+        "Story"
+      ]
+    },
+    {
+      "id": "ad24",
+      "name": "Lead_EN_Carousel_Feb2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set2_Meta_Carousel_1_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_1_Feb2026.jpg",
+      "copy": {
+        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "FORM ON FACEBOOK",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_1_Feb2026.jpg",
+          "headline": "Freehold Homes Now Selling",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Walk to Centennial Beach",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Visit Our Discovery Centre",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "",
+          "description": "FORM ON FACEBOOK"
+        }
+      ]
+    },
+    {
+      "id": "ad25",
+      "name": "Lead_EN_Carousel_Feb2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set2_Meta_Carousel_2_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_2_Feb2026.jpg",
+      "copy": {
+        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "FORM ON FACEBOOK",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_2_Feb2026.jpg",
+          "headline": "Freehold Homes Now Selling",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Walk to Centennial Beach",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Visit Our Discovery Centre",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "",
+          "description": "FORM ON FACEBOOK"
+        }
+      ]
+    },
+    {
+      "id": "ad26",
+      "name": "Lead_EN_Carousel_Feb2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set2_Meta_Carousel_3_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_3_Feb2026.jpg",
+      "copy": {
+        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "FORM ON FACEBOOK",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_3_Feb2026.jpg",
+          "headline": "Freehold Homes Now Selling",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Walk to Centennial Beach",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Visit Our Discovery Centre",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "",
+          "description": "FORM ON FACEBOOK"
+        }
+      ]
+    },
+    {
+      "id": "ad27",
+      "name": "Lead_EN_Carousel_Feb2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set2_Meta_Carousel_4_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_4_Feb2026.jpg",
+      "copy": {
+        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "FORM ON FACEBOOK",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_4_Feb2026.jpg",
+          "headline": "Freehold Homes Now Selling",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Walk to Centennial Beach",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Visit Our Discovery Centre",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "",
+          "description": "FORM ON FACEBOOK"
+        }
+      ]
+    },
+    {
+      "id": "ad28",
+      "name": "Lead_EN_Carousel_Feb2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set2_Meta_Carousel_5_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_5_Feb2026.jpg",
+      "copy": {
+        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "FORM ON FACEBOOK",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Carousel_5_Feb2026.jpg",
+          "headline": "Freehold Homes Now Selling",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Walk to Centennial Beach",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Visit Our Discovery Centre",
+          "description": "FORM ON FACEBOOK"
+        },
+        {
+          "imageUrl": "",
+          "headline": "",
+          "description": "FORM ON FACEBOOK"
+        }
+      ]
+    },
+    {
+      "id": "ad29",
+      "name": "Lead_EN_Video_Feb2026_General",
+      "type": "Video",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set2_Meta_Feed_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Feed_Feb2026.mp4",
+      "copy": {
+        "primary": "",
+        "headline": "COASTAL COMMUNIY",
+        "description": "",
+        "cta": "",
+        "link": ""
+      },
+      "isVideo": true,
+      "videoUrl": ""
+    },
+    {
+      "id": "ad30",
+      "name": "Lead_EN_Video_Feb2026_StoryReel_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_Set2_Meta_Reel_Feb2026.mp4",
+        "Southlands_Set2_Meta_Story_Feb2026.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Reel_Feb2026.mp4",
+      "copy": {
+        "primary": "",
+        "headline": "COASTAL COMMUNIY",
+        "description": "",
+        "cta": "",
+        "link": ""
+      },
+      "isVideo": true,
+      "videoUrl": "",
+      "subPlacements": [
+        "Reel",
+        "Story"
+      ]
+    },
+    {
+      "id": "ad31",
+      "name": "Lead_EN_SingleImage_Feb2026_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Southlands_Set2_Meta_Single_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Single_Feb2026.jpg",
+      "copy": {
+        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "FORM ON FACEBOOK",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      }
+    },
+    {
+      "id": "ad32",
+      "name": "Lead_EN_SingleImage_Feb2026_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Southlands_Set2_Meta_Reel_Single_Feb2026.jpg",
+        "Southlands_Set2_Meta_Story_Single_Feb2026.jpg"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Reel_Single_Feb2026.jpg",
+      "copy": {
+        "primary": "Discover life in a serene beach community offering spacious family-friendly 1 to 4-bedroom freehold homes. Located just 40 minutes from Downtown Vancouver.",
+        "headline": "Freehold Homes Now Selling",
+        "description": "FORM ON FACEBOOK",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK"
+      },
+      "subPlacements": [
+        "Reel",
+        "Story"
+      ]
+    }
+  ],
+  "googleAds": [
+    {
+      "filename": "Southlands_Set1_Google_1200x1200_1_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x1200",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Google_1200x1200_1_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set1_Google_1200x1200_2_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x1200",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Google_1200x1200_2_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set1_Google_1200x1200_3_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x1200",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Google_1200x1200_3_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set1_Google_1200x628_1_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Google_1200x628_1_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set1_Google_1200x628_2_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Google_1200x628_2_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set1_Google_1200x628_3_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Google_1200x628_3_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set2_Google_1200x1200_1_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x1200",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Google_1200x1200_1_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set2_Google_1200x1200_2_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x1200",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Google_1200x1200_2_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set2_Google_1200x1200_3_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x1200",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Google_1200x1200_3_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set2_Google_1200x628_1_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Google_1200x628_1_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set2_Google_1200x628_2_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Google_1200x628_2_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "Southlands_Set2_Google_1200x628_3_Feb2026.jpg",
+      "type": "Google",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Google_1200x628_3_Feb2026.jpg",
+      "isVideo": false,
+      "videoUrl": ""
+    }
+  ],
+  "googleCopy": {
+    "Search - OPTION 1": {
+      "groupName": "Search - OPTION 1",
+      "headlines": [
+        "Life in Tsawwassen",
+        "Home Ownership in Tsawwassen",
+        "More Time for What Matters",
+        "Built for Life Together",
+        "Freehold Townhomes & Cottages",
+        "A Community Shaped by Life",
+        "Designed for How You Live",
+        "Homes by the Beach",
+        "New Freehold Homes",
+        "Discover Southlands Tsawwassen",
+        "3 Bedroom Family Townhomes",
+        "4 Bedroom Cottages",
+        "A Generational Community",
+        "Coastal Community",
+        "Live by the Ocean"
+      ],
+      "descriptions": [
+        "Discover a coastal community shaped by slower days and deeper connection.",
+        "A place to unwind, gather, and savour everyday moments\u2014together.",
+        "Designed for unhurried days, shared meals, and a true sense of belonging.",
+        "Freehold townhomes and cottages in a thoughtfully planned Tsawwassen community."
+      ],
+      "link": "discoversouthlands.ca",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen - OPTION 1": {
+      "groupName": "Demand Gen - OPTION 1",
+      "headlines": [
+        "Discover Life at Southlands",
+        "Freehold Townhomes & Cottages",
+        "A Community Shaped by Life",
+        "A Generational Community",
+        "Built for Life Together"
+      ],
+      "descriptions": [
+        "Discover Southlands Tsawwassen, a community shaped by how people live.",
+        "A place to unwind, gather, and savour everyday moments\u2014together.",
+        "Freehold townhomes and cottages in a thoughtfully planned Tsawwassen community.",
+        "Designed for unhurried days, shared meals, and a true sense of belonging.",
+        "Where days stretch, routines soften and time finds its way back to the people who matter."
+      ],
+      "link": "discoversouthlands.ca",
+      "cta": "Sign Up",
+      "businessName": "Southlands Tsawwassen",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Search - OPTION 2": {
+      "groupName": "Search - OPTION 2",
+      "headlines": [
+        "Live at Southlands Tsawwassen",
+        "Vibrant Coastal Community",
+        "Life by Centennial Beach",
+        "Closer Than Expected",
+        "Freehold Homes by the Coast",
+        "Room to Breathe",
+        "Near the city. By the sea.",
+        "A Coastal Community",
+        "New Homes in Tsawwassen",
+        "Thoughtful Coastal Living",
+        "40 mins to Downtown Vancouver",
+        "Coastal Homes Now Selling",
+        "Life by the Water",
+        "Visit the Discovery Centre",
+        "Explore New Freehold Homes"
+      ],
+      "descriptions": [
+        "A beachside community in Tsawwassen, closer to Vancouver than you might expect.",
+        "Freehold townhomes & cottages in a thoughtfully planned coastal community.",
+        "Book a tour and experience this coastal community firsthand.",
+        "Townhomes and cottages that offer flexibility, ownership, and room to grow."
+      ],
+      "link": "discoversouthlands.ca",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen - OPTION 2": {
+      "groupName": "Demand Gen - OPTION 2",
+      "headlines": [
+        "A Coastal Way of Life",
+        "Closer Than Expected",
+        "Freehold Coastal Homes",
+        "Discover Southlands Tsawwassen",
+        "Visit the Discovery Centre"
+      ],
+      "descriptions": [
+        "Near the city. By the sea. A balance that finally makes sense.",
+        "A coastal community just 40 minutes from downtown Vancouver.",
+        "Book a tour and experience this coastal community firsthand.",
+        "Townhomes and cottages that offer flexibility, ownership, and room to grow.",
+        "Freehold townhomes & cottages in a thoughtfully planned coastal community."
+      ],
+      "link": "discoversouthlands.ca",
+      "cta": "Learn More",
+      "businessName": "Life by the Water",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Discovery - Carousel Ad": {
+      "groupName": "Discovery - Carousel Ad",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "Sign Up",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Search Callout Extension": {
+      "groupName": "Search Callout Extension",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [
+        "530 Acres Beach Community",
+        "Vibrant Market District",
+        "Single Family Cottages",
+        "Garden Condo Flats",
+        "Family-Size Townhomes",
+        "Harrow Estate Cottages",
+        "New Freehold Homes",
+        "Award-Winning Builder",
+        "Locally Owned & Operated"
+      ],
+      "amenities": []
+    },
+    "Structured Snippet Extension": {
+      "groupName": "Structured Snippet Extension",
+      "headlines": [],
+      "descriptions": [
+        "Live in a Vibrant Village.",
+        "A Short Walk to Centennial Beach."
+      ],
+      "link": "https://discoversouthlands.ca/market-district/",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": [],
+      "sitelinks": [
+        {
+          "title": "Community",
+          "desc1": "Live in a Vibrant Village.",
+          "desc2": "A Short Walk to Centennial Beach."
+        },
+        {
+          "title": "Centennial Green",
+          "desc1": "Live in a Vibrant Village.",
+          "desc2": "A Short Walk to Centennial Beach."
+        },
+        {
+          "title": "Bayside Mews Townhomes",
+          "desc1": "Live in a Vibrant Village.",
+          "desc2": "A Short Walk to Centennial Beach."
+        },
+        {
+          "title": "Harrow Estate Cottages",
+          "desc1": "Live in a Vibrant Village.",
+          "desc2": "A Short Walk to Centennial Beach."
+        },
+        {
+          "title": "Market District",
+          "desc1": "Live in a Vibrant Village.",
+          "desc2": "A Short Walk to Centennial Beach."
+        }
+      ]
+    }
+  },
+  "sources": {
+    "driveFolder": "",
+    "copySheet": "",
+    "clickupTask": null
+  },
+  "meta": {
+    "generatedAt": "2026-02-25T03:43:44.065511+00:00",
+    "generatedBy": "build_campaign.py",
+    "boardVersion": "1.0"
+  }
+}

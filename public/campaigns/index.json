@@ -22,5 +22,13 @@
     "client": "Magnum Projects",
     "date": "2026-03",
     "status": "active"
+  },
+  {
+    "slug": "southlands-feb2026",
+    "name": "PD_Southlands_Lead_EN",
+    "project": "Southlands",
+    "client": "Century Group",
+    "date": "2026-02",
+    "status": "active"
   }
 ]

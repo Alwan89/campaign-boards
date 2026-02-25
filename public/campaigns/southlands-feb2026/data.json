@@ -152,7 +152,7 @@
       "files": [
         "Southlands_BSM_Meta_Feed_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_Feed_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_Single_1_Feb2026.png",
       "copy": {
         "primary": "White picket fence dream townhome with private outdoor space you've been missing.",
         "headline": "Live by Centennial Beach",
@@ -172,7 +172,7 @@
       "files": [
         "Southlands_BSM_Meta_StoryReel_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_StoryReel_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_BSM_Meta_Single_1_Feb2026.png",
       "copy": {
         "primary": "Townhome living with plenty outdoor space.",
         "headline": "",
@@ -254,7 +254,7 @@
       "files": [
         "Southlands_CGN_Meta_Feed_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_Feed_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_Single_1_Feb2026.png",
       "copy": {
         "primary": "Large townhomes up to 1,800 SF across 3 levels with a penthouse primary suite.",
         "headline": "Live by Centennial Beach",
@@ -274,7 +274,7 @@
       "files": [
         "Southlands_CGN_Meta_StoryReel_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_StoryReel_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_CGN_Meta_Single_1_Feb2026.png",
       "copy": {
         "primary": "Spacious 3 level townhomes up to 1,800 SF",
         "headline": "",
@@ -356,7 +356,7 @@
       "files": [
         "Southlands_HEC_Meta_Feed_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_Feed_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_Single_1_Feb2026.png",
       "copy": {
         "primary": "Your best years start here in a 4 bed single family home with 2 primary suites.",
         "headline": "Live by Centennial Beach",
@@ -376,7 +376,7 @@
       "files": [
         "Southlands_HEC_Meta_StoryReel_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_StoryReel_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_HEC_Meta_Single_1_Feb2026.png",
       "copy": {
         "primary": "Your forever home by Centennial Beach",
         "headline": "",
@@ -501,7 +501,7 @@
       "files": [
         "Southlands_Set1_Meta_Feed_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Feed_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Single_Feb2026.jpg",
       "copy": {
         "primary": "",
         "headline": "",
@@ -522,7 +522,7 @@
         "Southlands_Set1_Meta_Reel_Feb2026.mp4",
         "Southlands_Set1_Meta_Story_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Reel_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set1_Meta_Single_Feb2026.jpg",
       "copy": {
         "primary": "",
         "headline": "Register Now and Book a Private Viewing",
@@ -636,7 +636,7 @@
       "files": [
         "Southlands_Set2_Meta_Feed_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Feed_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Single_Feb2026.jpg",
       "copy": {
         "primary": "",
         "headline": "COASTAL COMMUNIY",
@@ -657,7 +657,7 @@
         "Southlands_Set2_Meta_Reel_Feb2026.mp4",
         "Southlands_Set2_Meta_Story_Feb2026.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Reel_Feb2026.mp4",
+      "imageUrl": "/campaign-boards/campaigns/southlands-feb2026/assets/Southlands_Set2_Meta_Single_Feb2026.jpg",
       "copy": {
         "primary": "",
         "headline": "COASTAL COMMUNIY",
@@ -1010,7 +1010,7 @@
     "clickupTask": null
   },
   "meta": {
-    "generatedAt": "2026-02-25T04:30:22.899750+00:00",
+    "generatedAt": "2026-02-25T04:36:38.939407+00:00",
     "generatedBy": "build_campaign.py",
     "boardVersion": "1.0"
   }

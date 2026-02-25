@@ -381,6 +381,43 @@ def _get_video_url(fdata, filename, slug):
     return fdata.get("download_url", "")
 
 
+def _find_poster_image(video_group, file_map, ad_groups, slug):
+    """
+    Find a static image to use as video poster/thumbnail.
+
+    Strategy: look for a Single Image ad with the same concept base
+    (same project + sub-community prefix, without placement keywords).
+    """
+    concept_key = video_group["concept_key"]
+    # Strip the concept key to its base (remove trailing type identifiers)
+    base = concept_key
+
+    # Look for a matching Single Image group in ad_groups
+    for (ck, pl), group in ad_groups.items():
+        if pl != "Feed" or group["creative_type"] != "Single Image":
+            continue
+        # Check if concept keys share the same base prefix
+        # e.g., "southlands_bsm_meta_feb2026" matches "southlands_bsm_meta_single_1_feb2026"
+        if ck.startswith(base.replace("_feb", "_single_1_feb")) or \
+           ck.startswith(base.replace("_feb", "_single_feb")) or \
+           base in ck or ck in base:
+            poster_file = group["files"][0]
+            poster_fdata = file_map.get(poster_file["filename"], {})
+            return _get_image_url(poster_fdata, poster_file["filename"], slug)
+
+    # Fallback: look for any static image in file_map with similar name
+    base_parts = base.split("_")
+    for fname, fdata in file_map.items():
+        if fdata.get("is_video") or fdata.get("ext") in ("mp4", "mov"):
+            continue
+        fname_lower = fname.lower()
+        # Match if the first few concept parts appear in the filename
+        if len(base_parts) >= 3 and all(p in fname_lower for p in base_parts[:3]):
+            return _get_image_url(fdata, fname, slug)
+
+    return None
+
+
 def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_overrides=None):
     """
     Combine parsed copy + Drive file map + campaign config into data.json.
@@ -450,6 +487,14 @@ def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_ove
 
         ad_name = f"{obj_prefix}_{lang_upper}_{c_type_label}_{date_label}{placement_label}_{concept_label}"
 
+        # For video ads, find a static image for the poster/thumbnail
+        poster_url = _get_image_url(primary_fdata, primary_fname, slug)
+        if is_video:
+            # Look for a companion static image in file_map with a similar concept
+            poster_file = _find_poster_image(group, file_map, ad_groups, slug)
+            if poster_file:
+                poster_url = poster_file
+
         ad = {
             "id": f"ad{ad_counter}",
             "name": ad_name,
@@ -457,7 +502,7 @@ def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_ove
             "placement": placement,
             "concept": group["sub_community"],
             "files": [f["filename"] for f in group["files"]],
-            "imageUrl": _get_image_url(primary_fdata, primary_fname, slug),
+            "imageUrl": poster_url,
             "copy": ad_copy,
         }
 

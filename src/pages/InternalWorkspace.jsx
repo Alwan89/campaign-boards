@@ -196,19 +196,23 @@ export default function InternalWorkspace({
                           )
                         ) : (
                           <Fragment>
-                            {devicePreview ? (
-                              <DeviceFrame variant="story">
+                            {(!ad.subPlacements || ad.subPlacements.includes('Story')) && (
+                              devicePreview ? (
+                                <DeviceFrame variant="story">
+                                  <StoryCard ad={ad} adIndex={idx} isClient={false} />
+                                </DeviceFrame>
+                              ) : (
                                 <StoryCard ad={ad} adIndex={idx} isClient={false} />
-                              </DeviceFrame>
-                            ) : (
-                              <StoryCard ad={ad} adIndex={idx} isClient={false} />
+                              )
                             )}
-                            {devicePreview ? (
-                              <DeviceFrame variant="reel">
+                            {(!ad.subPlacements || ad.subPlacements.includes('Reel')) && (
+                              devicePreview ? (
+                                <DeviceFrame variant="reel">
+                                  <ReelCard ad={ad} adIndex={idx} isClient={false} />
+                                </DeviceFrame>
+                              ) : (
                                 <ReelCard ad={ad} adIndex={idx} isClient={false} />
-                              </DeviceFrame>
-                            ) : (
-                              <ReelCard ad={ad} adIndex={idx} isClient={false} />
+                              )
                             )}
                           </Fragment>
                         )}

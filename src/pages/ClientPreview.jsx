@@ -259,30 +259,38 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
                 <h2 className="client-slide__title">Stories, Status &amp; Reels</h2>
                 <div className="client-slide__preview">
                   <div className="placement-row">
-                    <div className="placement-col placement-col--story">
-                      <div className="placement-col__header">
-                        <InstagramIcon /> <span className="placement-col__name">Instagram Stories</span> <span className="placement-col__dots">···</span>
-                      </div>
-                      <StoryCard ad={ad} adIndex={idx} isClient />
-                    </div>
-                    <div className="placement-col placement-col--story">
-                      <div className="placement-col__header">
-                        <FacebookIcon /> <span className="placement-col__name">Facebook Stories</span> <span className="placement-col__dots">···</span>
-                      </div>
-                      <StoryCard ad={ad} adIndex={idx} isClient platform="facebook" />
-                    </div>
-                    <div className="placement-col placement-col--story">
-                      <div className="placement-col__header">
-                        <InstagramIcon /> <span className="placement-col__name">Instagram Reels</span> <span className="placement-col__dots">···</span>
-                      </div>
-                      <ReelCard ad={ad} adIndex={idx} isClient />
-                    </div>
-                    <div className="placement-col placement-col--story">
-                      <div className="placement-col__header">
-                        <FacebookIcon /> <span className="placement-col__name">Facebook Reels</span> <span className="placement-col__dots">···</span>
-                      </div>
-                      <ReelCard ad={ad} adIndex={idx} isClient platform="facebook" />
-                    </div>
+                    {(!ad.subPlacements || ad.subPlacements.includes('Story')) && (
+                      <>
+                        <div className="placement-col placement-col--story">
+                          <div className="placement-col__header">
+                            <InstagramIcon /> <span className="placement-col__name">Instagram Stories</span> <span className="placement-col__dots">···</span>
+                          </div>
+                          <StoryCard ad={ad} adIndex={idx} isClient />
+                        </div>
+                        <div className="placement-col placement-col--story">
+                          <div className="placement-col__header">
+                            <FacebookIcon /> <span className="placement-col__name">Facebook Stories</span> <span className="placement-col__dots">···</span>
+                          </div>
+                          <StoryCard ad={ad} adIndex={idx} isClient platform="facebook" />
+                        </div>
+                      </>
+                    )}
+                    {(!ad.subPlacements || ad.subPlacements.includes('Reel')) && (
+                      <>
+                        <div className="placement-col placement-col--story">
+                          <div className="placement-col__header">
+                            <InstagramIcon /> <span className="placement-col__name">Instagram Reels</span> <span className="placement-col__dots">···</span>
+                          </div>
+                          <ReelCard ad={ad} adIndex={idx} isClient />
+                        </div>
+                        <div className="placement-col placement-col--story">
+                          <div className="placement-col__header">
+                            <FacebookIcon /> <span className="placement-col__name">Facebook Reels</span> <span className="placement-col__dots">···</span>
+                          </div>
+                          <ReelCard ad={ad} adIndex={idx} isClient platform="facebook" />
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

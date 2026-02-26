@@ -197,14 +197,14 @@
 /* Scale feed cards down inside placement columns using zoom (layout-aware) */
 .placement-col--feed .fb-card,
 .placement-col--feed .ig-card{
-  zoom:0.54;
+  zoom:0.68;
 }
-/* Story/reel in placement row: render at native 360x640 then zoom to ~202x358.
+/* Story/reel in placement row: render at native 360x640 then zoom to ~252x448.
    This preserves exact safe zones, text proportions, and icon sizing. */
 .placement-col--story .story-card,
 .placement-col--story .reel-card{
   width:360px;height:640px;border-radius:12px;
-  zoom:0.56;
+  zoom:0.70;
 }
 
 /* Info banner at top of placement slides */
@@ -233,9 +233,9 @@
   .client-slide .story-card,
   .client-slide .reel-card{width:260px;height:462px}
   .placement-col--feed .fb-card,
-  .placement-col--feed .ig-card{zoom:0.44}
+  .placement-col--feed .ig-card{zoom:0.54}
   .placement-col--story .story-card,
-  .placement-col--story .reel-card{width:360px;height:640px;zoom:0.44}
+  .placement-col--story .reel-card{width:360px;height:640px;zoom:0.56}
 }
 @media(max-width:640px){
   .client-deck{flex-direction:column}

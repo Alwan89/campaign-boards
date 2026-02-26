@@ -18,7 +18,7 @@
       "name": "Lead_en_Broad_Feed",
       "tier": "Broad",
       "placement": "Feed",
-      "targeting": "Location only — Advantage+ ON",
+      "targeting": "Location only \u2014 Advantage+ ON",
       "ads": ["ad1", "ad2", "ad3"]
     },
     {
@@ -26,7 +26,7 @@
       "name": "Lead_en_Broad_StoryReel",
       "tier": "Broad",
       "placement": "StoryReel",
-      "targeting": "Location only — Advantage+ ON",
+      "targeting": "Location only \u2014 Advantage+ ON",
       "ads": ["ad4", "ad5"]
     },
     {
@@ -34,7 +34,7 @@
       "name": "Lead_en_Interest_Feed",
       "tier": "Interest",
       "placement": "Feed",
-      "targeting": "Combined audience — real estate interests",
+      "targeting": "Combined audience \u2014 real estate interests",
       "ads": ["ad1", "ad2", "ad3"]
     },
     {
@@ -42,7 +42,7 @@
       "name": "Lead_en_Interest_StoryReel",
       "tier": "Interest",
       "placement": "StoryReel",
-      "targeting": "Combined audience — real estate interests",
+      "targeting": "Combined audience \u2014 real estate interests",
       "ads": ["ad4", "ad5"]
     },
     {
@@ -73,9 +73,9 @@
       "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
       "isVideo": false,
       "copy": {
-        "primary": "Live at W45\u2014move-in ready garden flats, townhomes and duplexes close to Oakridge Park. Explore this serene tree-lined Westside retreat minutes to Canada Line SkyTrain, with 100+ global brands and lifestyle amenities at your doorstep. Register Now.",
-        "headline": "Homes from $894,900",
-        "description": "Proximity to Oakridge Park",
+        "primary": "Live at W45th\u2014move-in ready garden flats, townhomes and duplexes steps to Oakridge Park. Tucked into a tree-lined residential street, just minutes to Canada Line SkyTrain, with 100+ global brands, eateries, and lifestyle amenities at your doorstep. Register Now.",
+        "headline": "Homes from $689,900",
+        "description": "Steps to the New Oakridge",
         "cta": "Sign Up",
         "link": "https://w45oakridge.ca"
       }
@@ -92,23 +92,23 @@
       "carouselCards": [
         {
           "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card1.jpg",
-          "headline": "Homes from $894,900",
+          "headline": "Homes from $689,900",
           "description": "100+ Global Retailers"
         },
         {
           "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card2.jpg",
-          "headline": "Proximity to Oakridge Park",
+          "headline": "Steps to the New Oakridge",
           "description": "Vancouver\u2019s Newest Luxury & Lifestyle Hub"
         },
         {
           "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card3.jpg",
-          "headline": "Life Grows in Oakridge",
-          "description": "Crafted for Elevated Living"
+          "headline": "Integrated Appliances & A/C Included",
+          "description": "Next to the Upcoming Time Out Food Market"
         }
       ],
       "copy": {
-        "primary": "Live at W45\u2014move-in ready garden flats, townhomes and duplexes close to Oakridge Park. Explore this serene tree-lined Westside retreat minutes to Canada Line SkyTrain, with 100+ global brands and lifestyle amenities at your doorstep. Register Now.",
-        "headline": "Homes from $894,900",
+        "primary": "Live at W45th\u2014move-in ready garden flats, townhomes and duplexes steps to Oakridge Park. Tucked into a tree-lined residential street, just minutes to Canada Line SkyTrain, with 100+ global brands, eateries, and lifestyle amenities at your doorstep. Register Now.",
+        "headline": "Homes from $689,900",
         "description": "100+ Global Retailers",
         "cta": "Sign Up",
         "link": "https://w45oakridge.ca"
@@ -125,9 +125,9 @@
       "videoUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Video_Square.mp4",
       "isVideo": true,
       "copy": {
-        "primary": "Live at W45\u2014move-in ready garden flats, townhomes and duplexes close to Oakridge Park. Explore this serene tree-lined Westside retreat minutes to Canada Line SkyTrain, with 100+ global brands and lifestyle amenities at your doorstep. Register Now.",
-        "headline": "Homes from $894,900",
-        "description": "Proximity to Oakridge Park",
+        "primary": "Live at W45th\u2014move-in ready garden flats, townhomes and duplexes steps to Oakridge Park. Tucked into a tree-lined residential street, just minutes to Canada Line SkyTrain, with 100+ global brands, eateries, and lifestyle amenities at your doorstep. Register Now.",
+        "headline": "Homes from $689,900",
+        "description": "Steps to the New Oakridge",
         "cta": "Sign Up",
         "link": "https://w45oakridge.ca"
       }
@@ -142,9 +142,9 @@
       "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_StoryReel_1080x1920.jpg",
       "isVideo": false,
       "copy": {
-        "primary": "Live at W45\u2014move-in ready garden flats, townhomes and duplexes close to Oakridge Park. Explore this serene tree-lined Westside retreat minutes to Canada Line SkyTrain, with 100+ global brands and lifestyle amenities at your doorstep. Register Now.",
-        "headline": "Homes from $894,900",
-        "description": "Proximity to Oakridge Park",
+        "primary": "Live at W45th\u2014move-in ready garden flats, townhomes and duplexes steps to Oakridge Park. Tucked into a tree-lined residential street, just minutes to Canada Line SkyTrain, with 100+ global brands, eateries, and lifestyle amenities at your doorstep. Register Now.",
+        "headline": "Homes from $689,900",
+        "description": "Steps to the New Oakridge",
         "cta": "Sign Up",
         "link": "https://w45oakridge.ca"
       },
@@ -161,9 +161,9 @@
       "videoUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Video_Landscape.mp4",
       "isVideo": true,
       "copy": {
-        "primary": "Live at W45\u2014move-in ready garden flats, townhomes and duplexes close to Oakridge Park. Explore this serene tree-lined Westside retreat minutes to Canada Line SkyTrain, with 100+ global brands and lifestyle amenities at your doorstep. Register Now.",
-        "headline": "Homes from $894,900",
-        "description": "Proximity to Oakridge Park",
+        "primary": "Live at W45th\u2014move-in ready garden flats, townhomes and duplexes steps to Oakridge Park. Tucked into a tree-lined residential street, just minutes to Canada Line SkyTrain, with 100+ global brands, eateries, and lifestyle amenities at your doorstep. Register Now.",
+        "headline": "Homes from $689,900",
+        "description": "Steps to the New Oakridge",
         "cta": "Sign Up",
         "link": "https://w45oakridge.ca"
       },
@@ -232,27 +232,27 @@
     "Search \u2013 Responsive Ad": {
       "groupName": "Search \u2013 Responsive Ad",
       "headlines": [
-        "W45th at Oakridge",
+        "W45th at Oakridge Town Centre",
         "A Westside Retreat",
         "Tree-Lined and Serene",
         "Life Grows in Oakridge",
         "Move-in Ready Homes",
         "Garden Flats & Townhomes",
         "Duplexes at Oakridge",
-        "Homes from $894,900",
-        "Steps from Oakridge Park",
+        "Homes from $689,900",
+        "Steps to the New Oakridge",
         "Register Now",
-        "9ft Ceilings & Oak Floors",
+        "A/C in Every Home",
         "Fisher & Paykel Appliances",
         "Near Eric Hamber Secondary",
-        "On the Canada Line",
+        "Steps to Oakridge SkyTrain",
         "50+ Dining Destinations"
       ],
       "descriptions": [
         "Across from Oakridge Park\u2013100+ brands, dining, wellness amenities & a 9-acre rooftop park.",
-        "On a tree-lined street, steps from Oakridge\u2013Vancouver\u02bcs global luxury & lifestyle hub.",
-        "Move-in ready garden flats, townhomes & duplexes with premium appliances, A/C & finishes.",
-        "Calm living meets urban convenience with world-class shopping and dining at your doorstep."
+        "On a tree-lined street, steps to new Oakridge\u2013Vancouver\u02bcs global luxury & lifestyle hub.",
+        "Move-in ready garden flats, townhomes & duplexes with integrated appliances & A/C.",
+        "Serene living meets urban convenience with world-class shopping & dining at your doorstep."
       ],
       "link": "https://w45oakridge.ca",
       "cta": "",
@@ -265,17 +265,17 @@
     "Demand Gen \u2013 Single Image Ad": {
       "groupName": "Demand Gen \u2013 Single Image Ad",
       "headlines": [
-        "A Westside Retreat",
-        "Homes from $894,900",
-        "Life Grows in Oakridge",
+        "A Westside Retreat. Serene & Tree-Lined.",
+        "Homes from $689,900",
+        "Steps to Oakridge SkyTrain",
         "Move-in Ready Homes at Oakridge",
-        "Designed for Everyday Luxury"
+        "Garden Flats, Townhomes, & Duplexes"
       ],
       "descriptions": [
         "Across from Oakridge Park\u2013100+ brands, dining, wellness amenities & a 9-acre rooftop park.",
-        "On a tree-lined street, steps from Oakridge\u2013Vancouver\u02bcs global luxury & lifestyle hub.",
-        "Move-in ready garden flats, townhomes & duplexes with premium appliances, A/C & finishes.",
-        "Calm living meets urban convenience with world-class shopping and dining at your doorstep.",
+        "On a tree-lined street, steps to new Oakridge\u2013Vancouver\u02bcs global luxury & lifestyle hub.",
+        "Move-in ready garden flats, townhomes & duplexes with integrated appliances & A/C.",
+        "Serene living meets urban convenience with world-class shopping & dining at your doorstep.",
         "Steps to reimagined Oakridge Park\u2013civic centre, library, Time Out Market, daycare & more."
       ],
       "link": "https://w45oakridge.ca",
@@ -315,10 +315,10 @@
       "callouts": [
         "Move-in Ready Homes",
         "Garden Flats & Townhomes",
-        "Steps from Oakridge Park",
-        "A New Global Centre",
-        "Minutes to Canada Line",
-        "Serene Westside Living"
+        "Duplexes at Oakridge",
+        "Steps to the New Oakridge",
+        "Minutes to SkyTrain",
+        "On a Quiet Street"
       ],
       "amenities": []
     },
@@ -333,36 +333,36 @@
       "mainDescription": "",
       "callouts": [],
       "amenities": [
-        "9-Acre Public Park",
+        "Future 9-Acre Public Park",
         "50+ Chef-Driven Eateries",
         "Top Schools & Education",
-        "Oakridge Park Retail",
-        "Near Cambie Street",
+        "Reimagined Oakridge Park",
+        "New Time Out Food Market",
         "100+ Global Brands"
       ],
       "sitelinks": [
         {
           "title": "Interiors",
-          "desc1": "Fisher & Paykel Appliances.",
-          "desc2": "with 9ft Ceilings & A/C.",
+          "desc1": "Fisher & Paykel Appliances",
+          "desc2": "Integrated Appliances & A/C",
           "link": "https://w45oakridge.ca/interiors"
         },
         {
           "title": "Location",
-          "desc1": "Steps from Oakridge Park.",
-          "desc2": "On the Canada Line.",
+          "desc1": "Steps to the New Oakridge",
+          "desc2": "Minutes to Oakridge SkyTrain",
           "link": "https://w45oakridge.ca/location"
         },
         {
           "title": "Register Now",
-          "desc1": "Move-in Ready Homes",
-          "desc2": "on Vancouver\u2019s Westside.",
+          "desc1": "Move-in Ready Homes at Oakridge",
+          "desc2": "Garden Flats, Townhomes, & Duplexes",
           "link": "https://w45oakridge.ca/register"
         },
         {
-          "title": "W45th Oakridge",
-          "desc1": "Steps from Vancouver\u2019s Newest",
-          "desc2": "Global Luxury & Lifestyle Hub.",
+          "title": "W45th at Oakridge",
+          "desc1": "On a Quiet, Tree-Lined Street",
+          "desc2": "Homes from $689,900",
           "link": "https://w45oakridge.ca"
         }
       ]
@@ -370,12 +370,12 @@
   },
   "sources": {
     "driveFolder": "Magnum - W45 Oakridge",
-    "copySheet": "W45 at Oakridge Digital Ad Copy (Internal Use_View Only) (1).xlsx",
+    "copySheet": "W45 at Oakridge Digital Ad Copy (Internal Use_View Only).xlsx",
     "clickupTask": null
   },
   "meta": {
-    "generatedAt": "2026-02-25T12:00:00.000000+00:00",
+    "generatedAt": "2026-02-25T16:00:00.000000+00:00",
     "generatedBy": "claude-cowork",
-    "boardVersion": "1.1"
+    "boardVersion": "1.2"
   }
 }

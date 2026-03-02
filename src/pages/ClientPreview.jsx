@@ -64,7 +64,7 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
     slides.push({
       id: ad.id,
       section: 'Social Ads',
-      label: ad.type === 'Carousel' ? 'Carousel' : `Single Image`,
+      label: ad.type === 'Carousel' ? 'Carousel' : ad.isVideo ? 'Video' : 'Single Image',
       sublabel: ad.name,
       placement: 'Feed',
       type: 'feed',
@@ -219,7 +219,7 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
                 </div>
                 <div className="client-slide__rule" />
                 <h2 className="client-slide__title">
-                  {ad.type === 'Carousel' ? 'Carousel' : 'Feed Placements'}
+                  {ad.type === 'Carousel' ? 'Carousel' : ad.isVideo ? 'Video' : 'Feed Placements'}
                 </h2>
                 <div className="client-slide__preview">
                   <div className="placement-row">

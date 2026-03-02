@@ -37,9 +37,12 @@ tools/campaign-boards/
 │   └── main.jsx                  # Entry point + router
 ├── public/
 │   └── campaigns/
-│       └── senakw-feb2026/       # Example campaign
-│           ├── data.json         # Campaign data (ads, copy, assets)
-│           └── assets/           # Creative images + hero bg
+│       ├── senakw-feb2026/       # Seńáḵw campaign
+│       │   ├── data.json         # Campaign data (ads, copy, assets)
+│       │   └── assets/           # Creative images + hero bg
+│       └── w45-mar2026/          # W45th at Oakridge campaign
+│           ├── data.json
+│           └── assets/
 ├── scripts/
 │   ├── build_campaign.py         # CLI: Sheet + Drive → data.json
 │   ├── sheets_reader.py          # Parse Google Sheets / .xlsx ad copy
@@ -57,7 +60,7 @@ tools/campaign-boards/
 - Title slide with hero background image + gradient overlay
 - Each ad gets a full-width slide with multi-placement row (e.g. Facebook Feed + Instagram Feed side by side)
 - Placement column headers with platform icons (Facebook/Instagram)
-- Feed cards scaled via `zoom: 0.54`, Story/Reel cards rendered at 360x640 then `zoom: 0.56`
+- Feed cards scaled via `zoom: 0.68`, Story/Reel cards rendered at 360x640 then `zoom: 0.62`
 - TOC sidebar: sections grouped by "Social Ads" / "Google Ads", active slide tracking via IntersectionObserver
 - Footer: "periphery | Project Name | Ad Preview"
 - No device frames, no internal controls
@@ -82,9 +85,11 @@ tools/campaign-boards/
 - Internal bar: ad name, type, file count, concept (hidden in client view via `isClient` prop)
 
 **InstagramFeedCard** — Instagram feed ad variant
-- IG-specific header with avatar + page name + "Sponsored" + ellipsis
+- IG-specific header with avatar + username (handle derived from pageName) + "Ad" badge + ellipsis
+- Carousel support: prev/next arrows + dot indicators for multi-card ads
 - Heart/comment/share/bookmark action icons below creative
-- "View all X comments" link
+- CTA row shows card headline (carousel) or CTA button text (single)
+- Caption: username + primary text truncated at 60 chars
 - Uses same `campaign.pageAvatar` / `campaign.pageName` as FeedCard
 
 **StoryCard** (360x640, 9:16 ratio) — supports `platform` prop ("facebook" | "instagram")
@@ -144,7 +149,7 @@ tools/campaign-boards/
     }
   ],
   "googleAds": [
-    { "filename": "...", "type": "Search|Demand Gen|Logo", "dimensions": "1200x1200|1200x628|", "imageUrl": "...", "isVideo": false }
+    { "filename": "...", "type": "Search|Search Image Extension|Demand Gen|Logo", "dimensions": "1200x1200|1200x628|500x500|", "imageUrl": "...", "isVideo": false }
   ],
   "googleCopy": {
     "Search – Responsive Ad": { "headlines": [...], "descriptions": [...], "link": "..." },
@@ -192,18 +197,36 @@ tools/campaign-boards/
 - Instead, its `imageUrl` is passed as `logoUrl` to `DemandGenCard` components
 - Used as the circular advertiser avatar in all Demand Gen card variants
 
+### Search Image Extension
+- `"Search Image Extension"` type in `googleAds` is preferred over `"Search"` for the SERP image
+- `ClientPreview.jsx` looks for `Search Image Extension` first, falls back to `Search`
+- Typically a square image (e.g. 500x500) shown on the right side of the search ad
+
 ### SERP Toggle
 - `SearchAdCard` has internal `useState` for `desktop`/`mobile` mode
 - Desktop: browser chrome wrapper (`.browser-mockup` class)
 - Mobile: phone-style frame with status bar, 360px wide
 
-## Ad Copy Source
+## Ad Copy Sources
 
-The ad copy sheet is at:
+**IMPORTANT:** Always source copy from the **Deliverables/** folder, not the Inbox/ folder. Inbox files may be stale imports from the client.
+
+### Seńáḵw
 ```
-/Users/alexwan/Library/CloudStorage/GoogleDrive-alex.wan@peripherydigital.com/Shared drives/Clients/Claude Cowork Shared Drive [TEST]/Senakw/Deliverables/Senakw Digital Ad Copy (Internal Use_View Only).xlsx
+.../Claude Cowork Shared Drive [TEST]/Senakw/Deliverables/Senakw Digital Ad Copy (Internal Use_View Only).xlsx
 ```
-Current copy version: **March 2026** (sheet tab: "March 2026")
+Sheet tab: "March 2026"
+
+### W45th at Oakridge (Magnum Projects)
+```
+.../Claude Cowork Shared Drive [TEST]/Magnum - W45 Oakridge/Deliverables/W45 at Oakridge Digital Ad Copy (Internal Use_View Only).xlsx
+```
+Sheet tab: "March 2026" — single English column (column B). No DNU/version B columns.
+
+Creative assets folder:
+```
+.../Magnum - W45 Oakridge/Inbox/Creatives/February 24, 2026 - George Revisions 2/
+```
 
 ## Python Pipeline
 
@@ -262,8 +285,16 @@ Styles are split across multiple files:
 - `.story-card` / `.reel-card` — 360x640 story/reel containers
 - `.browser-mockup` — Desktop SERP browser chrome wrapper
 
+## Active Campaigns
+
+| Campaign | Slug | Client | Live URL |
+|----------|------|--------|----------|
+| Seńáḵw | `senakw-feb2026` | Seńáḵw | `alwan89.github.io/campaign-boards/#/senakw-feb2026` |
+| W45th at Oakridge | `w45-mar2026` | Magnum Projects | `alwan89.github.io/campaign-boards/#/w45-mar2026` |
+
 ## Deployment
 - GitHub repo: `github.com/Alwan89/campaign-boards`
 - GitHub Pages: `alwan89.github.io/campaign-boards/`
-- Client preview URL: `alwan89.github.io/campaign-boards/#/senakw-feb2026?view=client`
+- URL pattern: `alwan89.github.io/campaign-boards/#/<slug>`
+- Client view: append `?view=client` to URL
 - Vite base path: `/campaign-boards/`

@@ -1,0 +1,388 @@
+{
+  "campaign": {
+    "name": "PD_W42_Lead_EN",
+    "project": "West 42",
+    "developer": "Marcon",
+    "objective": "Lead Generation",
+    "budget": "",
+    "languages": ["EN"],
+    "housing_category": true,
+    "landing_page": "https://west42.ca",
+    "pageName": "Mera",
+    "pageAvatar": "/campaign-boards/campaigns/w42-mar2026/assets/W42logo.png"
+  },
+  "adSets": [
+    {
+      "id": "as1",
+      "name": "Lead_EN_Broad_Feed",
+      "tier": "Broad",
+      "placement": "Feed",
+      "targeting": "Location only — Advantage+ ON",
+      "ads": ["ad1", "ad2", "ad3", "ad4", "ad5", "ad6"]
+    },
+    {
+      "id": "as2",
+      "name": "Lead_EN_Broad_StoryReel",
+      "tier": "Broad",
+      "placement": "StoryReel",
+      "targeting": "Location only — Advantage+ ON",
+      "ads": ["ad7", "ad8", "ad9", "ad10", "ad11", "ad12"]
+    },
+    {
+      "id": "as3",
+      "name": "Lead_EN_Interest_Feed",
+      "tier": "Interest",
+      "placement": "Feed",
+      "targeting": "Combined audience — all interests",
+      "ads": ["ad1", "ad2", "ad3", "ad4", "ad5", "ad6"]
+    },
+    {
+      "id": "as4",
+      "name": "Lead_EN_Interest_StoryReel",
+      "tier": "Interest",
+      "placement": "StoryReel",
+      "targeting": "Combined audience — all interests",
+      "ads": ["ad7", "ad8", "ad9", "ad10", "ad11", "ad12"]
+    },
+    {
+      "id": "as5",
+      "name": "Lead_EN_Retargeting_Feed",
+      "tier": "Retargeting",
+      "placement": "Feed",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": ["ad1", "ad2", "ad3", "ad4", "ad5", "ad6"]
+    },
+    {
+      "id": "as6",
+      "name": "Lead_EN_Retargeting_StoryReel",
+      "tier": "Retargeting",
+      "placement": "StoryReel",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": ["ad7", "ad8", "ad9", "ad10", "ad11", "ad12"]
+    }
+  ],
+  "ads": [
+    {
+      "id": "ad1",
+      "name": "Lead_EN_SingleImage_Mar2026_1",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": ["1x1_2.png"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
+      "isVideo": false,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease, For a Limited Time.",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      }
+    },
+    {
+      "id": "ad2",
+      "name": "Lead_EN_SingleImage_Mar2026_2",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": ["1x1_3.png"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_3.png",
+      "isVideo": false,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease, For a Limited Time.",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      }
+    },
+    {
+      "id": "ad3",
+      "name": "Lead_EN_SingleImage_Mar2026_3",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": ["1x1_4.png"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_4.png",
+      "isVideo": false,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease, For a Limited Time.",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      }
+    },
+    {
+      "id": "ad4",
+      "name": "Lead_EN_Carousel_Mar2026_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": ["1x1_2.png", "1x1_3.png", "1x1_4.png"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
+      "isVideo": false,
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
+          "headline": "2 Months Free Rent on a 15 Month Lease, For a Limited Time",
+          "description": "On the Park in Oakridge"
+        },
+        {
+          "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_3.png",
+          "headline": "Brand New Rentals in Oakridge",
+          "description": "Move-In Ready"
+        },
+        {
+          "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_4.png",
+          "headline": "Mountain and Water Views",
+          "description": "5-Minute Walk to the SkyTrain"
+        }
+      ],
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease, For a Limited Time",
+        "description": "On the Park in Oakridge",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      }
+    },
+    {
+      "id": "ad5",
+      "name": "Lead_EN_Video_Mar2026_Feed_Opening",
+      "type": "Video",
+      "placement": "Feed",
+      "concept": "General",
+      "files": ["W42opening_1x1.mp4"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
+      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42opening_1x1.mp4",
+      "isVideo": true,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      }
+    },
+    {
+      "id": "ad6",
+      "name": "Lead_EN_Video_Mar2026_Feed_End",
+      "type": "Video",
+      "placement": "Feed",
+      "concept": "General",
+      "files": ["W42end_1x1.mp4"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_3.png",
+      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42end_1x1.mp4",
+      "isVideo": true,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      }
+    },
+    {
+      "id": "ad7",
+      "name": "Lead_EN_SingleImage_Mar2026_Story_1",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": ["story 2.png"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 2.png",
+      "isVideo": false,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease, For a Limited Time.",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      },
+      "subPlacements": ["Story"]
+    },
+    {
+      "id": "ad8",
+      "name": "Lead_EN_SingleImage_Mar2026_Story_2",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": ["story 3.png"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 3.png",
+      "isVideo": false,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease, For a Limited Time.",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      },
+      "subPlacements": ["Story"]
+    },
+    {
+      "id": "ad9",
+      "name": "Lead_EN_SingleImage_Mar2026_Story_3",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": ["story4.png"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story4.png",
+      "isVideo": false,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease, For a Limited Time.",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      },
+      "subPlacements": ["Story"]
+    },
+    {
+      "id": "ad10",
+      "name": "Lead_EN_Video_Mar2026_Story_Opening",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": ["W42opening_9x16.mp4"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 2.png",
+      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42opening_9x16.mp4",
+      "isVideo": true,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      },
+      "subPlacements": ["Story"]
+    },
+    {
+      "id": "ad11",
+      "name": "Lead_EN_Video_Mar2026_Story_End",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": ["W42end_9x16.mp4"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 3.png",
+      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42end_9x16.mp4",
+      "isVideo": true,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      },
+      "subPlacements": ["Story"]
+    },
+    {
+      "id": "ad12",
+      "name": "Lead_EN_Video_Mar2026_Reel",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": ["W42reel.mp4"],
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 2.png",
+      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42reel.mp4",
+      "isVideo": true,
+      "copy": {
+        "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
+        "headline": "2 Months Free Rent on a 15 Month Lease",
+        "description": "Pet-Friendly. Unfurnished & Furnished. Flexible Lease Terms.",
+        "cta": "Learn More",
+        "link": "https://west42.ca"
+      },
+      "subPlacements": ["Reel"]
+    }
+  ],
+  "googleAds": [
+    {
+      "filename": "google_single_image.png",
+      "type": "Demand Gen",
+      "dimensions": "",
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/google_single_image.png",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "google_carousel_1.png",
+      "type": "Demand Gen",
+      "dimensions": "",
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/google_carousel_1.png",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "google_carousel_2.png",
+      "type": "Demand Gen",
+      "dimensions": "",
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/google_carousel_2.png",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "google_carousel_3.png",
+      "type": "Demand Gen",
+      "dimensions": "",
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/google_carousel_3.png",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "W42logo.png",
+      "type": "Logo",
+      "dimensions": "",
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42logo.png",
+      "isVideo": false,
+      "videoUrl": ""
+    }
+  ],
+  "googleCopy": {
+    "Search - Responsive Ad": {
+      "groupName": "Search - Responsive Ad",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen - Single Image Ad": {
+      "groupName": "Demand Gen - Single Image Ad",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen - Carousel Ad": {
+      "groupName": "Demand Gen - Carousel Ad",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    }
+  },
+  "sources": {
+    "driveFolder": "https://drive.google.com/drive/folders/176WowwtEorGp6-Zx8bFUHDwdd7kFe0Fa",
+    "copySheet": "https://docs.google.com/spreadsheets/d/19fO8URiOu3BqujKRqqr1hEddokIMFksY",
+    "clickupTask": null
+  },
+  "meta": {
+    "generatedAt": "2026-02-28T01:00:00.000000+00:00",
+    "generatedBy": "claude-cowork",
+    "boardVersion": "1.0"
+  }
+}

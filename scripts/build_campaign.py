@@ -69,16 +69,60 @@ def update_index(campaigns_dir, slug, campaign_config):
     return index_path
 
 
+def _infer_hints_from_path(rel_path):
+    """
+    Infer platform and placement hints from subfolder names in the relative path.
+
+    Recognized folder name patterns:
+      Platform: Google, Meta, Meta-Social, Facebook, Instagram
+      Placement: Feed, Story/Stories, Reel/Reels, Carousel (→ Feed)
+      Special: Logo (→ platform=Google)
+    """
+    parts = [p.lower().replace("-", "").replace("_", "") for p in rel_path.split(os.sep)]
+
+    platform = ""
+    placement = ""
+
+    for part in parts:
+        # Platform detection
+        if part in ("google",):
+            platform = "Google"
+        elif part in ("meta", "metasocial", "facebook", "instagram"):
+            platform = "Meta"
+        # Placement detection
+        if part in ("feed",):
+            placement = "Feed"
+        elif part in ("story", "stories"):
+            placement = "StoryReel"
+        elif part in ("reel", "reels"):
+            placement = "StoryReel"
+        elif part in ("carousel", "carousel1x1"):
+            placement = "Feed"
+        elif part in ("logo",):
+            platform = "Google"
+
+    return {"platform": platform, "placement": placement}
+
+
 def build_local_file_map(folder_path):
     """
-    Recursively scan a local folder for creative assets and return a file_map.
+    Recursively scan a local folder for creative assets and return a file_map
+    plus folder-based hints for each file.
 
     Same format as drive_scanner.build_file_id_map() but for local files.
     Walks all subdirectories to find assets in nested folder structures.
+
+    Returns:
+        tuple of (file_map, file_map_hints) where file_map_hints maps each
+        filename to {platform, placement} inferred from its subfolder path.
     """
     file_map = {}
+    file_map_hints = {}
 
     for dirpath, _dirnames, filenames in os.walk(folder_path):
+        rel_dir = os.path.relpath(dirpath, folder_path)
+        hints = _infer_hints_from_path(rel_dir) if rel_dir != "." else {}
+
         for filename in sorted(filenames):
             ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
             if ext not in ALL_CREATIVE_EXTS:
@@ -86,8 +130,7 @@ def build_local_file_map(folder_path):
 
             # If duplicate filename exists in a different subfolder, prefix with subfolder name
             if filename in file_map:
-                rel = os.path.relpath(dirpath, folder_path)
-                unique_name = rel.replace(os.sep, "_") + "_" + filename
+                unique_name = rel_dir.replace(os.sep, "_") + "_" + filename
             else:
                 unique_name = filename
 
@@ -99,7 +142,10 @@ def build_local_file_map(folder_path):
                 "ext": ext,
             }
 
-    return file_map
+            if hints:
+                file_map_hints[unique_name] = hints
+
+    return file_map, file_map_hints
 
 
 def copy_local_assets(file_map, assets_dir):
@@ -196,10 +242,11 @@ def main():
         print(f"     • {g}")
 
     # --- Step 2: Scan for creative assets ---
+    file_map_hints = None
     if use_local_assets:
         print(f"\n📁 Scanning local folder: {args.creative_folder}")
         try:
-            file_map = build_local_file_map(args.creative_folder)
+            file_map, file_map_hints = build_local_file_map(args.creative_folder)
         except Exception as e:
             print(f"\n❌ Failed to scan folder: {e}")
             sys.exit(1)
@@ -215,6 +262,8 @@ def main():
     images = [f for f, d in file_map.items() if not d["is_video"]]
     videos = [f for f, d in file_map.items() if d["is_video"]]
     print(f"   Files found: {len(file_map)} ({len(images)} images, {len(videos)} videos)")
+    if file_map_hints:
+        print(f"   Folder hints: {len(file_map_hints)} files with subfolder-based metadata")
 
     # --- Step 2b: Copy/download assets locally ---
     campaigns_dir = get_output_dir()
@@ -262,7 +311,8 @@ def main():
         print(f"   Using {len(overrides)} match override(s)")
 
     data, report = assemble(copy_data, file_map, campaign_config,
-                            lang=args.lang, slug=args.slug, match_overrides=overrides)
+                            lang=args.lang, slug=args.slug, match_overrides=overrides,
+                            file_map_hints=file_map_hints)
 
     # --- Step 4: Report ---
     print(f"\n📊 Summary:")

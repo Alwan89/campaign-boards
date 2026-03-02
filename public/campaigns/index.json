@@ -30,5 +30,13 @@
     "client": "Century Group",
     "date": "2026-02",
     "status": "active"
+  },
+  {
+    "slug": "w42-mar2026",
+    "name": "PD_W42_Lead_EN",
+    "project": "West 42",
+    "client": "Marcon",
+    "date": "2026-03",
+    "status": "active"
   }
 ]

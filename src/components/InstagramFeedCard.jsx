@@ -52,6 +52,8 @@ export default function InstagramFeedCard({ ad, adIndex = 0, isClient }) {
           </>
         ) : ad.imageUrl?.includes('placehold.co') ? (
           <PlaceholderCreative concept={ad.concept} index={adIndex} style={{width:'100%',aspectRatio:'1/1'}} />
+        ) : ad.isVideo && ad.videoUrl ? (
+          <video src={ad.videoUrl} poster={ad.imageUrl} autoPlay loop muted playsInline style={{width:'100%',display:'block'}} />
         ) : (
           <img src={ad.imageUrl} alt={ad.concept} />
         )}

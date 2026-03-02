@@ -16,12 +16,17 @@ from datetime import datetime, timezone
 #  Filename parsing (ported from parse_creative_folder.py, adapted for Drive)
 # --------------------------------------------------------------------------- #
 
-def _parse_filename(filename):
+def _parse_filename(filename, file_map_hints=None):
     """
     Parse a creative filename into structured metadata.
 
     Ported from parse_creative_folder.py — same logic, but without PIL
     dimension detection (files are in Drive, not local).
+
+    Args:
+        filename: The creative filename to parse.
+        file_map_hints: Optional dict mapping filenames to folder-based hints
+            (platform, placement) from build_local_file_map().
     """
     ext = filename.rsplit(".", 1)[-1].lower() if "." in filename else ""
     name_part = filename.rsplit(".", 1)[0] if "." in filename else filename
@@ -43,55 +48,19 @@ def _parse_filename(filename):
     else:
         creative_type = "Image"
 
-    # --- Placement + sub-placement (from filename keywords) ---
-    placement = "Unknown"
-    sub_placement = "Unknown"
-
-    if ext in ("mp4", "mov"):
-        if any(kw in filename for kw in ("Story", "story")):
-            placement = "StoryReel"
-            sub_placement = "Story"
-        elif any(kw in filename for kw in ("Reel", "reel")):
-            placement = "StoryReel"
-            sub_placement = "Reel"
-        elif any(kw in filename for kw in ("StoryReel", "storyreel")):
-            placement = "StoryReel"
-            sub_placement = "StoryReel"
-        elif any(kw in filename for kw in ("Feed", "feed")):
-            placement = "Feed"
-            sub_placement = "Feed"
-    else:
-        # For images, use filename keywords (can't read dimensions from Drive)
-        if any(kw in filename for kw in ("Story", "story")):
-            placement = "StoryReel"
-            sub_placement = "Story"
-        elif any(kw in filename for kw in ("Reel", "reel")):
-            placement = "StoryReel"
-            sub_placement = "Reel"
-        elif any(kw in filename for kw in ("StoryReel", "storyreel")):
-            placement = "StoryReel"
-            sub_placement = "StoryReel"
-        elif any(kw in filename for kw in ("Feed", "feed")):
-            placement = "Feed"
-            sub_placement = "Feed"
-        else:
-            # Default: square images are Feed
-            placement = "Feed"
-            sub_placement = "Feed"
-
-    # --- Parse segments ---
+    # --- Parse segments (needed early for platform detection) ---
     segments = name_part.replace("-", "_").split("_")
     project = segments[0] if segments else "Unknown"
+    name_lower = filename.lower()
 
     # Sub-community detection
     sub_community = "General"
-    name_lower = filename.lower()
     if "brookridgelane" in name_lower or "brookridge_lane" in name_lower or "brookridge" in name_lower:
         sub_community = "Brookridge Lane"
     elif "ridgewoodrow" in name_lower or "ridgewood_row" in name_lower or "ridgewood" in name_lower:
         sub_community = "Ridgewood Row"
 
-    # Platform detection
+    # Platform detection (from filename keywords)
     platform = "Meta"  # default
     for seg in segments:
         if seg.lower() in ("meta", "facebook", "instagram", "google", "linkedin", "wechat", "tiktok"):
@@ -99,6 +68,72 @@ def _parse_filename(filename):
             if seg.lower() in ("facebook", "instagram"):
                 platform = "Meta"
             break
+
+    # Logo files should always be routed to Google platform
+    if "logo" in name_lower:
+        platform = "Google"
+
+    # Check folder hints from build_local_file_map() (subfolder-based metadata)
+    folder_hint = file_map_hints.get(filename, {}) if file_map_hints else {}
+    folder_placement = folder_hint.get("placement", "")
+    folder_platform = folder_hint.get("platform", "")
+
+    # Apply folder platform hint if filename didn't have an explicit platform keyword
+    if folder_platform and platform == "Meta":
+        platform = folder_platform
+
+    # --- Placement + sub-placement (from filename keywords + dimensions + folder hints) ---
+    placement = "Unknown"
+    sub_placement = "Unknown"
+
+    # Check explicit keywords first (highest priority)
+    has_story_kw = any(kw in filename for kw in ("Story", "story", "Stories", "stories"))
+    has_reel_kw = any(kw in filename for kw in ("Reel", "reel", "Reels", "reels"))
+    has_storyreel_kw = any(kw in filename for kw in ("StoryReel", "storyreel"))
+    has_feed_kw = any(kw in filename for kw in ("Feed", "feed"))
+
+    # Check dimension hints in filename (e.g., "1x1", "4x5", "9x16", "1080x1920")
+    dim_match = re.search(r"(\d+)x(\d+)", name_part)
+    dim_ratio = None
+    if dim_match:
+        w, h = int(dim_match.group(1)), int(dim_match.group(2))
+        if w > 0 and h > 0:
+            dim_ratio = w / h  # < 1 = vertical/tall, ~1 = square, > 1 = wide
+
+    if has_story_kw:
+        placement = "StoryReel"
+        sub_placement = "Story"
+    elif has_reel_kw:
+        placement = "StoryReel"
+        sub_placement = "Reel"
+    elif has_storyreel_kw:
+        placement = "StoryReel"
+        sub_placement = "StoryReel"
+    elif has_feed_kw:
+        placement = "Feed"
+        sub_placement = "Feed"
+    elif folder_placement:
+        # Use folder-based placement hint from subfolder name
+        placement = folder_placement
+        sub_placement = folder_placement if folder_placement != "StoryReel" else "Story"
+    elif dim_ratio is not None:
+        # Dimension-based detection:
+        #   vertical (9x16, 1080x1920, ratio < 0.7) → StoryReel
+        #   square-ish (1x1, 4x5, ratio 0.7-1.3) → Feed
+        #   wide (16x9, 1200x628, ratio > 1.3) → Feed
+        if dim_ratio < 0.7:
+            placement = "StoryReel"
+            sub_placement = "Story"  # default sub-placement for vertical
+            if ext in ("mp4", "mov"):
+                sub_placement = "Reel"  # vertical video more likely a reel
+        else:
+            placement = "Feed"
+            sub_placement = "Feed"
+    else:
+        # Default: images default to Feed, videos stay Unknown
+        if ext not in ("mp4", "mov"):
+            placement = "Feed"
+            sub_placement = "Feed"
 
     # Date label
     date_label = ""
@@ -418,7 +453,7 @@ def _find_poster_image(video_group, file_map, ad_groups, slug):
     return None
 
 
-def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_overrides=None):
+def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_overrides=None, file_map_hints=None):
     """
     Combine parsed copy + Drive file map + campaign config into data.json.
 
@@ -431,6 +466,8 @@ def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_ove
         match_overrides: Optional dict mapping concept_keys to copy group
             names, bypassing _match_copy_to_ad() for those entries.
             Format: {"concept_key": "Copy Group Name"}
+        file_map_hints: Optional dict mapping filenames to folder-based hints
+            (platform, placement) from build_local_file_map().
 
     Returns:
         tuple of (data_dict, warnings_dict) matching the data.json schema.
@@ -440,7 +477,7 @@ def assemble(copy_data, file_map, campaign_config, lang="en", slug="", match_ove
     # 1. Parse all filenames from the Drive file map
     parsed_files = []
     for filename in file_map:
-        parsed = _parse_filename(filename)
+        parsed = _parse_filename(filename, file_map_hints=file_map_hints)
         parsed_files.append(parsed)
 
     # 1b. Separate Meta vs Google (and other platforms)

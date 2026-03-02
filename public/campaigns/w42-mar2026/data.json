@@ -9,7 +9,8 @@
     "housing_category": true,
     "landing_page": "https://west42.ca",
     "pageName": "Mera",
-    "pageAvatar": "/campaign-boards/campaigns/w42-mar2026/assets/W42logo.png"
+    "pageAvatar": "/campaign-boards/campaigns/w42-mar2026/assets/W42logo.png",
+    "heroBackground": "/campaign-boards/campaigns/w42-mar2026/assets/W42_Title Board.jpg"
   },
   "adSets": [
     {

@@ -339,41 +339,129 @@
     }
   ],
   "googleCopy": {
-    "Search - Responsive Ad": {
-      "groupName": "Search - Responsive Ad",
-      "headlines": [],
-      "descriptions": [],
-      "link": "",
+    "Search \u2013 Responsive Ad": {
+      "groupName": "Search \u2013 Responsive Ad",
+      "headlines": [
+        "West 42",
+        "Rental Homes on the Park",
+        "Furnished & Unfurnished Rental",
+        "Pet-Friendly",
+        "Move in Today",
+        "Built and Owned by Marcon",
+        "3 Minutes to Langara College",
+        "Steps from Columbia Park",
+        "Flexible Lease Terms",
+        "Free Rent for a Limited Time*",
+        "Oakridge Rental Apartments",
+        "Rent Starts at $2,167/Month*",
+        "Vancouver West Side Rentals",
+        "Vancouver West Side Homes"
+      ],
+      "descriptions": [
+        "Move in Today. Studio, 1 and 2 Bedroom Rental Homes on the park in Oakridge.",
+        "A flourishing neighbourhood known for connectivity, lifestyle & evolving cultural scene.",
+        "From short-term stays to longer-term living arrangements, flexible for diverse lifestyles.",
+        "Limited Time: 2 Month Rent Free. Rent starting from $2,167/month* on a 15-month lease."
+      ],
+      "link": "https://mera.ca/west42/",
       "cta": "",
       "businessName": "",
       "mainHeadline": "",
-      "mainDescription": "",
-      "callouts": [],
-      "amenities": []
+      "mainDescription": ""
     },
-    "Demand Gen - Single Image Ad": {
-      "groupName": "Demand Gen - Single Image Ad",
-      "headlines": [],
-      "descriptions": [],
-      "link": "",
-      "cta": "",
-      "businessName": "",
-      "mainHeadline": "",
-      "mainDescription": "",
-      "callouts": [],
-      "amenities": []
+    "Search Callout Extension": {
+      "groupName": "Search Callout Extension",
+      "callouts": [
+        "Flexible Lease Terms",
+        "Parkside Location",
+        "Urban Connection",
+        "Pet-Friendly Living"
+      ]
     },
-    "Demand Gen - Carousel Ad": {
-      "groupName": "Demand Gen - Carousel Ad",
+    "Structured Snippet Extension": {
+      "groupName": "Structured Snippet Extension",
+      "amenities": [
+        "Rooftop Amenity Lounge",
+        "Outdoor Garden Terrace",
+        "Cinema Lounge",
+        "Underground Parking",
+        "Bike Workshop",
+        "Fitness and Sauna"
+      ],
+      "sitelinks": [
+        {
+          "title": "Neighbourhood",
+          "desc1": "Conveniently Located in Oakridge.",
+          "desc2": "Easy Access to Downtown."
+        },
+        {
+          "title": "Interiors",
+          "desc1": "High-Quality Fixtures and Finishes.",
+          "desc2": "Bright, Modern Aesthetics."
+        },
+        {
+          "title": "Furnished Apartments",
+          "desc1": "Studio + 1 Bath.",
+          "desc2": "And 1 Bed + 1 Bath."
+        },
+        {
+          "title": "Unfurnished Apartments",
+          "desc1": "Studio + 1 Bath",
+          "desc2": "To 2 Bed + 2 Bath."
+        },
+        {
+          "title": "Amenities",
+          "desc1": "A Commitment to Your Well-Being",
+          "desc2": "Relaxation & Community Connection."
+        },
+        {
+          "title": "Register Now",
+          "desc1": "Stay Updated.",
+          "desc2": "Get in Touch Today."
+        },
+        {
+          "title": "Below Market Rentals",
+          "desc1": "Subscribe to Learn More",
+          "desc2": "About Our Below Market Homes."
+        },
+        {
+          "title": "About Us",
+          "desc1": "Simple, Seamless Rental Experience.",
+          "desc2": "Ultimate Rental Flexibility."
+        }
+      ]
+    },
+    "Demand Gen \u2013 Single Image Ad": {
+      "groupName": "Demand Gen \u2013 Single Image Ad",
+      "headlines": [
+        "Rental Homes on the Park",
+        "Flexible Lease Term, Move in Today",
+        "Parkside Location with Urban Connection",
+        "From $2,167/Month* on a 15-Month Lease",
+        "Apply Now"
+      ],
+      "descriptions": [
+        "Move in Today. Studio, 1 and 2 Bedroom Rental Homes on the park in Oakridge.",
+        "A flourishing neighbourhood known for connectivity, lifestyle & evolving cultural scene.",
+        "From short-term stays to longer-term living arrangements, flexible for diverse lifestyles.",
+        "Timeless design and thoughtful interiors that foster true connection and comfort.",
+        "A new standard of rental living\u2013curated services & amenities that truly support your life."
+      ],
+      "link": "https://mera.ca/west42/",
+      "cta": "Sign Up",
+      "businessName": "West 42",
+      "mainHeadline": "",
+      "mainDescription": ""
+    },
+    "Demand Gen \u2013 Carousel Ad": {
+      "groupName": "Demand Gen \u2013 Carousel Ad",
       "headlines": [],
       "descriptions": [],
       "link": "",
-      "cta": "",
+      "cta": "Sign Up",
       "businessName": "",
       "mainHeadline": "",
-      "mainDescription": "",
-      "callouts": [],
-      "amenities": []
+      "mainDescription": ""
     }
   },
   "sources": {

@@ -5,7 +5,9 @@
     "developer": "Marcon",
     "objective": "Lead Generation",
     "budget": "",
-    "languages": ["EN"],
+    "languages": [
+      "EN"
+    ],
     "housing_category": true,
     "landing_page": "https://west42.ca",
     "pageName": "Mera",
@@ -18,32 +20,60 @@
       "name": "Lead_EN_Broad_Feed",
       "tier": "Broad",
       "placement": "Feed",
-      "targeting": "Location only — Advantage+ ON",
-      "ads": ["ad1", "ad2", "ad3", "ad4", "ad5", "ad6"]
+      "targeting": "Location only \u2014 Advantage+ ON",
+      "ads": [
+        "ad1",
+        "ad2",
+        "ad3",
+        "ad4",
+        "ad5",
+        "ad6"
+      ]
     },
     {
       "id": "as2",
       "name": "Lead_EN_Broad_StoryReel",
       "tier": "Broad",
       "placement": "StoryReel",
-      "targeting": "Location only — Advantage+ ON",
-      "ads": ["ad7", "ad8", "ad9", "ad10", "ad11", "ad12"]
+      "targeting": "Location only \u2014 Advantage+ ON",
+      "ads": [
+        "ad7",
+        "ad8",
+        "ad9",
+        "ad10",
+        "ad11",
+        "ad12"
+      ]
     },
     {
       "id": "as3",
       "name": "Lead_EN_Interest_Feed",
       "tier": "Interest",
       "placement": "Feed",
-      "targeting": "Combined audience — all interests",
-      "ads": ["ad1", "ad2", "ad3", "ad4", "ad5", "ad6"]
+      "targeting": "Combined audience \u2014 all interests",
+      "ads": [
+        "ad1",
+        "ad2",
+        "ad3",
+        "ad4",
+        "ad5",
+        "ad6"
+      ]
     },
     {
       "id": "as4",
       "name": "Lead_EN_Interest_StoryReel",
       "tier": "Interest",
       "placement": "StoryReel",
-      "targeting": "Combined audience — all interests",
-      "ads": ["ad7", "ad8", "ad9", "ad10", "ad11", "ad12"]
+      "targeting": "Combined audience \u2014 all interests",
+      "ads": [
+        "ad7",
+        "ad8",
+        "ad9",
+        "ad10",
+        "ad11",
+        "ad12"
+      ]
     },
     {
       "id": "as5",
@@ -51,7 +81,14 @@
       "tier": "Retargeting",
       "placement": "Feed",
       "targeting": "Website visitors, video viewers, lead openers",
-      "ads": ["ad1", "ad2", "ad3", "ad4", "ad5", "ad6"]
+      "ads": [
+        "ad1",
+        "ad2",
+        "ad3",
+        "ad4",
+        "ad5",
+        "ad6"
+      ]
     },
     {
       "id": "as6",
@@ -59,7 +96,14 @@
       "tier": "Retargeting",
       "placement": "StoryReel",
       "targeting": "Website visitors, video viewers, lead openers",
-      "ads": ["ad7", "ad8", "ad9", "ad10", "ad11", "ad12"]
+      "ads": [
+        "ad7",
+        "ad8",
+        "ad9",
+        "ad10",
+        "ad11",
+        "ad12"
+      ]
     }
   ],
   "ads": [
@@ -69,7 +113,9 @@
       "type": "Single Image",
       "placement": "Feed",
       "concept": "General",
-      "files": ["1x1_2.png"],
+      "files": [
+        "1x1_2.png"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
       "isVideo": false,
       "copy": {
@@ -86,7 +132,9 @@
       "type": "Single Image",
       "placement": "Feed",
       "concept": "General",
-      "files": ["1x1_3.png"],
+      "files": [
+        "1x1_3.png"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_3.png",
       "isVideo": false,
       "copy": {
@@ -103,7 +151,9 @@
       "type": "Single Image",
       "placement": "Feed",
       "concept": "General",
-      "files": ["1x1_4.png"],
+      "files": [
+        "1x1_4.png"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_4.png",
       "isVideo": false,
       "copy": {
@@ -120,7 +170,11 @@
       "type": "Carousel",
       "placement": "Feed",
       "concept": "General",
-      "files": ["1x1_2.png", "1x1_3.png", "1x1_4.png"],
+      "files": [
+        "1x1_2.png",
+        "1x1_3.png",
+        "1x1_4.png"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
       "isVideo": false,
       "carouselCards": [
@@ -154,7 +208,9 @@
       "type": "Video",
       "placement": "Feed",
       "concept": "General",
-      "files": ["W42opening_1x1.mp4"],
+      "files": [
+        "W42opening_1x1.mp4"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
       "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42opening_1x1.mp4",
       "isVideo": true,
@@ -172,7 +228,9 @@
       "type": "Video",
       "placement": "Feed",
       "concept": "General",
-      "files": ["W42end_1x1.mp4"],
+      "files": [
+        "W42end_1x1.mp4"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_3.png",
       "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42end_1x1.mp4",
       "isVideo": true,
@@ -190,7 +248,9 @@
       "type": "Single Image",
       "placement": "StoryReel",
       "concept": "General",
-      "files": ["story 2.png"],
+      "files": [
+        "story 2.png"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 2.png",
       "isVideo": false,
       "copy": {
@@ -200,7 +260,9 @@
         "cta": "Learn More",
         "link": "https://west42.ca"
       },
-      "subPlacements": ["Story"]
+      "subPlacements": [
+        "Story"
+      ]
     },
     {
       "id": "ad8",
@@ -208,7 +270,9 @@
       "type": "Single Image",
       "placement": "StoryReel",
       "concept": "General",
-      "files": ["story 3.png"],
+      "files": [
+        "story 3.png"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 3.png",
       "isVideo": false,
       "copy": {
@@ -218,7 +282,9 @@
         "cta": "Learn More",
         "link": "https://west42.ca"
       },
-      "subPlacements": ["Story"]
+      "subPlacements": [
+        "Story"
+      ]
     },
     {
       "id": "ad9",
@@ -226,7 +292,9 @@
       "type": "Single Image",
       "placement": "StoryReel",
       "concept": "General",
-      "files": ["story4.png"],
+      "files": [
+        "story4.png"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story4.png",
       "isVideo": false,
       "copy": {
@@ -236,7 +304,9 @@
         "cta": "Learn More",
         "link": "https://west42.ca"
       },
-      "subPlacements": ["Story"]
+      "subPlacements": [
+        "Story"
+      ]
     },
     {
       "id": "ad10",
@@ -244,7 +314,9 @@
       "type": "Video",
       "placement": "StoryReel",
       "concept": "General",
-      "files": ["W42opening_9x16.mp4"],
+      "files": [
+        "W42opening_9x16.mp4"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 2.png",
       "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42opening_9x16.mp4",
       "isVideo": true,
@@ -255,7 +327,9 @@
         "cta": "Learn More",
         "link": "https://west42.ca"
       },
-      "subPlacements": ["Story"]
+      "subPlacements": [
+        "Story"
+      ]
     },
     {
       "id": "ad11",
@@ -263,7 +337,9 @@
       "type": "Video",
       "placement": "StoryReel",
       "concept": "General",
-      "files": ["W42end_9x16.mp4"],
+      "files": [
+        "W42end_9x16.mp4"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 3.png",
       "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42end_9x16.mp4",
       "isVideo": true,
@@ -274,7 +350,9 @@
         "cta": "Learn More",
         "link": "https://west42.ca"
       },
-      "subPlacements": ["Story"]
+      "subPlacements": [
+        "Story"
+      ]
     },
     {
       "id": "ad12",
@@ -282,7 +360,9 @@
       "type": "Video",
       "placement": "StoryReel",
       "concept": "General",
-      "files": ["W42reel.mp4"],
+      "files": [
+        "W42reel.mp4"
+      ],
       "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 2.png",
       "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42reel.mp4",
       "isVideo": true,
@@ -293,15 +373,25 @@
         "cta": "Learn More",
         "link": "https://west42.ca"
       },
-      "subPlacements": ["Reel"]
+      "subPlacements": [
+        "Reel"
+      ]
     }
   ],
   "googleAds": [
     {
-      "filename": "google_single_image.png",
+      "filename": "single1.png",
       "type": "Demand Gen",
-      "dimensions": "",
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/google_single_image.png",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/single1.png",
+      "isVideo": false,
+      "videoUrl": ""
+    },
+    {
+      "filename": "single2.png",
+      "type": "Demand Gen",
+      "dimensions": "1200x628",
+      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/single2.png",
       "isVideo": false,
       "videoUrl": ""
     },

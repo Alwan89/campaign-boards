@@ -38,5 +38,13 @@
     "client": "Marcon",
     "date": "2026-03",
     "status": "active"
+  },
+  {
+    "slug": "harlin-mar2026",
+    "name": "PD_Harlin_Lead_EN",
+    "project": "Harlin",
+    "client": "Wesgroup",
+    "date": "2026-03",
+    "status": "active"
   }
 ]

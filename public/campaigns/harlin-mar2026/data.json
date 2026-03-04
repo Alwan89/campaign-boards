@@ -1,0 +1,1498 @@
+{
+  "campaign": {
+    "name": "PD_Harlin_Lead_EN",
+    "project": "Harlin",
+    "developer": "Wesgroup",
+    "objective": "Lead Generation",
+    "budget": "",
+    "languages": [
+      "EN"
+    ],
+    "housing_category": true,
+    "landing_page": "wesgroup.ca/harlin"
+  },
+  "adSets": [
+    {
+      "id": "as1",
+      "name": "Lead_EN_Broad_Feed",
+      "tier": "Broad",
+      "placement": "Feed",
+      "targeting": "Location only \u2014 Advantage+ ON",
+      "ads": [
+        "ad1",
+        "ad2",
+        "ad3",
+        "ad16",
+        "ad17",
+        "ad18",
+        "ad19",
+        "ad20",
+        "ad21",
+        "ad22",
+        "ad23",
+        "ad24",
+        "ad25",
+        "ad27",
+        "ad28",
+        "ad29",
+        "ad30",
+        "ad33",
+        "ad35",
+        "ad37",
+        "ad39"
+      ]
+    },
+    {
+      "id": "as2",
+      "name": "Lead_EN_Broad_StoryReel",
+      "tier": "Broad",
+      "placement": "StoryReel",
+      "targeting": "Location only \u2014 Advantage+ ON",
+      "ads": [
+        "ad12",
+        "ad13",
+        "ad14",
+        "ad15",
+        "ad26",
+        "ad31",
+        "ad32",
+        "ad34",
+        "ad36",
+        "ad38"
+      ]
+    },
+    {
+      "id": "as3",
+      "name": "Lead_EN_Interest_Feed",
+      "tier": "Interest",
+      "placement": "Feed",
+      "targeting": "Combined audience \u2014 all interests",
+      "ads": [
+        "ad1",
+        "ad2",
+        "ad3",
+        "ad16",
+        "ad17",
+        "ad18",
+        "ad19",
+        "ad20",
+        "ad21",
+        "ad22",
+        "ad23",
+        "ad24",
+        "ad25",
+        "ad27",
+        "ad28",
+        "ad29",
+        "ad30",
+        "ad33",
+        "ad35",
+        "ad37",
+        "ad39"
+      ]
+    },
+    {
+      "id": "as4",
+      "name": "Lead_EN_Interest_StoryReel",
+      "tier": "Interest",
+      "placement": "StoryReel",
+      "targeting": "Combined audience \u2014 all interests",
+      "ads": [
+        "ad12",
+        "ad13",
+        "ad14",
+        "ad15",
+        "ad26",
+        "ad31",
+        "ad32",
+        "ad34",
+        "ad36",
+        "ad38"
+      ]
+    },
+    {
+      "id": "as5",
+      "name": "Lead_EN_Retargeting_Feed",
+      "tier": "Retargeting",
+      "placement": "Feed",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": [
+        "ad1",
+        "ad2",
+        "ad3",
+        "ad16",
+        "ad17",
+        "ad18",
+        "ad19",
+        "ad20",
+        "ad21",
+        "ad22",
+        "ad23",
+        "ad24",
+        "ad25",
+        "ad27",
+        "ad28",
+        "ad29",
+        "ad30",
+        "ad33",
+        "ad35",
+        "ad37",
+        "ad39"
+      ]
+    },
+    {
+      "id": "as6",
+      "name": "Lead_EN_Retargeting_StoryReel",
+      "tier": "Retargeting",
+      "placement": "StoryReel",
+      "targeting": "Website visitors, video viewers, lead openers",
+      "ads": [
+        "ad12",
+        "ad13",
+        "ad14",
+        "ad15",
+        "ad26",
+        "ad31",
+        "ad32",
+        "ad34",
+        "ad36",
+        "ad38"
+      ]
+    }
+  ],
+  "ads": [
+    {
+      "id": "ad1",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Additional Carousel_Harlin-NowSelling-Ads-B-Instagram Carousel 1.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Additional Carousel_Harlin-NowSelling-Ads-B-Instagram Carousel 1.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Additional Carousel_Harlin-NowSelling-Ads-B-Instagram Carousel 1.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad2",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Additional Carousel_Harlin-NowSelling-Ads-B-Instagram Carousel 2.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Additional Carousel_Harlin-NowSelling-Ads-B-Instagram Carousel 2.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Additional Carousel_Harlin-NowSelling-Ads-B-Instagram Carousel 2.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad3",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Additional Carousel_Harlin-NowSelling-Ads-B-Instagram Carousel 3.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Additional Carousel_Harlin-NowSelling-Ads-B-Instagram Carousel 3.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Additional Carousel_Harlin-NowSelling-Ads-B-Instagram Carousel 3.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad4",
+      "name": "Lead_EN_Video_undated_General",
+      "type": "Video",
+      "placement": "Unknown",
+      "concept": "General",
+      "files": [
+        "Cutdown 1 - Horizontal - Harlin Q1 Video.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 1 - Horizontal - Harlin Q1 Video.mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 1 - Horizontal - Harlin Q1 Video.mp4"
+    },
+    {
+      "id": "ad5",
+      "name": "Lead_EN_Video_undated_General",
+      "type": "Video",
+      "placement": "Unknown",
+      "concept": "General",
+      "files": [
+        "Cutdown 1 - Square - Harlin Q1 Video.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 1 - Square - Harlin Q1 Video.mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 1 - Square - Harlin Q1 Video.mp4"
+    },
+    {
+      "id": "ad6",
+      "name": "Lead_EN_Video_undated_General",
+      "type": "Video",
+      "placement": "Unknown",
+      "concept": "General",
+      "files": [
+        "Cutdown 1 - Vertical - Harlin Q1 Video.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 1 - Vertical - Harlin Q1 Video.mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 1 - Vertical - Harlin Q1 Video.mp4"
+    },
+    {
+      "id": "ad7",
+      "name": "Lead_EN_Video_undated_General",
+      "type": "Video",
+      "placement": "Unknown",
+      "concept": "General",
+      "files": [
+        "Cutdown 2 - Horizontal - Harlin Q1 Video.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 2 - Horizontal - Harlin Q1 Video.mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 2 - Horizontal - Harlin Q1 Video.mp4"
+    },
+    {
+      "id": "ad8",
+      "name": "Lead_EN_Video_undated_General",
+      "type": "Video",
+      "placement": "Unknown",
+      "concept": "General",
+      "files": [
+        "Cutdown 2 - Square - Harlin Q1 Video.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 2 - Square - Harlin Q1 Video.mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 2 - Square - Harlin Q1 Video.mp4"
+    },
+    {
+      "id": "ad9",
+      "name": "Lead_EN_Video_undated_General",
+      "type": "Video",
+      "placement": "Unknown",
+      "concept": "General",
+      "files": [
+        "Cutdown 2 - Vertical - Harlin Q1 Video.mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 2 - Vertical - Harlin Q1 Video.mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Cutdown 2 - Vertical - Harlin Q1 Video.mp4"
+    },
+    {
+      "id": "ad10",
+      "name": "Lead_EN_Video_undated_General",
+      "type": "Video",
+      "placement": "Unknown",
+      "concept": "General",
+      "files": [
+        "Harlin - Facebook (A).mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Facebook (A).mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Facebook (A).mp4"
+    },
+    {
+      "id": "ad11",
+      "name": "Lead_EN_Video_undated_General",
+      "type": "Video",
+      "placement": "Unknown",
+      "concept": "General",
+      "files": [
+        "Harlin - Facebook (B).mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Facebook (B).mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Facebook (B).mp4"
+    },
+    {
+      "id": "ad12",
+      "name": "Lead_EN_Video_undated_StoryReel_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Harlin - Instagram Reel Video (A).mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Instagram Reel Video (A).mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Instagram Reel Video (A).mp4",
+      "subPlacements": [
+        "Reel"
+      ]
+    },
+    {
+      "id": "ad13",
+      "name": "Lead_EN_Video_undated_StoryReel_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Harlin - Instagram Reel Video (B).mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Instagram Reel Video (B).mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Instagram Reel Video (B).mp4",
+      "subPlacements": [
+        "Reel"
+      ]
+    },
+    {
+      "id": "ad14",
+      "name": "Lead_EN_Video_undated_StoryReel_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Harlin - Instagram Story Video (A).mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Instagram Story Video (A).mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Instagram Story Video (A).mp4",
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad15",
+      "name": "Lead_EN_Video_undated_StoryReel_General",
+      "type": "Video",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Harlin - Instagram Story Video (B).mp4"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Instagram Story Video (B).mp4",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "isVideo": true,
+      "videoUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin - Instagram Story Video (B).mp4",
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad16",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-A-Instagram Carousel 1.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-A-Instagram Carousel 1.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-A-Instagram Carousel 1.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad17",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-A-Instagram Carousel 2.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-A-Instagram Carousel 2.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-A-Instagram Carousel 2.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad18",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-A-Instagram Carousel 3.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-A-Instagram Carousel 3.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-A-Instagram Carousel 3.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad19",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-B-Facebook Carousel Image 1.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Facebook Carousel Image 1.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Facebook Carousel Image 1.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad20",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-B-Facebook Carousel Image 2.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Facebook Carousel Image 2.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Facebook Carousel Image 2.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad21",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-B-Facebook Carousel Image 3.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Facebook Carousel Image 3.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Facebook Carousel Image 3.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad22",
+      "name": "Lead_EN_SingleImage_undated_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-B-Facebook Single Image.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Facebook Single Image.png",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      }
+    },
+    {
+      "id": "ad23",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-B-Instagram Carousel 1.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Instagram Carousel 1.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Instagram Carousel 1.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad24",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-B-Instagram Carousel 2.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Instagram Carousel 2.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Instagram Carousel 2.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad25",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-B-Instagram Carousel 3.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Instagram Carousel 3.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Instagram Carousel 3.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad26",
+      "name": "Lead_EN_SingleImage_undated_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-B-Instagram Story Single.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-B-Instagram Story Single.png",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad27",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-Facebook Carousel Image 1.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-Facebook Carousel Image 1.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-Facebook Carousel Image 1.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad28",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-Facebook Carousel Image 2.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-Facebook Carousel Image 2.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-Facebook Carousel Image 2.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad29",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-Facebook Carousel Image 3.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-Facebook Carousel Image 3.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-Facebook Carousel Image 3.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad30",
+      "name": "Lead_EN_SingleImage_undated_General",
+      "type": "Single Image",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-Facebook Single Image.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-Facebook Single Image.png",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      }
+    },
+    {
+      "id": "ad31",
+      "name": "Lead_EN_SingleImage_undated_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Harlin-NowSelling-Ads-Instagram Story Single.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Harlin-NowSelling-Ads-Instagram Story Single.png",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad32",
+      "name": "Lead_EN_SingleImage_undated_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Option 3 Harlin-NowSelling-Ads-A-Instagram Story Single.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 3 Harlin-NowSelling-Ads-A-Instagram Story Single.png",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad33",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Option 3 Harlin-NowSelling-Ads-B-Instagram Carousel 3.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 3 Harlin-NowSelling-Ads-B-Instagram Carousel 3.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 3 Harlin-NowSelling-Ads-B-Instagram Carousel 3.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad34",
+      "name": "Lead_EN_SingleImage_undated_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Option 4 Harlin-NowSelling-Ads-A-Instagram Story Single.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 4 Harlin-NowSelling-Ads-A-Instagram Story Single.png",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad35",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Option 4 Harlin-NowSelling-Ads-B-Instagram Carousel 4.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 4 Harlin-NowSelling-Ads-B-Instagram Carousel 4.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 4 Harlin-NowSelling-Ads-B-Instagram Carousel 4.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad36",
+      "name": "Lead_EN_SingleImage_undated_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Option 5 Harlin-NowSelling-Ads-A-Instagram Story Single.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 5 Harlin-NowSelling-Ads-A-Instagram Story Single.png",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad37",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Option 5 Harlin-NowSelling-Ads-B-Instagram Carousel 5.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 5 Harlin-NowSelling-Ads-B-Instagram Carousel 5.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 5 Harlin-NowSelling-Ads-B-Instagram Carousel 5.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    },
+    {
+      "id": "ad38",
+      "name": "Lead_EN_SingleImage_undated_StoryReel_General",
+      "type": "Single Image",
+      "placement": "StoryReel",
+      "concept": "General",
+      "files": [
+        "Option 6 Harlin-NowSelling-Ads-A-Instagram Story Single.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 6 Harlin-NowSelling-Ads-A-Instagram Story Single.png",
+      "copy": {
+        "primary": "Welcome to Harlin by Wesgroup, modern studio to 3-bed homes in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "subPlacements": [
+        "Story"
+      ]
+    },
+    {
+      "id": "ad39",
+      "name": "Lead_EN_Carousel_undated_General",
+      "type": "Carousel",
+      "placement": "Feed",
+      "concept": "General",
+      "files": [
+        "Option 6 Harlin-NowSelling-Ads-B-Instagram Carousel 6.png"
+      ],
+      "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 6 Harlin-NowSelling-Ads-B-Instagram Carousel 6.png",
+      "copy": {
+        "primary": "Discover Harlin by Wesgroup \u2014 modern studio to 3-bed homes now selling in Vancouver\u2019s River District. Enjoy waterfront living steps from trails, dining, and the town centre, with thoughtfully curated rooftop spaces above it all.",
+        "headline": "Now Selling in River District",
+        "description": "A Connected Waterfront Community",
+        "cta": "Sign Up",
+        "link": "FORM ON FACEBOOK or https://wesgroup.ca/harlin/"
+      },
+      "carouselCards": [
+        {
+          "imageUrl": "/campaign-boards/campaigns/harlin-mar2026/assets/Option 6 Harlin-NowSelling-Ads-B-Instagram Carousel 6.png",
+          "headline": "Now Selling in River District",
+          "description": "A Connected Waterfront Community"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Studio to 3-Bed Waterfront Homes",
+          "description": "Modern Homes by Wesgroup"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Make Yourself at Home at Harlin",
+          "description": "Curated Rooftop Amenities"
+        },
+        {
+          "imageUrl": "",
+          "headline": "Where Life Flows Naturally",
+          "description": "Steps to Trails & Dining"
+        }
+      ]
+    }
+  ],
+  "googleAds": [],
+  "googleCopy": {
+    "Display": {
+      "groupName": "Display",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Search \u2013 Responsive Ad": {
+      "groupName": "Search \u2013 Responsive Ad",
+      "headlines": [
+        "Harlin by Wesgroup",
+        "Steps to Dining & Shops",
+        "Where City Meets Nature",
+        "Connected Waterfront Community",
+        "Rooftop Spaces to Recharge",
+        "Moments From Riverfront Trails",
+        "Designed for Everyday Living",
+        "Studio to 3-Bed Homes",
+        "Modern Waterfront Living",
+        "Stunning River District Views",
+        "Now Selling at Harlin",
+        "Curated Rooftop Amenities",
+        "Live by The Fraser River",
+        "Register Now",
+        "Carefully Crafted Homes"
+      ],
+      "descriptions": [
+        "Harlin is the newest addition to Vancouver River District.",
+        "A neighbourhood surrounded by riverside trails, cozy coffee spots, and local shops.",
+        "Harlin is now selling at River District. Where life flows naturally.",
+        "25 mins to downtown Vancouver, YVR 20 minutes, Richmond or Burnaby only 10 minutes."
+      ],
+      "link": "https://wesgroup.ca/harlin/",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen \u2013 Single Image Ad": {
+      "groupName": "Demand Gen \u2013 Single Image Ad",
+      "headlines": [
+        "Studio to 3-Bed Waterfront Homes",
+        "Live by The Fraser River",
+        "Welcome to Harlin by Wesgroup",
+        "Now Selling at Harlin",
+        "Register Now"
+      ],
+      "descriptions": [
+        "Harlin is the newest addition to Vancouver River District.",
+        "A neighbourhood surrounded by riverside trails, cozy coffee spots, and local shops.",
+        "Harlin is now selling at River District. Where life flows naturally.",
+        "25 mins to downtown Vancouver, YVR 20 minutes, Richmond or Burnaby only 10 minutes.",
+        "Modern studio to 3-bed homes in River District with thoughtfully curated rooftop spaces."
+      ],
+      "link": "https://wesgroup.ca/harlin/",
+      "cta": "",
+      "businessName": "Harlin by Wesgroup",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": []
+    },
+    "Demand Gen \u2013 Carousel Ad": {
+      "groupName": "Demand Gen \u2013 Carousel Ad",
+      "headlines": [
+        "Studio to 3-Bed Waterfront Homes",
+        "Curated Rooftop Amenities",
+        "Steps to Trails, Dining & Shops",
+        "Make Yourself at Home at Harlin"
+      ],
+      "descriptions": [],
+      "link": "https://wesgroup.ca/harlin/",
+      "cta": "Sign Up",
+      "businessName": "Harlin by Wesgroup",
+      "mainHeadline": "Now Selling in River District Vancouver",
+      "mainDescription": "Modern studio to 3-bed homes in River District with thoughtfully curated rooftop spaces.",
+      "callouts": [],
+      "amenities": []
+    },
+    "Search Callout Extension": {
+      "groupName": "Search Callout Extension",
+      "headlines": [],
+      "descriptions": [],
+      "link": "",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [
+        "Now Selling",
+        "Studio to 3-Bed Homes",
+        "Waterfront Living",
+        "Curated Rooftop Spaces",
+        "Steps to Trails & Dining",
+        "River District Vancouver"
+      ],
+      "amenities": []
+    },
+    "Structured Snippet Extension": {
+      "groupName": "Structured Snippet Extension",
+      "headlines": [],
+      "descriptions": [],
+      "link": "https://wesgroup.ca/",
+      "cta": "",
+      "businessName": "",
+      "mainHeadline": "",
+      "mainDescription": "",
+      "callouts": [],
+      "amenities": [
+        "Rooftop Amenity Spaces",
+        "Waterfront Trail Access",
+        "Fitness Centre",
+        "Co-Working Lounge",
+        "Dog Wash Station",
+        "Bike Storage"
+      ],
+      "sitelinks": [
+        {
+          "title": "Register Now",
+          "desc1": "Sign up for priority access.",
+          "desc2": "Get pricing and floor plans."
+        },
+        {
+          "title": "Explore the Neighbourhood",
+          "desc1": "Discover River District living.",
+          "desc2": "Trails, dining, and more."
+        },
+        {
+          "title": "View Homes",
+          "desc1": "Studio to 3-bed waterfront homes.",
+          "desc2": "Modern layouts with river views."
+        },
+        {
+          "title": "About Wesgroup",
+          "desc1": "Vancouver's trusted developer.",
+          "desc2": "Building community since 1977."
+        }
+      ]
+    }
+  },
+  "sources": {
+    "driveFolder": "",
+    "copySheet": "",
+    "clickupTask": null
+  },
+  "meta": {
+    "generatedAt": "2026-03-04T00:24:38.839863+00:00",
+    "generatedBy": "build_campaign.py",
+    "boardVersion": "1.0"
+  }
+}

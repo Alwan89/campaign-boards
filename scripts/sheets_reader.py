@@ -226,7 +226,11 @@ def _extract_google_ads_section(df):
         )
         if label and not is_field:
             col1 = df.iloc[i, 1] if 1 < df.shape[1] else None
-            if pd.isna(col1) or str(col1).strip() == "":
+            col1_str = str(col1).strip() if pd.notna(col1) else ""
+            # Treat as group header if col1 is empty OR contains helper text
+            # (e.g., "Min. 3 Headlines...", "Designs provided by client")
+            is_hint = col1_str.lower().startswith(("min.", "designs"))
+            if not col1_str or is_hint:
                 if current_group and current_fields:
                     google_ads[current_group] = current_fields
                 current_group = label

@@ -114,7 +114,7 @@
 /* Title slide */
 .client-slide--title{
   min-height:360px;align-items:center;justify-content:center;
-  background:url('/campaign-boards/campaigns/senakw-feb2026/assets/senakw-hero-bg.jpg') center/cover no-repeat;
+  background:url('/campaigns/senakw-feb2026/assets/senakw-hero-bg.jpg') center/cover no-repeat;
   text-align:center;
   position:relative;overflow:hidden;
 }

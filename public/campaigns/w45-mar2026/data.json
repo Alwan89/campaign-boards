@@ -9,8 +9,8 @@
     "housing_category": true,
     "landing_page": "https://w45oakridge.ca",
     "pageName": "Magnum Projects Ltd.",
-    "pageAvatar": "/campaign-boards/campaigns/w45-mar2026/assets/Magnum_avatar.jpg",
-    "heroBackground": "/campaign-boards/campaigns/w45-mar2026/assets/w45-hero-bg.jpg"
+    "pageAvatar": "/campaigns/w45-mar2026/assets/Magnum_avatar.jpg",
+    "heroBackground": "/campaigns/w45-mar2026/assets/w45-hero-bg.jpg"
   },
   "adSets": [
     {
@@ -70,7 +70,7 @@
       "placement": "Feed",
       "concept": "General",
       "files": ["W45_Meta_Single_1080x1080.jpg"],
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
+      "imageUrl": "/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
       "isVideo": false,
       "copy": {
         "primary": "Live at W45th\u2014move-in ready garden flats, townhomes and duplexes steps to Oakridge Park. Tucked into a tree-lined residential street, just minutes to Canada Line SkyTrain, with 100+ global brands, eateries, and lifestyle amenities at your doorstep. Register Now.",
@@ -87,21 +87,21 @@
       "placement": "Feed",
       "concept": "General",
       "files": ["W45_Carousel_card1.jpg", "W45_Carousel_card2.jpg", "W45_Carousel_card3.jpg"],
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card1.jpg",
+      "imageUrl": "/campaigns/w45-mar2026/assets/W45_Carousel_card1.jpg",
       "isVideo": false,
       "carouselCards": [
         {
-          "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card1.jpg",
+          "imageUrl": "/campaigns/w45-mar2026/assets/W45_Carousel_card1.jpg",
           "headline": "Homes from $689,900",
           "description": "100+ Global Retailers"
         },
         {
-          "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card2.jpg",
+          "imageUrl": "/campaigns/w45-mar2026/assets/W45_Carousel_card2.jpg",
           "headline": "Steps to the New Oakridge",
           "description": "Vancouver\u2019s Newest Luxury & Lifestyle Hub"
         },
         {
-          "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Carousel_card3.jpg",
+          "imageUrl": "/campaigns/w45-mar2026/assets/W45_Carousel_card3.jpg",
           "headline": "Integrated Appliances & A/C Included",
           "description": "Next to the Upcoming Time Out Food Market"
         }
@@ -121,8 +121,8 @@
       "placement": "Feed",
       "concept": "General",
       "files": ["W45_Meta_Video_Square.mp4"],
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
-      "videoUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Video_Square.mp4",
+      "imageUrl": "/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
+      "videoUrl": "/campaigns/w45-mar2026/assets/W45_Meta_Video_Square.mp4",
       "isVideo": true,
       "copy": {
         "primary": "Live at W45th\u2014move-in ready garden flats, townhomes and duplexes steps to Oakridge Park. Tucked into a tree-lined residential street, just minutes to Canada Line SkyTrain, with 100+ global brands, eateries, and lifestyle amenities at your doorstep. Register Now.",
@@ -139,7 +139,7 @@
       "placement": "StoryReel",
       "concept": "General",
       "files": ["W45_Meta_StoryReel_1080x1920.jpg"],
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_StoryReel_1080x1920.jpg",
+      "imageUrl": "/campaigns/w45-mar2026/assets/W45_Meta_StoryReel_1080x1920.jpg",
       "isVideo": false,
       "copy": {
         "primary": "Live at W45th\u2014move-in ready garden flats, townhomes and duplexes steps to Oakridge Park. Tucked into a tree-lined residential street, just minutes to Canada Line SkyTrain, with 100+ global brands, eateries, and lifestyle amenities at your doorstep. Register Now.",
@@ -157,8 +157,8 @@
       "placement": "StoryReel",
       "concept": "General",
       "files": ["W45_Meta_Video_Landscape.mp4"],
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_StoryReel_1080x1920.jpg",
-      "videoUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Video_Landscape.mp4",
+      "imageUrl": "/campaigns/w45-mar2026/assets/W45_Meta_StoryReel_1080x1920.jpg",
+      "videoUrl": "/campaigns/w45-mar2026/assets/W45_Meta_Video_Landscape.mp4",
       "isVideo": true,
       "copy": {
         "primary": "Live at W45th\u2014move-in ready garden flats, townhomes and duplexes steps to Oakridge Park. Tucked into a tree-lined residential street, just minutes to Canada Line SkyTrain, with 100+ global brands, eateries, and lifestyle amenities at your doorstep. Register Now.",
@@ -175,7 +175,7 @@
       "filename": "W45_Google_1200x628.jpg",
       "type": "Search",
       "dimensions": "1200x628",
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Google_1200x628.jpg",
+      "imageUrl": "/campaigns/w45-mar2026/assets/W45_Google_1200x628.jpg",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -183,7 +183,7 @@
       "filename": "W45_Main_Living_Room_500x500.png",
       "type": "Search Image Extension",
       "dimensions": "500x500",
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Main_Living_Room_500x500.png",
+      "imageUrl": "/campaigns/w45-mar2026/assets/W45_Main_Living_Room_500x500.png",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -191,7 +191,7 @@
       "filename": "W45_Meta_Single_1080x1080.jpg",
       "type": "Demand Gen",
       "dimensions": "1200x1200",
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
+      "imageUrl": "/campaigns/w45-mar2026/assets/W45_Meta_Single_1080x1080.jpg",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -199,7 +199,7 @@
       "filename": "W45_Google_1200x628.jpg",
       "type": "Demand Gen",
       "dimensions": "1200x628",
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/W45_Google_1200x628.jpg",
+      "imageUrl": "/campaigns/w45-mar2026/assets/W45_Google_1200x628.jpg",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -207,7 +207,7 @@
       "filename": "Magnum_avatar.jpg",
       "type": "Logo",
       "dimensions": "",
-      "imageUrl": "/campaign-boards/campaigns/w45-mar2026/assets/Magnum_avatar.jpg",
+      "imageUrl": "/campaigns/w45-mar2026/assets/Magnum_avatar.jpg",
       "isVideo": false,
       "videoUrl": ""
     }

@@ -11,8 +11,8 @@
     "housing_category": true,
     "landing_page": "https://west42.ca",
     "pageName": "Mera",
-    "pageAvatar": "/campaign-boards/campaigns/w42-mar2026/assets/W42logo.png",
-    "heroBackground": "/campaign-boards/campaigns/w42-mar2026/assets/W42_TitleBoard.jpg"
+    "pageAvatar": "/campaigns/w42-mar2026/assets/W42logo.png",
+    "heroBackground": "/campaigns/w42-mar2026/assets/W42_TitleBoard.jpg"
   },
   "adSets": [
     {
@@ -116,7 +116,7 @@
       "files": [
         "1x1_2.png"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/1x1_2.png",
       "isVideo": false,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -135,7 +135,7 @@
       "files": [
         "1x1_3.png"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_3.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/1x1_3.png",
       "isVideo": false,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -154,7 +154,7 @@
       "files": [
         "1x1_4.png"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_4.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/1x1_4.png",
       "isVideo": false,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -175,21 +175,21 @@
         "1x1_3.png",
         "1x1_4.png"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/1x1_2.png",
       "isVideo": false,
       "carouselCards": [
         {
-          "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
+          "imageUrl": "/campaigns/w42-mar2026/assets/1x1_2.png",
           "headline": "2 Months Free Rent on a 15 Month Lease, For a Limited Time",
           "description": "On the Park in Oakridge"
         },
         {
-          "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_3.png",
+          "imageUrl": "/campaigns/w42-mar2026/assets/1x1_3.png",
           "headline": "Brand New Rentals in Oakridge",
           "description": "Move-In Ready"
         },
         {
-          "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_4.png",
+          "imageUrl": "/campaigns/w42-mar2026/assets/1x1_4.png",
           "headline": "Mountain and Water Views",
           "description": "5-Minute Walk to the SkyTrain"
         }
@@ -211,8 +211,8 @@
       "files": [
         "W42opening_1x1.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_2.png",
-      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42opening_1x1.mp4",
+      "imageUrl": "/campaigns/w42-mar2026/assets/1x1_2.png",
+      "videoUrl": "/campaigns/w42-mar2026/assets/W42opening_1x1.mp4",
       "isVideo": true,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -231,8 +231,8 @@
       "files": [
         "W42end_1x1.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/1x1_3.png",
-      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42end_1x1.mp4",
+      "imageUrl": "/campaigns/w42-mar2026/assets/1x1_3.png",
+      "videoUrl": "/campaigns/w42-mar2026/assets/W42end_1x1.mp4",
       "isVideo": true,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -251,7 +251,7 @@
       "files": [
         "story 2.png"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 2.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/story 2.png",
       "isVideo": false,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -273,7 +273,7 @@
       "files": [
         "story 3.png"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 3.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/story 3.png",
       "isVideo": false,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -295,7 +295,7 @@
       "files": [
         "story4.png"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story4.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/story4.png",
       "isVideo": false,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -317,8 +317,8 @@
       "files": [
         "W42opening_9x16.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 2.png",
-      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42opening_9x16.mp4",
+      "imageUrl": "/campaigns/w42-mar2026/assets/story 2.png",
+      "videoUrl": "/campaigns/w42-mar2026/assets/W42opening_9x16.mp4",
       "isVideo": true,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -340,8 +340,8 @@
       "files": [
         "W42end_9x16.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 3.png",
-      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42end_9x16.mp4",
+      "imageUrl": "/campaigns/w42-mar2026/assets/story 3.png",
+      "videoUrl": "/campaigns/w42-mar2026/assets/W42end_9x16.mp4",
       "isVideo": true,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -363,8 +363,8 @@
       "files": [
         "W42reel.mp4"
       ],
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/story 2.png",
-      "videoUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42reel.mp4",
+      "imageUrl": "/campaigns/w42-mar2026/assets/story 2.png",
+      "videoUrl": "/campaigns/w42-mar2026/assets/W42reel.mp4",
       "isVideo": true,
       "copy": {
         "primary": "View Homes Now Available at West 42. Live Above Vancouver's West Side from $2,167/Month.",
@@ -383,7 +383,7 @@
       "filename": "single1.png",
       "type": "Demand Gen",
       "dimensions": "1200x628",
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/single1.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/single1.png",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -391,7 +391,7 @@
       "filename": "single2.png",
       "type": "Demand Gen",
       "dimensions": "1200x628",
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/single2.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/single2.png",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -399,7 +399,7 @@
       "filename": "google_carousel_1.png",
       "type": "Demand Gen",
       "dimensions": "",
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/google_carousel_1.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/google_carousel_1.png",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -407,7 +407,7 @@
       "filename": "google_carousel_2.png",
       "type": "Demand Gen",
       "dimensions": "",
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/google_carousel_2.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/google_carousel_2.png",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -415,7 +415,7 @@
       "filename": "google_carousel_3.png",
       "type": "Demand Gen",
       "dimensions": "",
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/google_carousel_3.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/google_carousel_3.png",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -423,7 +423,7 @@
       "filename": "W42logo.png",
       "type": "Logo",
       "dimensions": "",
-      "imageUrl": "/campaign-boards/campaigns/w42-mar2026/assets/W42logo.png",
+      "imageUrl": "/campaigns/w42-mar2026/assets/W42logo.png",
       "isVideo": false,
       "videoUrl": ""
     }

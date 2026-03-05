@@ -11,7 +11,7 @@
     "housing_category": true,
     "landing_page": "https://senakw.com/register",
     "pageName": "Seńákw Village",
-    "pageAvatar": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Logo_EN_Feb2026.jpg"
+    "pageAvatar": "/campaigns/senakw-feb2026/assets/Senakw_Google_Logo_EN_Feb2026.jpg"
   },
   "adSets": [
     {
@@ -94,7 +94,7 @@
       "files": [
         "Senakw_Meta_Lead-Form_EN_Feb2026.jpg"
       ],
-      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Meta_Lead-Form_EN_Feb2026.jpg",
+      "imageUrl": "/campaigns/senakw-feb2026/assets/Senakw_Meta_Lead-Form_EN_Feb2026.jpg",
       "copy": {
         "primary": "Brand new pet-friendly studio to 4 bedroom homes with ocean views. Coming in Summer 2026.",
         "headline": "A Modern Sḵwx̱wú7mesh Village",
@@ -112,7 +112,7 @@
       "files": [
         "Senakw_Meta_Single_1200x1200_EN_Feb2026.jpg"
       ],
-      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Meta_Single_1200x1200_EN_Feb2026.jpg",
+      "imageUrl": "/campaigns/senakw-feb2026/assets/Senakw_Meta_Single_1200x1200_EN_Feb2026.jpg",
       "copy": {
         "primary": "Brand new pet-friendly studio to 4 bedroom homes with ocean views. Coming in Summer 2026.",
         "headline": "A Modern Sḵwx̱wú7mesh Village",
@@ -130,7 +130,7 @@
       "files": [
         "Senakw_Meta_Single_1200x628_EN_Feb2026.jpg"
       ],
-      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Meta_Single_1200x628_EN_Feb2026.jpg",
+      "imageUrl": "/campaigns/senakw-feb2026/assets/Senakw_Meta_Single_1200x628_EN_Feb2026.jpg",
       "copy": {
         "primary": "Brand new pet-friendly studio to 4 bedroom homes with ocean views. Coming in Summer 2026.",
         "headline": "A Modern Sḵwx̱wú7mesh Village",
@@ -148,7 +148,7 @@
       "files": [
         "Senakw_Meta_Reel-Single_EN_Feb2026.jpg"
       ],
-      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Meta_Reel-Single_EN_Feb2026.jpg",
+      "imageUrl": "/campaigns/senakw-feb2026/assets/Senakw_Meta_Reel-Single_EN_Feb2026.jpg",
       "copy": {
         "primary": "An ancestral Squamish village rises again – 1–4 bedroom rental homes born from the land at the foot of the Burrard Bridge",
         "headline": "A Place That Remembers",
@@ -169,7 +169,7 @@
       "files": [
         "Senakw_Meta_Story-Single_EN_Feb2026.jpg"
       ],
-      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Meta_Story-Single_EN_Feb2026.jpg",
+      "imageUrl": "/campaigns/senakw-feb2026/assets/Senakw_Meta_Story-Single_EN_Feb2026.jpg",
       "copy": {
         "primary": "An ancestral Squamish village rises again – 1–4 bedroom rental homes born from the land at the foot of the Burrard Bridge",
         "headline": "A Place That Remembers",
@@ -187,7 +187,7 @@
       "filename": "Senakw_Google_Search-Image-Extension_EN_Feb2026.jpg",
       "type": "Search",
       "dimensions": "",
-      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Search-Image-Extension_EN_Feb2026.jpg",
+      "imageUrl": "/campaigns/senakw-feb2026/assets/Senakw_Google_Search-Image-Extension_EN_Feb2026.jpg",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -195,7 +195,7 @@
       "filename": "Senakw_Google_Demand-Gen-Single_1200x1200_EN_Feb2026.jpg",
       "type": "Demand Gen",
       "dimensions": "1200x1200",
-      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Demand-Gen-Single_1200x1200_EN_Feb2026.jpg",
+      "imageUrl": "/campaigns/senakw-feb2026/assets/Senakw_Google_Demand-Gen-Single_1200x1200_EN_Feb2026.jpg",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -203,7 +203,7 @@
       "filename": "Senakw_Google_Logo_EN_Feb2026.jpg",
       "type": "Logo",
       "dimensions": "",
-      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Logo_EN_Feb2026.jpg",
+      "imageUrl": "/campaigns/senakw-feb2026/assets/Senakw_Google_Logo_EN_Feb2026.jpg",
       "isVideo": false,
       "videoUrl": ""
     },
@@ -211,7 +211,7 @@
       "filename": "Senakw_Google_Demand-Gen-Single_1200x628_EN_Feb2026.jpg",
       "type": "Demand Gen",
       "dimensions": "1200x628",
-      "imageUrl": "/campaign-boards/campaigns/senakw-feb2026/assets/Senakw_Google_Demand-Gen-Single_1200x628_EN_Feb2026.jpg",
+      "imageUrl": "/campaigns/senakw-feb2026/assets/Senakw_Google_Demand-Gen-Single_1200x628_EN_Feb2026.jpg",
       "isVideo": false,
       "videoUrl": ""
     }

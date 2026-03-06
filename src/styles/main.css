@@ -21,3 +21,6 @@
 
 /* Shared styles */
 @import './shared/skeleton.css';
+
+/* Copy Studio */
+@import './studio.css';

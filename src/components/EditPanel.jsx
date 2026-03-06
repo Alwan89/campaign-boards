@@ -1,3 +1,5 @@
+import CopyField from './studio/CopyField';
+
 export default function EditPanel({ ad, originalAd, onUpdateCopy, onUpdateCarousel, onReset }) {
   const isMod = (field) => ad.copy[field] !== originalAd.copy[field];
   const anyMod = JSON.stringify(ad.copy) !== JSON.stringify(originalAd.copy) ||
@@ -17,42 +19,33 @@ export default function EditPanel({ ad, originalAd, onUpdateCopy, onUpdateCarous
         {anyMod && <button className="edit-reset-btn" onClick={() => onReset(ad.id)}>Reset</button>}
       </div>
 
-      <div className="edit-field">
-        <div className="edit-label">Primary Text {isMod('primary') && <span className="edit-modified-dot"></span>}</div>
-        <textarea
-          className={`edit-input${isMod('primary')?' modified':''}`}
-          value={ad.copy.primary}
-          onChange={e => onUpdateCopy(ad.id, 'primary', e.target.value)}
-          rows={3}
-        />
-      </div>
+      <CopyField
+        label={<>Primary Text {isMod('primary') && <span className="edit-modified-dot"></span>}</>}
+        value={ad.copy.primary}
+        onChange={v => onUpdateCopy(ad.id, 'primary', v)}
+        limit={125}
+        multiline
+      />
 
-      <div className="edit-field">
-        <div className="edit-label">Headline {isMod('headline') && <span className="edit-modified-dot"></span>}</div>
-        <input
-          className={`edit-input${isMod('headline')?' modified':''}`}
-          value={ad.copy.headline || ''}
-          onChange={e => onUpdateCopy(ad.id, 'headline', e.target.value)}
-        />
-      </div>
+      <CopyField
+        label={<>Headline {isMod('headline') && <span className="edit-modified-dot"></span>}</>}
+        value={ad.copy.headline || ''}
+        onChange={v => onUpdateCopy(ad.id, 'headline', v)}
+        limit={40}
+      />
 
-      <div className="edit-field">
-        <div className="edit-label">Description {isMod('description') && <span className="edit-modified-dot"></span>}</div>
-        <input
-          className={`edit-input${isMod('description')?' modified':''}`}
-          value={ad.copy.description || ''}
-          onChange={e => onUpdateCopy(ad.id, 'description', e.target.value)}
-        />
-      </div>
+      <CopyField
+        label={<>Description {isMod('description') && <span className="edit-modified-dot"></span>}</>}
+        value={ad.copy.description || ''}
+        onChange={v => onUpdateCopy(ad.id, 'description', v)}
+        limit={30}
+      />
 
-      <div className="edit-field">
-        <div className="edit-label">CTA {isMod('cta') && <span className="edit-modified-dot"></span>}</div>
-        <input
-          className={`edit-input${isMod('cta')?' modified':''}`}
-          value={ad.copy.cta}
-          onChange={e => onUpdateCopy(ad.id, 'cta', e.target.value)}
-        />
-      </div>
+      <CopyField
+        label={<>CTA {isMod('cta') && <span className="edit-modified-dot"></span>}</>}
+        value={ad.copy.cta}
+        onChange={v => onUpdateCopy(ad.id, 'cta', v)}
+      />
 
       {/* Carousel card editors */}
       {ad.type === "Carousel" && ad.carouselCards && (
@@ -67,18 +60,19 @@ export default function EditPanel({ ad, originalAd, onUpdateCopy, onUpdateCarous
                   <span style={{fontSize:11,fontWeight:600,color:'var(--text-secondary)'}}>Card {ci+1}</span>
                   {cardMod && <span className="edit-modified-dot"></span>}
                 </div>
-                <input
-                  className={`edit-input${cardMod?' modified':''}`}
-                  placeholder="Headline"
+                <CopyField
+                  label="Headline"
                   value={card.headline}
-                  onChange={e => onUpdateCarousel(ad.id, ci, 'headline', e.target.value)}
-                  style={{marginBottom:4}}
+                  onChange={v => onUpdateCarousel(ad.id, ci, 'headline', v)}
+                  limit={40}
+                  placeholder="Headline"
                 />
-                <input
-                  className={`edit-input${cardMod?' modified':''}`}
-                  placeholder="Description"
+                <CopyField
+                  label="Description"
                   value={card.description || ''}
-                  onChange={e => onUpdateCarousel(ad.id, ci, 'description', e.target.value)}
+                  onChange={v => onUpdateCarousel(ad.id, ci, 'description', v)}
+                  limit={25}
+                  placeholder="Description"
                 />
               </div>
             );

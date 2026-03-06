@@ -73,6 +73,27 @@ export default function InternalWorkspace({
             <span style={{color:'var(--text-secondary)',fontSize:13}}>{placementLabel}</span>
           </div>
           <div className="toolbar__actions">
+            {/* Edit in Studio link (for studio-published boards) */}
+            {data.sources?.studioSlug && (
+              <Link
+                to={`/studio/${data.sources.studioSlug}`}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  fontSize: 12, fontWeight: 600, color: 'var(--periphery)',
+                  textDecoration: 'none', padding: '5px 12px',
+                  borderRadius: 6, border: '1px solid var(--periphery)',
+                  marginRight: 8,
+                }}
+                title="Open this board in Copy Studio for editing"
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+                  <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+                Edit in Studio
+              </Link>
+            )}
+
             {/* Device preview toggle */}
             <div className="preview-toggle">
               <button

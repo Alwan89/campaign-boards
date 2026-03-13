@@ -12,6 +12,13 @@ function getAvatarColor(name) {
   return avatarColors[code % avatarColors.length];
 }
 
+function formatMonth(dateStr) {
+  if (!dateStr) return '';
+  const [y, m] = dateStr.split('-');
+  const date = new Date(Number(y), Number(m) - 1);
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
 export default function CampaignIndex() {
   const [campaigns, setCampaigns] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,6 +53,24 @@ export default function CampaignIndex() {
         setLoading(false);
       });
   }, []);
+
+  // Group campaigns by project name
+  const projectGroups = [];
+  const projectMap = {};
+  campaigns.forEach(c => {
+    const key = c.project || c.name || 'Unknown';
+    if (!projectMap[key]) {
+      projectMap[key] = { project: key, client: c.client, campaigns: [] };
+      projectGroups.push(projectMap[key]);
+    }
+    projectMap[key].campaigns.push(c);
+  });
+
+  // Sort groups alphabetically, sort months chronologically within each group
+  projectGroups.sort((a, b) => a.project.localeCompare(b.project));
+  projectGroups.forEach(g => {
+    g.campaigns.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+  });
 
   return (
     <div style={{
@@ -128,10 +153,44 @@ export default function CampaignIndex() {
         </div>
       ) : (
         <div className="campaign-grid">
-          {campaigns.map(c => {
-            const initial = (c.project || c.name || 'C').charAt(0).toUpperCase();
-            const color = getAvatarColor(c.project || c.name);
+          {projectGroups.map(group => {
+            const hasManyMonths = group.campaigns.length > 1;
+            const initial = group.project.charAt(0).toUpperCase();
+            const color = getAvatarColor(group.project);
 
+            // Multi-month project: single card with month pills
+            if (hasManyMonths) {
+              return (
+                <div key={group.project} className="campaign-card campaign-card--group">
+                  <div className="campaign-card-avatar" style={{background:color}}>
+                    {initial}
+                  </div>
+                  <div className="campaign-card-info">
+                    <div className="campaign-card-title">{group.project}</div>
+                    <div className="campaign-card-meta">
+                      <span>{group.client}</span>
+                      <span style={{opacity:.4}}>·</span>
+                      <span>{group.campaigns.length} months</span>
+                    </div>
+                    <div className="campaign-card-months">
+                      {group.campaigns.map(c => (
+                        <Link
+                          key={c.slug}
+                          to={`/${c.slug}`}
+                          className="month-pill"
+                          onClick={e => e.stopPropagation()}
+                        >
+                          {formatMonth(c.date) || 'View'}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+
+            // Single campaign: original card style
+            const c = group.campaigns[0];
             return (
               <Link
                 key={c.slug}

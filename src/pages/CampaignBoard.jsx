@@ -104,8 +104,27 @@ function CampaignBoardInner() {
   const [activePlacement, setActivePlacement] = useState('all');
   const [devicePreview, setDevicePreview] = useState(true);
   const [theme, setTheme] = useState(() => localStorage.getItem('cb-theme') || 'light');
+  const [siblingMonths, setSiblingMonths] = useState([]);
 
   const { data, loading, error } = useCampaignData(slug);
+
+  /* ── Fetch sibling months from index.json ── */
+  useEffect(() => {
+    const basePath = import.meta.env.BASE_URL;
+    fetch(`${basePath}campaigns/index.json`)
+      .then(res => res.ok ? res.json() : [])
+      .then(allCampaigns => {
+        if (!data) return;
+        const project = data.campaign.project;
+        const siblings = allCampaigns
+          .filter(c => c.project === project)
+          .sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+        if (siblings.length > 1) {
+          setSiblingMonths(siblings);
+        }
+      })
+      .catch(() => {});
+  }, [data]);
   const { adsState, originalAds, updateAdCopy, updateCarouselCard, resetAd, modifiedCount, getOriginalAd } = useAdState(data);
 
   /* ── Theme persistence ── */
@@ -195,6 +214,8 @@ function CampaignBoardInner() {
         data={data}
         adsState={adsState}
         adsByPlacement={adsByPlacement}
+        siblingMonths={siblingMonths}
+        currentSlug={slug}
       />
     );
   }

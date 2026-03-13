@@ -1,10 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CampaignProvider } from '../context/CampaignContext';
 import FeedCard from '../components/FeedCard';
 import InstagramFeedCard from '../components/InstagramFeedCard';
 import StoryCard from '../components/StoryCard';
 import ReelCard from '../components/ReelCard';
 import { SearchAdCard, DemandGenCard } from '../components/GoogleAdCards';
+import AdDetailPanel from '../components/client/AdDetailPanel';
 
 /* Platform icons for placement headers */
 function FacebookIcon() {
@@ -33,15 +35,30 @@ function InstagramIcon() {
   );
 }
 
+function formatMonthLabel(dateStr) {
+  if (!dateStr) return 'View';
+  const [y, m] = dateStr.split('-');
+  const d = new Date(Number(y), Number(m) - 1);
+  return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
 /**
  * Client view — slide-based presentation with sticky left TOC.
  * Each ad variation is a full-width "slide" with a large centered preview.
  */
-export default function ClientPreview({ data, adsState, adsByPlacement }) {
+export default function ClientPreview({ data, adsState, adsByPlacement, siblingMonths = [], currentSlug }) {
   const { campaign } = data;
+  const navigate = useNavigate();
   const [activeSlide, setActiveSlide] = useState(null);
+  const [detailAd, setDetailAd] = useState(null);
+  const [adFeedback, setAdFeedback] = useState({});
+  const [showApprovalModal, setShowApprovalModal] = useState(false);
+  const [overallStatus, setOverallStatus] = useState(null);
+  const [collapsedSections, setCollapsedSections] = useState(new Set());
+  const [showMonthDropdown, setShowMonthDropdown] = useState(false);
   const slideRefs = useRef({});
   const observerRef = useRef(null);
+  const monthDropdownRef = useRef(null);
 
   const gc = data.googleCopy || {};
   const gAds = data.googleAds || [];
@@ -110,6 +127,11 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
     });
   }
 
+  // All reviewable ad IDs
+  const allAdIds = slides.map(s => s.ad?.id || s.id);
+  const reviewedCount = allAdIds.filter(id => adFeedback[id]?.status).length;
+  const totalAds = allAdIds.length;
+
   // IntersectionObserver to track active slide
   useEffect(() => {
     observerRef.current = new IntersectionObserver(
@@ -130,6 +152,18 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
     return () => observerRef.current?.disconnect();
   }, [slides.length]);
 
+  // Close month dropdown on click outside
+  useEffect(() => {
+    if (!showMonthDropdown) return;
+    const handleClick = (e) => {
+      if (monthDropdownRef.current && !monthDropdownRef.current.contains(e.target)) {
+        setShowMonthDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [showMonthDropdown]);
+
   const scrollToSlide = useCallback((slideId) => {
     const el = slideRefs.current[slideId];
     if (el) {
@@ -141,18 +175,83 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
     if (el) slideRefs.current[slideId] = el;
   }, []);
 
-  // Group slides by section for TOC
-  const tocSections = [];
-  let currentSection = null;
-  slides.forEach(slide => {
-    if (slide.section !== currentSection) {
-      currentSection = slide.section;
-      tocSections.push({ section: currentSection, items: [] });
+  // Feedback handler
+  const handleFeedback = useCallback((adId, fb) => {
+    setAdFeedback(prev => ({ ...prev, [adId]: fb }));
+  }, []);
+
+  // Open detail panel — skip if click was on an interactive child (button, toggle, tab)
+  const openDetail = useCallback((e, ad, adIndex, type, googleProps) => {
+    if (e.target.closest('button, a, [role="button"], [role="tab"], select, input')) return;
+    setDetailAd({ ad, adIndex, type, googleProps });
+  }, []);
+
+  // Auto-expand collapsed section when scroll spy activates an item in it
+  useEffect(() => {
+    if (!activeSlide) return;
+    const slideData = slides.find(s => s.id === activeSlide);
+    if (!slideData) return;
+    let key;
+    if (slideData.type === 'feed') key = 'feed';
+    else if (slideData.type === 'storyreel') key = 'storyreel';
+    else if (slideData.placement === 'Google') key = 'google';
+    if (key) {
+      setCollapsedSections(prev => {
+        if (!prev.has(key)) return prev;
+        const next = new Set(prev);
+        next.delete(key);
+        return next;
+      });
     }
-    tocSections[tocSections.length - 1].items.push(slide);
-  });
+  }, [activeSlide, slides.length]);
+
+  // Build collapsible TOC sub-sections
+  const tocSubsections = [];
+  const feedSlides = slides.filter(s => s.type === 'feed');
+  const storyReelSlides = slides.filter(s => s.type === 'storyreel');
+  const googleSlides = slides.filter(s => s.placement === 'Google');
+  if (feedSlides.length > 0) tocSubsections.push({ key: 'feed', label: 'Feed', count: feedSlides.length, items: feedSlides });
+  if (storyReelSlides.length > 0) tocSubsections.push({ key: 'storyreel', label: 'Stories & Reels', count: storyReelSlides.length, items: storyReelSlides });
+  if (googleSlides.length > 0) tocSubsections.push({ key: 'google', label: 'Google Ads', count: googleSlides.length, items: googleSlides });
+
+  const toggleSection = useCallback((key) => {
+    setCollapsedSections(prev => {
+      const next = new Set(prev);
+      next.has(key) ? next.delete(key) : next.add(key);
+      return next;
+    });
+  }, []);
 
   const dateStr = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+  // Google props builders
+  const searchGoogleProps = searchCopy ? {
+    label: 'Google Search Ad',
+    copy: searchCopy,
+    callouts: calloutCopy?.callouts,
+    sitelinks: sitelinkCopy?.sitelinks,
+    imageUrl: searchImage?.imageUrl,
+    amenities: sitelinkCopy?.amenities,
+  } : null;
+
+  const demandGenGoogleProps = (demandGenSingle && demandGenImages.length > 0) ? {
+    label: 'Demand Gen Ad',
+    copy: demandGenSingle,
+    imageUrl: (demandGenImages.find(g => g.dimensions === '1200x628') || demandGenImages[0])?.imageUrl,
+    dimensions: (demandGenImages.find(g => g.dimensions === '1200x628') || demandGenImages[0])?.dimensions,
+    logoUrl,
+  } : null;
+
+  // Helper: render review badge for an ad
+  const renderReviewBadge = (adId) => {
+    const fb = adFeedback[adId];
+    if (!fb?.status) return null;
+    return (
+      <div className={`client-slide__review-badge client-slide__review-badge--${fb.status}`}>
+        {fb.status === 'approved' ? 'Approved' : 'Changes'}
+      </div>
+    );
+  };
 
   return (
     <CampaignProvider campaign={campaign}>
@@ -169,22 +268,69 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
 
           <div className="client-toc__divider" />
 
+          {siblingMonths.length > 1 && (
+            <div className="client-toc__month-dropdown" ref={monthDropdownRef}>
+              <button
+                className="client-toc__month-trigger"
+                onClick={() => setShowMonthDropdown(prev => !prev)}
+              >
+                <span>{formatMonthLabel(siblingMonths.find(s => s.slug === currentSlug)?.date)}</span>
+                <span className="client-toc__month-count">{siblingMonths.length} months</span>
+                <svg className={`client-toc__month-chevron${showMonthDropdown ? ' open' : ''}`} width="10" height="10" viewBox="0 0 24 24">
+                  <polyline points="6,9 12,15 18,9" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              {showMonthDropdown && (
+                <div className="client-toc__month-list">
+                  {siblingMonths.map(s => (
+                    <button
+                      key={s.slug}
+                      className={`client-toc__month-list-item${s.slug === currentSlug ? ' active' : ''}`}
+                      onClick={() => { navigate(`/${s.slug}?view=client`); setShowMonthDropdown(false); }}
+                    >
+                      {formatMonthLabel(s.date)}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="client-toc__nav">
-            {tocSections.map(sec => (
-              <div key={sec.section} className="client-toc__section">
-                <div className="client-toc__section-label">{sec.section}</div>
-                {sec.items.map((item, i) => (
-                  <button
-                    key={item.id}
-                    className={`client-toc__item${activeSlide === item.id ? ' active' : ''}`}
-                    onClick={() => scrollToSlide(item.id)}
-                  >
-                    <span className="client-toc__item-num">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="client-toc__item-label">{item.label}</span>
+            {tocSubsections.map(sub => {
+              const isCollapsed = collapsedSections.has(sub.key);
+              return (
+                <div key={sub.key} className="client-toc__subsection">
+                  <button className="client-toc__subsection-header" onClick={() => toggleSection(sub.key)}>
+                    <svg className={`client-toc__chevron${isCollapsed ? '' : ' open'}`} width="10" height="10" viewBox="0 0 24 24">
+                      <polyline points="9,6 15,12 9,18" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    <span>{sub.label}</span>
+                    <span className="client-toc__subsection-count">{sub.count}</span>
                   </button>
-                ))}
-              </div>
-            ))}
+                  {!isCollapsed && (
+                    <div className="client-toc__subsection-items">
+                      {sub.items.map(item => {
+                        const globalIdx = slides.indexOf(item) + 1;
+                        const adId = item.ad?.id || item.id;
+                        const fbStatus = adFeedback[adId]?.status;
+                        return (
+                          <button
+                            key={item.id}
+                            className={`client-toc__item${activeSlide === item.id ? ' active' : ''}`}
+                            onClick={() => scrollToSlide(item.id)}
+                          >
+                            <span className="client-toc__item-num">{String(globalIdx).padStart(2, '0')}</span>
+                            <span className="client-toc__item-label">{item.label}</span>
+                            {fbStatus && <span className={`client-toc__item-status client-toc__item-status--${fbStatus}`} />}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           <div className="client-toc__footer">
@@ -221,7 +367,12 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
                 <h2 className="client-slide__title">
                   {ad.type === 'Carousel' ? 'Carousel' : ad.isVideo ? 'Video' : 'Feed Placements'}
                 </h2>
-                <div className="client-slide__preview">
+                <div
+                  className="client-slide__preview client-slide__ad-clickable"
+                  onClick={(e) => openDetail(e, ad, idx, 'feed')}
+                >
+                  {renderReviewBadge(ad.id)}
+                  <span className="client-slide__click-hint">Click to review</span>
                   <div className="placement-row">
                     <div className="placement-col placement-col--feed">
                       <div className="placement-col__header">
@@ -257,7 +408,12 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
                 </div>
                 <div className="client-slide__rule" />
                 <h2 className="client-slide__title">Stories, Status &amp; Reels</h2>
-                <div className="client-slide__preview">
+                <div
+                  className="client-slide__preview client-slide__ad-clickable"
+                  onClick={(e) => openDetail(e, ad, idx, ad.subPlacements?.includes('Story') ? 'story' : 'reel')}
+                >
+                  {renderReviewBadge(ad.id)}
+                  <span className="client-slide__click-hint">Click to review</span>
                   <div className="placement-row">
                     {(!ad.subPlacements || ad.subPlacements.includes('Story')) && (
                       <>
@@ -310,7 +466,12 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
               </div>
               <div className="client-slide__rule" />
               <h2 className="client-slide__title">Google Search &amp; Image Extension</h2>
-              <div className="client-slide__preview">
+              <div
+                className="client-slide__preview client-slide__ad-clickable"
+                onClick={(e) => openDetail(e, null, 0, 'search', searchGoogleProps)}
+              >
+                {renderReviewBadge('google-search')}
+                <span className="client-slide__click-hint">Click to review</span>
                 <SearchAdCard
                   copy={searchCopy}
                   callouts={calloutCopy?.callouts}
@@ -337,7 +498,12 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
               </div>
               <div className="client-slide__rule" />
               <h2 className="client-slide__title">Demand Gen &amp; Performance Max</h2>
-              <div className="client-slide__preview">
+              <div
+                className="client-slide__preview client-slide__ad-clickable"
+                onClick={(e) => openDetail(e, null, 0, 'demandgen', demandGenGoogleProps)}
+              >
+                {renderReviewBadge('google-demandgen')}
+                <span className="client-slide__click-hint">Click to review</span>
                 <DemandGenCard
                   copy={demandGenSingle}
                   imageUrl={(demandGenImages.find(g => g.dimensions === '1200x628') || demandGenImages[0])?.imageUrl}
@@ -354,7 +520,88 @@ export default function ClientPreview({ data, adsState, adsByPlacement }) {
             <span>{campaign.project}</span>
             <span>Ad Preview</span>
           </div>
+
+          {/* Approval footer bar */}
+          <div className="approval-footer">
+            <div className="approval-footer__progress">
+              <span>{reviewedCount} of {totalAds} reviewed</span>
+              <div className="approval-footer__bar">
+                <div
+                  className="approval-footer__bar-fill"
+                  style={{ width: totalAds > 0 ? `${(reviewedCount / totalAds) * 100}%` : '0%' }}
+                />
+              </div>
+            </div>
+            <div className="approval-footer__actions">
+              <button
+                className="approval-footer__btn approval-footer__btn--changes"
+                onClick={() => { setOverallStatus('changes'); setShowApprovalModal(true); }}
+              >
+                Request Changes
+              </button>
+              <button
+                className="approval-footer__btn approval-footer__btn--approve"
+                onClick={() => { setOverallStatus('approved'); setShowApprovalModal(true); }}
+              >
+                Approve All
+              </button>
+            </div>
+          </div>
         </main>
+
+        {/* Ad Detail Panel */}
+        {detailAd && (
+          <AdDetailPanel
+            ad={detailAd.ad}
+            adIndex={detailAd.adIndex}
+            type={detailAd.type}
+            onClose={() => setDetailAd(null)}
+            landingPage={campaign.landingPage}
+            googleProps={detailAd.googleProps}
+            feedback={adFeedback[detailAd.ad?.id || detailAd.type]}
+            onFeedback={handleFeedback}
+          />
+        )}
+
+        {/* Approval Summary Modal */}
+        {showApprovalModal && (
+          <div className="approval-modal__backdrop" onClick={() => setShowApprovalModal(false)}>
+            <div className="approval-modal" onClick={e => e.stopPropagation()}>
+              <div className="approval-modal__header">
+                <h3 className="approval-modal__title">
+                  {overallStatus === 'approved' ? 'Approve All Ads' : 'Request Changes'}
+                </h3>
+                <button className="detail-panel__close" onClick={() => setShowApprovalModal(false)} aria-label="Close">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                </button>
+              </div>
+              <div className="approval-modal__body">
+                {slides.map(slide => {
+                  const adId = slide.ad?.id || slide.id;
+                  const fb = adFeedback[adId];
+                  const st = fb?.status || 'pending';
+                  return (
+                    <div key={slide.id} className="approval-modal__item">
+                      <div className={`approval-modal__dot approval-modal__dot--${st}`} />
+                      <span style={{flex:1}}>{slide.ad?.name || slide.sublabel || slide.label}</span>
+                      <span style={{fontSize:11,color:'var(--text-tertiary)',textTransform:'capitalize'}}>{st}</span>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="approval-modal__footer">
+                <button
+                  className="feedback-submit"
+                  onClick={() => setShowApprovalModal(false)}
+                >
+                  Done
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </CampaignProvider>
   );

@@ -18,6 +18,7 @@
 @import './pages/campaign-builder.css';
 @import './pages/deck-slides.css';
 @import './pages/client-preview.css';
+@import './pages/client-feedback.css';
 
 /* Shared styles */
 @import './shared/skeleton.css';

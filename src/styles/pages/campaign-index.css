@@ -30,3 +30,29 @@
   transition:transform var(--transition-fast);
 }
 .campaign-card:hover .campaign-card-arrow{transform:translateX(3px);color:var(--periphery)}
+
+/* ── Multi-month group card ── */
+.campaign-card--group{
+  align-items:flex-start;
+  grid-column:1 / -1;  /* span full width for multi-month projects */
+}
+.campaign-card-months{
+  display:flex;gap:2px;margin-top:8px;
+  background:rgba(0,0,0,.04);
+  border-radius:8px;padding:2px;
+  overflow-x:auto;
+}
+.month-pill{
+  display:inline-flex;align-items:center;
+  padding:5px 12px;border-radius:6px;
+  font-size:12px;font-weight:600;
+  color:var(--text-secondary);
+  background:transparent;
+  text-decoration:none;
+  transition:all var(--transition-fast);
+  white-space:nowrap;
+}
+.month-pill:hover{
+  background:rgba(255,255,255,.8);color:var(--periphery);
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+}
